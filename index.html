@@ -8,56 +8,91 @@
     <meta name="keywords" content="BRI calculator, Body Roundness Index, health assessment, body shape calculator">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
             line-height: 1.6;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
         }
         h1 {
-            color: #333;
-            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
         }
         form {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+            gap: 20px;
         }
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #34495e;
         }
         input, select {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             box-sizing: border-box;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            font-size: 16px;
         }
         button {
             grid-column: 1 / -1;
-            background-color: #4CAF50;
+            background-color: #3498db;
             color: white;
-            padding: 10px;
+            padding: 12px;
             border: none;
+            border-radius: 4px;
             cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
         }
         #result {
             margin-top: 20px;
-            padding: 15px;
-            background-color: #f0f0f0;
-            border-radius: 5px;
+            padding: 20px;
+            background-color: #e8f4fd;
+            border-radius: 4px;
+            text-align: center;
         }
         .info-section {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
             margin-top: 30px;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 5px;
+        }
+        .info-section ul, .info-section ol {
+            padding-left: 20px;
+        }
+        .info-section li {
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
     <h1>Body Roundness Index (BRI) Calculator</h1>
-    
-    <!-- New information section -->
+
     <div class="info-section">
         <h2>What is the Body Roundness Index (BRI)?</h2>
         <p>The Body Roundness Index (BRI) is a measure used to assess body shape and health risks. It combines height and waist circumference measurements to evaluate the "roundness" of the human body. BRI can help assess health risks associated with obesity.</p>
@@ -80,66 +115,68 @@
         </ul>
         <p>Please note that BRI is just one indicator of health. For a comprehensive understanding of your health status, it's recommended to consult with a healthcare professional.</p>
     </div>
-
-    <form id="briForm">
-        <div>
-            <label for="units">Units:</label>
-            <select id="units">
-                <option value="imperial">US (Imperial)</option>
-                <option value="metric">Metric</option>
-            </select>
-        </div>
-        <div>
-            <label for="gender">Gender:</label>
-            <select id="gender">
-                <option value="female">Female</option>
-                <option value="male">Male</option>
-            </select>
-        </div>
-        <div>
-            <label for="ethnicity">Ethnicity (Optional):</label>
-            <select id="ethnicity">
-                <option value="">Select</option>
-                <option value="caucasian">Caucasian</option>
-                <option value="african">African</option>
-                <option value="asian">Asian</option>
-                <option value="hispanic">Hispanic</option>
-            </select>
-        </div>
-        <div>
-            <label for="age">Age:</label>
-            <input type="number" id="age" required>
-        </div>
-        <div>
-            <label for="height">Height:</label>
-            <input type="number" id="height" required>
-            <span id="heightUnit">in</span>
-        </div>
-        <div>
-            <label for="weight">Weight:</label>
-            <input type="number" id="weight" required>
-            <span id="weightUnit">lbs</span>
-        </div>
-        <div>
-            <label for="waist">Waist:</label>
-            <input type="number" id="waist" required>
-            <span id="waistUnit">in</span>
-        </div>
-        <div>
-            <label for="useHip">Use hip measure?</label>
-            <select id="useHip">
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-            </select>
-        </div>
-        <div>
-            <label for="hip">Hip:</label>
-            <input type="number" id="hip">
-            <span id="hipUnit">in</span>
-        </div>
-        <button type="submit">Calculate BRI</button>
-    </form>
-    <div id="result"></div>
+    
+    <div class="container">
+        <form id="briForm">
+            <div>
+                <label for="units">Units:</label>
+                <select id="units">
+                    <option value="imperial">US (Imperial)</option>
+                    <option value="metric">Metric</option>
+                </select>
+            </div>
+            <div>
+                <label for="gender">Gender:</label>
+                <select id="gender">
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                </select>
+            </div>
+            <div>
+                <label for="ethnicity">Ethnicity (Optional):</label>
+                <select id="ethnicity">
+                    <option value="">Select</option>
+                    <option value="caucasian">Caucasian</option>
+                    <option value="african">African</option>
+                    <option value="asian">Asian</option>
+                    <option value="hispanic">Hispanic</option>
+                </select>
+            </div>
+            <div>
+                <label for="age">Age:</label>
+                <input type="number" id="age" required>
+            </div>
+            <div>
+                <label for="height">Height:</label>
+                <input type="number" id="height" required>
+                <span id="heightUnit">in</span>
+            </div>
+            <div>
+                <label for="weight">Weight:</label>
+                <input type="number" id="weight" required>
+                <span id="weightUnit">lbs</span>
+            </div>
+            <div>
+                <label for="waist">Waist:</label>
+                <input type="number" id="waist" required>
+                <span id="waistUnit">in</span>
+            </div>
+            <div>
+                <label for="useHip">Use hip measure?</label>
+                <select id="useHip">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div>
+                <label for="hip">Hip:</label>
+                <input type="number" id="hip">
+                <span id="hipUnit">in</span>
+            </div>
+            <button type="submit">Calculate BRI</button>
+        </form>
+        <div id="result"></div>
+    </div>
 
     <script>
         const form = document.getElementById('briForm');
