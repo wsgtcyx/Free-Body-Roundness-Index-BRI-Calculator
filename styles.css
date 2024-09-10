@@ -115,3 +115,36 @@ margin-bottom: 20px;
     color: #555;
     line-height: 1.6;
 }
+
+
+.language-switcher {
+    text-align: right;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+}
+.language-switcher a, .language-switcher span {
+    display: inline-block;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+.language-switcher a:hover {
+    background-color: #f0f0f0;
+}
+.language-switcher span {
+    background-color: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+.language-switcher a:first-child, .language-switcher span:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;
+}
+.language-switcher a:last-child, .language-switcher span:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
