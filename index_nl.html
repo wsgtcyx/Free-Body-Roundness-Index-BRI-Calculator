@@ -1,0 +1,207 @@
+
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gratis Body Roundness Index (BRI) Calculator | BRI Berekenen</title>
+    <meta name="description" content="Gebruik onze 100% gratis Body Roundness Index (BRI) calculator om uw lichaamsvorm en gezondheidsrisico's te beoordelen. Eenvoudig te gebruiken, geen registratie vereist.">
+    <meta name="keywords" content="gratis BRI calculator, Body Roundness Index, gratis gezondheidsbeoordeling, lichaamsvorm calculator, gratis BRI tool, bri berekenen">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6LM13XCDB2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6LM13XCDB2');
+</script>
+
+<body>
+    <h1>Gratis Body Roundness Index (BRI) Calculator</h1>
+    <div class="free-badge-container">
+        <p class="free-badge">100% Gratis - Geen Registratie Vereist</p>
+    </div>
+
+    <div class="language-switcher">
+        <span>Nederlands</span> | <a href="/">English</a>
+    </div>
+    
+    <div class="section">
+        <h2>Wat is de Body Roundness Index (BRI)?</h2>
+        <p>De Body Roundness Index (BRI) is een maat die wordt gebruikt om lichaamsvorm en gezondheidsrisico's te beoordelen. Onze gratis BRI-calculator combineert lengte- en tailleomtrekmetingen om de "rondheid" van het menselijk lichaam te evalueren. BRI kan helpen bij het beoordelen van gezondheidsrisico's die verband houden met obesitas, zonder kosten voor u.</p>
+    </div>
+
+    <div class="section">
+        <h2>Hoe gebruikt u deze gratis calculator</h2>
+        <ol>
+            <li>Selecteer uw voorkeursmaatsysteem (Metrisch of Imperiaal)</li>
+            <li>Voer uw geslacht, leeftijd, lengte, gewicht en tailleomtrek in</li>
+            <li>Voeg optioneel heupmetingen toe indien beschikbaar</li>
+            <li>Klik op de knop "BRI Berekenen" om direct uw gratis resultaten te krijgen</li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <form id="briForm">
+            <div>
+                <label for="units">Eenheden:</label>
+                <select id="units">
+                    <option value="metric">Metrisch</option>
+                    <option value="imperial">Imperiaal (VS)</option>
+                </select>
+            </div>
+            <div>
+                <label for="gender">Geslacht:</label>
+                <select id="gender">
+                    <option value="female">Vrouw</option>
+                    <option value="male">Man</option>
+                </select>
+            </div>
+            <div>
+                <label for="ethnicity">Etniciteit (Optioneel):</label>
+                <select id="ethnicity">
+                    <option value="">Selecteer</option>
+                    <option value="caucasian">Kaukasisch</option>
+                    <option value="african">Afrikaans</option>
+                    <option value="asian">Aziatisch</option>
+                    <option value="hispanic">Hispanisch</option>
+                </select>
+            </div>
+            <div>
+                <label for="age">Leeftijd:</label>
+                <input type="number" id="age" required>
+            </div>
+            <div>
+                <label for="height">Lengte:</label>
+                <input type="number" id="height" required>
+                <span id="heightUnit">cm</span>
+            </div>
+            <div>
+                <label for="weight">Gewicht:</label>
+                <input type="number" id="weight" required>
+                <span id="weightUnit">kg</span>
+            </div>
+            <div>
+                <label for="waist">Taille:</label>
+                <input type="number" id="waist" required>
+                <span id="waistUnit">cm</span>
+            </div>
+            <div>
+                <label for="useHip">Heupmeting gebruiken?</label>
+                <select id="useHip">
+                    <option value="yes">Ja</option>
+                    <option value="no">Nee</option>
+                </select>
+            </div>
+            <div>
+                <label for="hip">Heup:</label>
+                <input type="number" id="hip">
+                <span id="hipUnit">cm</span>
+            </div>
+            <button type="submit">BRI Berekenen</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById('briForm');
+        const unitsSelect = document.getElementById('units');
+        const heightUnit = document.getElementById('heightUnit');
+        const weightUnit = document.getElementById('weightUnit');
+        const waistUnit = document.getElementById('waistUnit');
+        const hipUnit = document.getElementById('hipUnit');
+
+        unitsSelect.addEventListener('change', updateUnits);
+
+        function updateUnits() {
+            const isMetric = unitsSelect.value === 'metric';
+            heightUnit.textContent = isMetric ? 'cm' : 'in';
+            weightUnit.textContent = isMetric ? 'kg' : 'lbs';
+            waistUnit.textContent = isMetric ? 'cm' : 'in';
+            hipUnit.textContent = isMetric ? 'cm' : 'in';
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            calculateBRI();
+        });
+
+        function calculateBRI() {
+            const isMetric = unitsSelect.value === 'metric';
+            let height = parseFloat(document.getElementById('height').value);
+            let waist = parseFloat(document.getElementById('waist').value);
+            
+            // Convert to meters if using metric
+            if (isMetric) {
+                height /= 100;
+                waist /= 100;
+            } else {
+                // Convert inches to meters
+                height *= 0.0254;
+                waist *= 0.0254;
+            }
+
+            const bri = 364.2 - 365.5 * Math.sqrt(1 - ((waist / (2 * Math.PI))**2 / (0.5 * height)**2));
+            
+            let interpretation = "";
+            if (bri < 1) interpretation = "Extreem mager";
+            else if (bri < 2) interpretation = "Normale lichaamsvorm";
+            else if (bri < 3) interpretation = "Overgewicht";
+            else interpretation = "Obesitas";
+
+            document.getElementById('result').innerHTML = `
+                <h2>Resultaten:</h2>
+                <p>Uw Body Roundness Index (BRI): ${bri.toFixed(2)}</p>
+                <p>Interpretatie: ${interpretation}</p>
+            `;
+        }
+
+        updateUnits();
+    </script>
+
+    <div class="section">
+        <h2>Hoe de resultaten te interpreteren</h2>
+        <p>Onze gratis calculator geeft uw BRI-waarde en een interpretatie:</p>
+        <ul>
+            <li>BRI < 1: Extreem mager</li>
+            <li>1 ≤ BRI < 2: Normale lichaamsvorm</li>
+            <li>2 ≤ BRI < 3: Overgewicht</li>
+            <li>BRI ≥ 3: Obesitas</li>
+        </ul>
+        <p>Houd er rekening mee dat BRI slechts één indicator van gezondheid is. Voor een uitgebreid inzicht in uw gezondheidstoestand is het raadzaam een zorgprofessional te raadplegen. Onze calculator wordt gratis aangeboden als een openbare dienst.</p>
+    </div>
+
+    <div class="faq-section">
+        <h2>Veelgestelde vragen (FAQ)</h2>
+        <div class="faq-item">
+            <div class="faq-question">1. Hoe bereken je BRI?</div>
+            <div class="faq-answer">BRI wordt berekend met de formule: BRI = 364,2 - 365,5 * √(1 - ((TO / (2π))² / (0,5 * L)²)), waarbij TO de tailleomtrek is en L de lengte, beide in meters.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">2. Is BRI beter dan BMI?</div>
+            <div class="faq-answer">BRI kan nauwkeuriger zijn dan BMI bij het beoordelen van lichaamsvorm en vetverdeling. Het houdt rekening met de tailleomtrek, wat BMI niet doet.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">3. Wat is het verschil tussen BMI en BRI?</div>
+            <div class="faq-answer">BMI gebruikt alleen lengte en gewicht, terwijl BRI ook de tailleomtrek meeneemt. Hierdoor kan BRI beter rekening houden met lichaamsvorm en vetverdeling.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">4. Is de BRI nuttig?</div>
+            <div class="faq-answer">Ja, BRI kan nuttig zijn omdat het een uitgebreidere beoordeling geeft van lichaamsvorm en potentiële gezondheidsrisico's in vergelijking met alleen BMI.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">5. Hoe meet je de taille voor BRI?</div>
+            <div class="faq-answer">Meet uw tailleomtrek op het middelpunt tussen de onderrand van de laatste voelbare rib en de bovenkant van de heupkam, meestal rond het navelniveau.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">6. Wat zijn de nadelen van BRI?</div>
+            <div class="faq-answer">BRI is mogelijk niet zo algemeen erkend als BMI, en zoals alle lichaamsmetingen houdt het geen rekening met factoren zoals spiermassa of botdichtheid.</div>
+        </div>
+    </div>
+</body>
+</html>
