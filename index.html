@@ -28,12 +28,15 @@
             font-size: 1.8em;
             margin-top: 30px;
         }
-        .container {
+        .section {
             background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 30px;
-            margin-bottom: 30px;
+            margin-top: 30px;
+        }
+        .section h2 {
+            margin-top: 0;
         }
         form {
             display: grid;
@@ -75,19 +78,6 @@
             border-radius: 4px;
             text-align: center;
         }
-        .info-section {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            margin-top: 30px;
-        }
-        .info-section ul, .info-section ol {
-            padding-left: 20px;
-        }
-        .info-section li {
-            margin-bottom: 10px;
-        }
         .free-badge {
             background-color: #27ae60;
             color: white;
@@ -97,6 +87,38 @@
             font-weight: bold;
             display: inline-block;
             margin-bottom: 10px;
+        }
+        
+        /* 新增 FAQ 样式 */
+        .faq-section {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 30px;
+        }
+        .faq-section h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 20px;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-question {
+            font-weight: bold;
+            color: #34495e;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        .faq-answer {
+            color: #555;
+            line-height: 1.6;
         }
     </style>
 </head>
@@ -115,7 +137,23 @@
     <h1>Free Body Roundness Index (BRI) Calculator</h1>
     <p class="free-badge">100% Free - No Registration Required</p>
     
-    <div class="container">
+    <div class="section">
+        <h2>What is the Body Roundness Index (BRI)?</h2>
+        <p>The Body Roundness Index (BRI) is a measure used to assess body shape and health risks. Our free BRI calculator combines height and waist circumference measurements to evaluate the "roundness" of the human body. BRI can help assess health risks associated with obesity at no cost to you.</p>
+    </div>
+
+    <div class="section">
+        <h2>How to Use This Free Calculator</h2>
+        <ol>
+            <li>Select your preferred unit system (Metric or Imperial)</li>
+            <li>Enter your gender, age, height, weight, and waist circumference</li>
+            <li>Optionally include hip measurements if available</li>
+            <li>Click the "Calculate BRI" button to get your free results instantly</li>
+        </ol>
+    </div>
+
+
+    <div class="section">
         <form id="briForm">
             <div>
                 <label for="units">Units:</label>
@@ -177,29 +215,6 @@
         <div id="result"></div>
     </div>
 
-    <div class="info-section">
-        <h2>What is the Body Roundness Index (BRI)?</h2>
-        <p>The Body Roundness Index (BRI) is a measure used to assess body shape and health risks. Our free BRI calculator combines height and waist circumference measurements to evaluate the "roundness" of the human body. BRI can help assess health risks associated with obesity at no cost to you.</p>
-        
-        <h2>How to Use This Free Calculator</h2>
-        <ol>
-            <li>Select your preferred unit system (Metric or Imperial)</li>
-            <li>Enter your gender, age, height, weight, and waist circumference</li>
-            <li>Optionally include hip measurements if available</li>
-            <li>Click the "Calculate BRI" button to get your free results instantly</li>
-        </ol>
-        
-        <h2>How to Interpret the Results</h2>
-        <p>Our free calculator will provide your BRI value and an interpretation:</p>
-        <ul>
-            <li>BRI < 1: Extremely lean</li>
-            <li>1 ≤ BRI < 2: Normal body shape</li>
-            <li>2 ≤ BRI < 3: Overweight</li>
-            <li>BRI ≥ 3: Obese</li>
-        </ul>
-        <p>Please note that BRI is just one indicator of health. For a comprehensive understanding of your health status, it's recommended to consult with a healthcare professional. Our calculator is provided free of charge as a public service.</p>
-    </div>
-
     <script>
         const form = document.getElementById('briForm');
         const unitsSelect = document.getElementById('units');
@@ -255,5 +270,45 @@
 
         updateUnits();
     </script>
+
+    <div class="section">
+        <h2>How to Interpret the Results</h2>
+        <p>Our free calculator will provide your BRI value and an interpretation:</p>
+        <ul>
+            <li>BRI < 1: Extremely lean</li>
+            <li>1 ≤ BRI < 2: Normal body shape</li>
+            <li>2 ≤ BRI < 3: Overweight</li>
+            <li>BRI ≥ 3: Obese</li>
+        </ul>
+        <p>Please note that BRI is just one indicator of health. For a comprehensive understanding of your health status, it's recommended to consult with a healthcare professional. Our calculator is provided free of charge as a public service.</p>
+    </div>
+
+    <div class="faq-section">
+        <h2>Frequently Asked Questions (FAQ)</h2>
+        <div class="faq-item">
+            <div class="faq-question">1. How do you calculate BRI?</div>
+            <div class="faq-answer">BRI is calculated using the formula: BRI = 364.2 - 365.5 * √(1 - ((WC / (2π))² / (0.5 * H)²)), where WC is waist circumference and H is height, both in meters.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">2. Is BRI better than BMI?</div>
+            <div class="faq-answer">BRI may be more accurate than BMI in assessing body shape and fat distribution. It takes into account waist circumference, which BMI doesn't consider.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">3. What is the difference between BMI and BRI?</div>
+            <div class="faq-answer">BMI uses only height and weight, while BRI incorporates waist circumference. This allows BRI to better account for body shape and fat distribution.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">4. Is the BRI beneficial?</div>
+            <div class="faq-answer">Yes, BRI can be beneficial as it provides a more comprehensive assessment of body shape and potential health risks compared to BMI alone.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">5. How to measure waist for BRI?</div>
+            <div class="faq-answer">Measure your waist circumference at the midpoint between the lower margin of the last palpable rib and the top of the iliac crest, usually around the navel level.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">6. What are the disadvantages of BRI?</div>
+            <div class="faq-answer">BRI may not be as widely recognized as BMI, and like all body measurements, it doesn't account for factors such as muscle mass or bone density.</div>
+        </div>
+    </div>
 </body>
 </html>
