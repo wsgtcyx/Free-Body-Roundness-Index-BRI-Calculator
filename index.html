@@ -46,10 +46,41 @@
             background-color: #f0f0f0;
             border-radius: 5px;
         }
+        .info-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
     <h1>Body Roundness Index (BRI) Calculator</h1>
+    
+    <!-- New information section -->
+    <div class="info-section">
+        <h2>What is the Body Roundness Index (BRI)?</h2>
+        <p>The Body Roundness Index (BRI) is a measure used to assess body shape and health risks. It combines height and waist circumference measurements to evaluate the "roundness" of the human body. BRI can help assess health risks associated with obesity.</p>
+        
+        <h2>How to Use This Calculator</h2>
+        <ol>
+            <li>Select your preferred unit system (Metric or Imperial)</li>
+            <li>Enter your gender, age, height, weight, and waist circumference</li>
+            <li>Optionally include hip measurements if available</li>
+            <li>Click the "Calculate BRI" button to get your results</li>
+        </ol>
+        
+        <h2>How to Interpret the Results</h2>
+        <p>The calculator will provide your BRI value and an interpretation:</p>
+        <ul>
+            <li>BRI < 1: Extremely lean</li>
+            <li>1 ≤ BRI < 2: Normal body shape</li>
+            <li>2 ≤ BRI < 3: Overweight</li>
+            <li>BRI ≥ 3: Obese</li>
+        </ul>
+        <p>Please note that BRI is just one indicator of health. For a comprehensive understanding of your health status, it's recommended to consult with a healthcare professional.</p>
+    </div>
+
     <form id="briForm">
         <div>
             <label for="units">Units:</label>
