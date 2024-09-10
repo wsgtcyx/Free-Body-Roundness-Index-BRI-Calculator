@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Roundness Index (BRI) Calculator | Calculate Your BRI</title>
+    <meta name="description" content="Use our free Body Roundness Index (BRI) calculator to assess your body shape and health risks. Easy to use, supports both Imperial and Metric units.">
+    <meta name="keywords" content="BRI calculator, Body Roundness Index, health assessment, body shape calculator">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            grid-column: 1 / -1;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Body Roundness Index (BRI) Calculator</h1>
+    <form id="briForm">
+        <div>
+            <label for="units">Units:</label>
+            <select id="units">
+                <option value="imperial">US (Imperial)</option>
+                <option value="metric">Metric</option>
+            </select>
+        </div>
+        <div>
+            <label for="gender">Gender:</label>
+            <select id="gender">
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+            </select>
+        </div>
+        <div>
+            <label for="ethnicity">Ethnicity (Optional):</label>
+            <select id="ethnicity">
+                <option value="">Select</option>
+                <option value="caucasian">Caucasian</option>
+                <option value="african">African</option>
+                <option value="asian">Asian</option>
+                <option value="hispanic">Hispanic</option>
+            </select>
+        </div>
+        <div>
+            <label for="age">Age:</label>
+            <input type="number" id="age" required>
+        </div>
+        <div>
+            <label for="height">Height:</label>
+            <input type="number" id="height" required>
+            <span id="heightUnit">in</span>
+        </div>
+        <div>
+            <label for="weight">Weight:</label>
+            <input type="number" id="weight" required>
+            <span id="weightUnit">lbs</span>
+        </div>
+        <div>
+            <label for="waist">Waist:</label>
+            <input type="number" id="waist" required>
+            <span id="waistUnit">in</span>
+        </div>
+        <div>
+            <label for="useHip">Use hip measure?</label>
+            <select id="useHip">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div>
+            <label for="hip">Hip:</label>
+            <input type="number" id="hip">
+            <span id="hipUnit">in</span>
+        </div>
+        <button type="submit">Calculate BRI</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        const form = document.getElementById('briForm');
+        const unitsSelect = document.getElementById('units');
+        const heightUnit = document.getElementById('heightUnit');
+        const weightUnit = document.getElementById('weightUnit');
+        const waistUnit = document.getElementById('waistUnit');
+        const hipUnit = document.getElementById('hipUnit');
+
+        unitsSelect.addEventListener('change', updateUnits);
+
+        function updateUnits() {
+            const isMetric = unitsSelect.value === 'metric';
+            heightUnit.textContent = isMetric ? 'cm' : 'in';
+            weightUnit.textContent = isMetric ? 'kg' : 'lbs';
+            waistUnit.textContent = isMetric ? 'cm' : 'in';
+            hipUnit.textContent = isMetric ? 'cm' : 'in';
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            calculateBRI();
+        });
+
+        function calculateBRI() {
+            const isMetric = unitsSelect.value === 'metric';
+            let height = parseFloat(document.getElementById('height').value);
+            let waist = parseFloat(document.getElementById('waist').value);
+            
+            // Convert to meters if using metric
+            if (isMetric) {
+                height /= 100;
+                waist /= 100;
+            } else {
+                // Convert inches to meters
+                height *= 0.0254;
+                waist *= 0.0254;
+            }
+
+            const bri = 364.2 - 365.5 * Math.sqrt(1 - ((waist / (2 * Math.PI))**2 / (0.5 * height)**2));
+            
+            let interpretation = "";
+            if (bri < 1) interpretation = "Extremely lean";
+            else if (bri < 2) interpretation = "Normal body shape";
+            else if (bri < 3) interpretation = "Overweight";
+            else interpretation = "Obese";
+
+            document.getElementById('result').innerHTML = `
+                <h2>Results:</h2>
+                <p>Your Body Roundness Index (BRI): ${bri.toFixed(2)}</p>
+                <p>Interpretation: ${interpretation}</p>
+            `;
+        }
+
+        updateUnits();
+    </script>
+</body>
+</html>
