@@ -133,16 +133,19 @@
         });
 
         function calculateBRI() {
-            const isMetric = unitsSelect.value === 'metric';
+            const isMetric = document.getElementById('units').value === 'metric';
             let height = parseFloat(document.getElementById('height').value);
             let waist = parseFloat(document.getElementById('waist').value);
+            const gender = document.getElementById('gender').value;
+            const age = parseInt(document.getElementById('age').value);
+            const ethnicity = document.getElementById('ethnicity').value;
             
-            // Convert to meters if using metric
+            // Converteer naar meters als metrisch systeem wordt gebruikt
             if (isMetric) {
                 height /= 100;
                 waist /= 100;
             } else {
-                // Convert inches to meters
+                // Converteer inches naar meters
                 height *= 0.0254;
                 waist *= 0.0254;
             }
@@ -153,16 +156,21 @@
             let detailedInterpretation = "";
             if (bri < 1) {
                 interpretation = "Extreem mager";
-                detailedInterpretation = "U heeft een zeer laag percentage lichaamsvet. Dit kan gezondheidsrisico's met zich meebrengen, zoals een verzwakt immuunsysteem en hormoonproblemen. Het is raadzaam om met een arts of diëtist te overleggen over een gezond voedingsplan om uw gewicht op een gezonde manier te verhogen.";
+                detailedInterpretation = `U heeft een zeer laag percentage lichaamsvet. Dit kan gezondheidsrisico's met zich meebrengen, vooral voor ${gender === 'female' ? 'vrouwen' : 'mannen'} ${age > 50 ? 'boven de 50' : 'van uw leeftijd'}. Het is raadzaam om met een arts of diëtist te overleggen over een gezond voedingsplan.`;
             } else if (bri < 2) {
                 interpretation = "Normale lichaamsvorm";
-                detailedInterpretation = "Uw lichaamsvorm valt binnen het gezonde bereik. Dit suggereert een goede balans tussen spiermassa en vetpercentage. Blijf een evenwichtig dieet en regelmatige lichaamsbeweging handhaven om uw gezondheid te behouden.";
+                detailedInterpretation = `Uw lichaamsvorm valt binnen het gezonde bereik. Dit suggereert een goede balans tussen spiermassa en vetpercentage. Voor ${gender === 'female' ? 'vrouwen' : 'mannen'} ${age > 50 ? 'boven de 50' : 'van uw leeftijd'} is het behouden van deze balans cruciaal voor de gezondheid op lange termijn.`;
             } else if (bri < 3) {
                 interpretation = "Overgewicht";
-                detailedInterpretation = "U heeft mogelijk een verhoogd risico op gezondheidsproblemen zoals hart- en vaatziekten, diabetes type 2 en hoge bloeddruk. Overweeg om uw eetgewoonten aan te passen, meer te bewegen en eventueel gewicht te verliezen. Raadpleeg een zorgprofessional voor persoonlijk advies.";
+                detailedInterpretation = `U heeft mogelijk een verhoogd risico op gezondheidsproblemen. ${gender === 'female' ? 'Vrouwen' : 'Mannen'} ${age > 50 ? 'boven de 50' : 'van uw leeftijd'} moeten vooral letten op hun cardiovasculaire gezondheid. Overweeg om uw eetgewoonten aan te passen en meer te bewegen.`;
             } else {
                 interpretation = "Obesitas";
-                detailedInterpretation = "U heeft een verhoogd risico op verschillende ernstige gezondheidsproblemen, waaronder hart- en vaatziekten, diabetes type 2, slaapapneu en bepaalde vormen van kanker. Het wordt sterk aanbevolen om een arts of diëtist te raadplegen voor een persoonlijk gezondheidsplan om uw gewicht te verminderen en uw algehele gezondheid te verbeteren.";
+                detailedInterpretation = `U heeft een verhoogd risico op verschillende ernstige gezondheidsproblemen. ${gender === 'female' ? 'Vrouwen' : 'Mannen'} ${age > 50 ? 'boven de 50' : 'van uw leeftijd'} moeten dit serieus nemen. Het wordt sterk aanbevolen om een arts of diëtist te raadplegen voor een persoonlijk gezondheidsplan.`;
+            }
+
+            // Voeg etniciteitspecifiek advies toe
+            if (ethnicity) {
+                detailedInterpretation += ` Mensen van ${ethnicity} afkomst kunnen verschillende gezonde BRI-bereiken hebben. Raadpleeg een zorgprofessional die bekend is met uw etnische achtergrond voor meer persoonlijk advies.`;
             }
 
             document.getElementById('result').innerHTML = `

@@ -132,9 +132,12 @@
         });
 
         function calculateBRI() {
-            const isMetric = unitsSelect.value === 'metric';
+            const isMetric = document.getElementById('units').value === 'metric';
             let height = parseFloat(document.getElementById('height').value);
             let waist = parseFloat(document.getElementById('waist').value);
+            const gender = document.getElementById('gender').value;
+            const age = parseInt(document.getElementById('age').value);
+            const ethnicity = document.getElementById('ethnicity').value;
             
             // Convert to meters if using metric
             if (isMetric) {
@@ -152,16 +155,21 @@
             let detailedInterpretation = "";
             if (bri < 1) {
                 interpretation = "Extremely lean";
-                detailedInterpretation = "You have a very low body fat percentage. This may pose health risks, such as a weakened immune system and hormonal issues. It is advisable to consult with a doctor or nutritionist about a healthy diet plan to increase your weight in a healthy manner.";
+                detailedInterpretation = `You have a very low body fat percentage. This may pose health risks, especially for ${gender === 'female' ? 'women' : 'men'} ${age > 50 ? 'over 50' : 'of your age'}. It is advisable to consult with a doctor or nutritionist about a healthy diet plan.`;
             } else if (bri < 2) {
                 interpretation = "Normal body shape";
-                detailedInterpretation = "Your body shape falls within the healthy range. This suggests a good balance between muscle mass and body fat percentage. Continue maintaining a balanced diet and regular physical activity to maintain your health.";
+                detailedInterpretation = `Your body shape falls within the healthy range. This suggests a good balance between muscle mass and body fat percentage. For ${gender === 'female' ? 'women' : 'men'} ${age > 50 ? 'over 50' : 'of your age'}, maintaining this balance is crucial for long-term health.`;
             } else if (bri < 3) {
                 interpretation = "Overweight";
-                detailedInterpretation = "You may have an increased risk of health problems such as cardiovascular diseases, type 2 diabetes, and high blood pressure. Consider adjusting your eating habits, increasing physical activity, and possibly losing weight. Consult a healthcare professional for personalized advice.";
+                detailedInterpretation = `You may have an increased risk of health problems. ${gender === 'female' ? 'Women' : 'Men'} ${age > 50 ? 'over 50' : 'of your age'} should be particularly mindful of cardiovascular health. Consider adjusting your eating habits and increasing physical activity.`;
             } else {
                 interpretation = "Obese";
-                detailedInterpretation = "You have an increased risk of various serious health problems, including cardiovascular diseases, type 2 diabetes, sleep apnea, and certain forms of cancer. It is strongly recommended to consult a doctor or nutritionist for a personalized health plan to reduce your weight and improve your overall health.";
+                detailedInterpretation = `You have an increased risk of various serious health problems. ${gender === 'female' ? 'Women' : 'Men'} ${age > 50 ? 'over 50' : 'of your age'} should take this seriously. It is strongly recommended to consult a doctor or nutritionist for a personalized health plan.`;
+            }
+
+            // Add ethnicity-specific advice
+            if (ethnicity) {
+                detailedInterpretation += ` People of ${ethnicity} descent may have different healthy BRI ranges. Consult with a healthcare professional familiar with your ethnic background for more personalized advice.`;
             }
 
             document.getElementById('result').innerHTML = `
