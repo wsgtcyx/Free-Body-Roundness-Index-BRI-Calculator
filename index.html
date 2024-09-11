@@ -149,20 +149,51 @@
             const bri = 364.2 - 365.5 * Math.sqrt(1 - ((waist / (2 * Math.PI))**2 / (0.5 * height)**2));
             
             let interpretation = "";
-            if (bri < 1) interpretation = "Extremely lean";
-            else if (bri < 2) interpretation = "Normal body shape";
-            else if (bri < 3) interpretation = "Overweight";
-            else interpretation = "Obese";
+            let detailedInterpretation = "";
+            if (bri < 1) {
+                interpretation = "Extremely lean";
+                detailedInterpretation = "You have a very low body fat percentage. This may pose health risks, such as a weakened immune system and hormonal issues. It is advisable to consult with a doctor or nutritionist about a healthy diet plan to increase your weight in a healthy manner.";
+            } else if (bri < 2) {
+                interpretation = "Normal body shape";
+                detailedInterpretation = "Your body shape falls within the healthy range. This suggests a good balance between muscle mass and body fat percentage. Continue maintaining a balanced diet and regular physical activity to maintain your health.";
+            } else if (bri < 3) {
+                interpretation = "Overweight";
+                detailedInterpretation = "You may have an increased risk of health problems such as cardiovascular diseases, type 2 diabetes, and high blood pressure. Consider adjusting your eating habits, increasing physical activity, and possibly losing weight. Consult a healthcare professional for personalized advice.";
+            } else {
+                interpretation = "Obese";
+                detailedInterpretation = "You have an increased risk of various serious health problems, including cardiovascular diseases, type 2 diabetes, sleep apnea, and certain forms of cancer. It is strongly recommended to consult a doctor or nutritionist for a personalized health plan to reduce your weight and improve your overall health.";
+            }
 
             document.getElementById('result').innerHTML = `
                 <h2>Results:</h2>
-                <p>Your Body Roundness Index (BRI): ${bri.toFixed(2)}</p>
-                <p>Interpretation: ${interpretation}</p>
+                <p>Your Body Roundness Index (BRI): <strong>${bri.toFixed(2)}</strong></p>
+                <p>Interpretation: <strong>${interpretation}</strong></p>
+                <p>${detailedInterpretation}</p>
+                <p>Remember that BRI is just one indicator of your overall health. For a complete picture, it's advisable to consider other factors such as blood pressure, cholesterol, and lifestyle.</p>
             `;
+
+            // Show health advice after calculation
+            document.getElementById('healthAdvice').style.display = 'block';
         }
 
         updateUnits();
     </script>
+
+    <div id="healthAdvice" class="section" style="display: none;">
+        <h2>General Health Advice</h2>
+        <ul>
+            <li>Eat a varied and balanced diet with plenty of vegetables, fruits, whole grains, and lean proteins.</li>
+            <li>Exercise regularly, aim for at least 30 minutes of moderate activity per day, such as walking, cycling, or swimming.</li>
+            <li>Drink enough water, about 1.5 to 2 liters per day, to stay well hydrated.</li>
+            <li>Limit intake of saturated fats, sugar, and salt. Choose healthy fats from nuts, seeds, and fatty fish.</li>
+            <li>Get enough sleep, averaging 7-9 hours per night, to allow your body to recover and support your metabolism.</li>
+            <li>Avoid smoking and limit alcohol consumption to a maximum of one (for women) or two (for men) drinks per day.</li>
+            <li>Have regular health check-ups with your doctor, including blood pressure, cholesterol, and blood sugar tests.</li>
+            <li>Try to reduce stress through relaxation techniques such as meditation, yoga, or deep breathing exercises.</li>
+            <li>Stay mentally active by learning new things, solving puzzles, or engaging in social activities.</li>
+        </ul>
+        <p>Remember that this advice is general. For personalized health advice, it's always best to consult a healthcare professional.</p>
+    </div>
 
     <div class="section">
         <h2>How to Interpret the Results</h2>

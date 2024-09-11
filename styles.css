@@ -67,7 +67,18 @@ button:hover {
     padding: 20px;
     background-color: #e8f4fd;
     border-radius: 4px;
-    text-align: center;
+    text-align: left;
+    border-left: 5px solid #3498db;
+}
+#result h2 {
+    color: #2c3e50;
+    margin-top: 0;
+}
+#result p {
+    margin-bottom: 10px;
+}
+#result strong {
+    color: #2c3e50;
 }
 .free-badge-container {
 text-align: center;
@@ -116,6 +127,81 @@ margin-bottom: 20px;
     line-height: 1.6;
 }
 
+/* 健康建议部分 */
+#healthAdvice {
+    background-color: #e8f8f5;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#healthAdvice h2 {
+    color: #27ae60;
+    margin-top: 0;
+}
+
+#healthAdvice ul {
+    padding-left: 20px;
+}
+
+#healthAdvice li {
+    margin-bottom: 10px;
+    color: #34495e;
+}
+
+/* 改进表单样式 */
+form div {
+    margin-bottom: 15px;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* 响应式设计优化 */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    form {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 提高可访问性 */
+button:focus, input:focus, select:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+/* 打印样式 */
+@media print {
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    .section {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    button, .language-switcher {
+        display: none;
+    }
+}
 
 .language-switcher {
     text-align: right;

@@ -150,31 +150,50 @@
             const bri = 364.2 - 365.5 * Math.sqrt(1 - ((waist / (2 * Math.PI))**2 / (0.5 * height)**2));
             
             let interpretation = "";
-            if (bri < 1) interpretation = "Extreem mager";
-            else if (bri < 2) interpretation = "Normale lichaamsvorm";
-            else if (bri < 3) interpretation = "Overgewicht";
-            else interpretation = "Obesitas";
+            let detailedInterpretation = "";
+            if (bri < 1) {
+                interpretation = "Extreem mager";
+                detailedInterpretation = "U heeft een zeer laag percentage lichaamsvet. Dit kan gezondheidsrisico's met zich meebrengen, zoals een verzwakt immuunsysteem en hormoonproblemen. Het is raadzaam om met een arts of diëtist te overleggen over een gezond voedingsplan om uw gewicht op een gezonde manier te verhogen.";
+            } else if (bri < 2) {
+                interpretation = "Normale lichaamsvorm";
+                detailedInterpretation = "Uw lichaamsvorm valt binnen het gezonde bereik. Dit suggereert een goede balans tussen spiermassa en vetpercentage. Blijf een evenwichtig dieet en regelmatige lichaamsbeweging handhaven om uw gezondheid te behouden.";
+            } else if (bri < 3) {
+                interpretation = "Overgewicht";
+                detailedInterpretation = "U heeft mogelijk een verhoogd risico op gezondheidsproblemen zoals hart- en vaatziekten, diabetes type 2 en hoge bloeddruk. Overweeg om uw eetgewoonten aan te passen, meer te bewegen en eventueel gewicht te verliezen. Raadpleeg een zorgprofessional voor persoonlijk advies.";
+            } else {
+                interpretation = "Obesitas";
+                detailedInterpretation = "U heeft een verhoogd risico op verschillende ernstige gezondheidsproblemen, waaronder hart- en vaatziekten, diabetes type 2, slaapapneu en bepaalde vormen van kanker. Het wordt sterk aanbevolen om een arts of diëtist te raadplegen voor een persoonlijk gezondheidsplan om uw gewicht te verminderen en uw algehele gezondheid te verbeteren.";
+            }
 
             document.getElementById('result').innerHTML = `
                 <h2>Resultaten:</h2>
-                <p>Uw Body Roundness Index (BRI): ${bri.toFixed(2)}</p>
-                <p>Interpretatie: ${interpretation}</p>
+                <p>Uw Body Roundness Index (BRI): <strong>${bri.toFixed(2)}</strong></p>
+                <p>Interpretatie: <strong>${interpretation}</strong></p>
+                <p>${detailedInterpretation}</p>
+                <p>Vergeet niet dat BRI slechts één indicator is van uw algehele gezondheid. Voor een volledig beeld is het raadzaam om andere factoren zoals bloeddruk, cholesterol en levensstijl in overweging te nemen.</p>
             `;
+
+            // Toon gezondheidsadvies na berekening
+            document.getElementById('healthAdvice').style.display = 'block';
         }
 
         updateUnits();
     </script>
 
-    <div class="section">
-        <h2>Hoe de resultaten te interpreteren</h2>
-        <p>Onze gratis Berekenen  geeft uw BRI-waarde en een interpretatie:</p>
+    <div id="healthAdvice" class="section" style="display: none;">
+        <h2>Algemene Gezondheidsadviezen</h2>
         <ul>
-            <li>BRI < 1: Extreem mager</li>
-            <li>1 ≤ BRI < 2: Normale lichaamsvorm</li>
-            <li>2 ≤ BRI < 3: Overgewicht</li>
-            <li>BRI ≥ 3: Obesitas</li>
+            <li>Eet een gevarieerd en evenwichtig dieet met veel groenten, fruit, volkoren producten en magere eiwitten.</li>
+            <li>Beweeg regelmatig, streef naar minstens 30 minuten matige activiteit per dag, zoals wandelen, fietsen of zwemmen.</li>
+            <li>Drink voldoende water, ongeveer 1,5 tot 2 liter per dag, om goed gehydrateerd te blijven.</li>
+            <li>Beperk de inname van verzadigde vetten, suiker en zout. Kies voor gezonde vetten uit noten, zaden en vette vis.</li>
+            <li>Zorg voor voldoende slaap, gemiddeld 7-9 uur per nacht, om uw lichaam te laten herstellen en uw stofwisseling te ondersteunen.</li>
+            <li>Vermijd roken en beperk alcoholconsumptie tot maximaal één (voor vrouwen) of twee (voor mannen) glazen per dag.</li>
+            <li>Laat regelmatig een gezondheidscheck uitvoeren bij uw huisarts, inclusief bloeddruk, cholesterol en bloedsuikertests.</li>
+            <li>Probeer stress te verminderen door ontspanningstechnieken zoals meditatie, yoga of diepe ademhalingsoefeningen.</li>
+            <li>Blijf mentaal actief door nieuwe dingen te leren, puzzels op te lossen of sociale activiteiten te ondernemen.</li>
         </ul>
-        <p>Houd er rekening mee dat BRI slechts één indicator van gezondheid is. Voor een uitgebreid inzicht in uw gezondheidstoestand is het raadzaam een zorgprofessional te raadplegen. Onze Berekenen  wordt gratis aangeboden als een openbare dienst.</p>
+        <p>Onthoud dat deze adviezen algemeen zijn. Voor persoonlijk gezondheidsadvies is het altijd het beste om een zorgprofessional te raadplegen.</p>
     </div>
 
     <div class="faq-section">
