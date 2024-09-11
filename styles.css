@@ -1,91 +1,126 @@
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #f5f7fa;
+    --text-color: #333333;
+    --accent-color: #34c759;
+    --error-color: #ff3b30;
+    --border-radius: 8px;
+    --section-bg-color: #ffffff;
+    --faq-bg-color: #f0f4f8;
+    --health-advice-bg-color: #e8f8f5;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     line-height: 1.6;
-    background-color: #f0f4f8;
-    color: #333;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
 }
+
 h1, h2 {
-    color: #2c3e50;
+    color: var(--primary-color);
     text-align: center;
 }
+
 h1 {
     margin-bottom: 30px;
     font-size: 2.5em;
 }
+
 h2 {
     font-size: 1.8em;
     margin-top: 30px;
 }
+
 .section {
-    background-color: #ffffff;
-    border-radius: 8px;
+    background-color: var(--section-bg-color);
+    border-radius: var(--border-radius);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 30px;
     margin-top: 30px;
 }
+
 .section h2 {
     margin-top: 0;
+    color: var(--primary-color);
 }
+
 form {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
 }
+
 label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
-    color: #34495e;
+    color: var(--text-color);
 }
+
 input, select {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
-    border: 1px solid #bdc3c7;
-    border-radius: 4px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
     font-size: 16px;
+    transition: border-color 0.3s ease;
 }
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
 button {
     grid-column: 1 / -1;
-    background-color: #3498db;
+    background-color: var(--primary-color);
     color: white;
     padding: 12px;
     border: none;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     cursor: pointer;
     font-size: 18px;
     transition: background-color 0.3s;
 }
+
 button:hover {
-    background-color: #2980b9;
+    background-color: #3a7bc8;
 }
+
 #result {
     margin-top: 20px;
     padding: 20px;
     background-color: #e8f4fd;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     text-align: left;
-    border-left: 5px solid #3498db;
+    border-left: 5px solid var(--primary-color);
 }
+
 #result h2 {
-    color: #2c3e50;
+    color: var(--primary-color);
     margin-top: 0;
 }
+
 #result p {
     margin-bottom: 10px;
 }
+
 #result strong {
-    color: #2c3e50;
+    color: var(--primary-color);
 }
+
 .free-badge-container {
-text-align: center;
-margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 20px;
 }
+
 .free-badge {
-    background-color: #27ae60;
+    background-color: var(--accent-color);
     color: white;
     padding: 5px 10px;
     border-radius: 20px;
@@ -95,49 +130,52 @@ margin-bottom: 20px;
     margin-bottom: 10px;
 }
 
-/* 新增 FAQ 样式 */
 .faq-section {
-    background-color: #ffffff;
-    border-radius: 8px;
+    background-color: var(--faq-bg-color);
+    border-radius: var(--border-radius);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 30px;
     margin-top: 30px;
 }
+
 .faq-section h2 {
-    color: #2c3e50;
+    color: var(--primary-color);
     text-align: center;
     margin-bottom: 30px;
 }
+
 .faq-item {
     margin-bottom: 25px;
     border-bottom: 1px solid #e0e0e0;
     padding-bottom: 20px;
 }
+
 .faq-item:last-child {
     border-bottom: none;
 }
+
 .faq-question {
     font-weight: bold;
-    color: #34495e;
+    color: var(--primary-color);
     margin-bottom: 10px;
     font-size: 1.1em;
 }
+
 .faq-answer {
-    color: #555;
+    color: var(--text-color);
     line-height: 1.6;
 }
 
-/* 健康建议部分 */
 #healthAdvice {
-    background-color: #e8f8f5;
-    border-radius: 8px;
+    background-color: var(--health-advice-bg-color);
+    border-radius: var(--border-radius);
     padding: 20px;
     margin-top: 30px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 #healthAdvice h2 {
-    color: #27ae60;
+    color: var(--accent-color);
     margin-top: 0;
 }
 
@@ -147,25 +185,34 @@ margin-bottom: 20px;
 
 #healthAdvice li {
     margin-bottom: 10px;
-    color: #34495e;
+    color: var(--text-color);
 }
 
-/* 改进表单样式 */
-form div {
-    margin-bottom: 15px;
+.language-switcher {
+    text-align: right;
+    margin: 20px 0;
 }
 
-input[type="number"] {
-    -moz-appearance: textfield;
+.language-switcher a, .language-switcher span {
+    display: inline-block;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: var(--text-color);
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+.language-switcher a:hover {
+    background-color: var(--secondary-color);
 }
 
-/* 响应式设计优化 */
+.language-switcher span {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
 @media (max-width: 600px) {
     body {
         padding: 10px;
@@ -180,13 +227,6 @@ input::-webkit-inner-spin-button {
     }
 }
 
-/* 提高可访问性 */
-button:focus, input:focus, select:focus {
-    outline: 2px solid #3498db;
-    outline-offset: 2px;
-}
-
-/* 打印样式 */
 @media print {
     body {
         background-color: white;
@@ -201,36 +241,4 @@ button:focus, input:focus, select:focus {
     button, .language-switcher {
         display: none;
     }
-}
-
-.language-switcher {
-    text-align: right;
-    margin: 20px 0;
-    font-family: Arial, sans-serif;
-}
-.language-switcher a, .language-switcher span {
-    display: inline-block;
-    padding: 5px 10px;
-    text-decoration: none;
-    color: #333;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-}
-.language-switcher a:hover {
-    background-color: #f0f0f0;
-}
-.language-switcher span {
-    background-color: #3498db;
-    color: white;
-    border-color: #3498db;
-}
-.language-switcher a:first-child, .language-switcher span:first-child {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-right: none;
-}
-.language-switcher a:last-child, .language-switcher span:last-child {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
 }
