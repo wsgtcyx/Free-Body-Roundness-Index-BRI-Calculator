@@ -242,3 +242,20 @@ button:hover {
         display: none;
     }
 }
+
+/* 新增样式 */
+.status-extremely-lean { color: #4bc0c0; }
+.status-normal { color: #36a2eb; }
+.status-overweight { color: #ffce56; }
+.status-obese { color: #ff6384; }
+
+.bri-bar {
+    margin-bottom: 10px;
+}
+
+.site-footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px 0;
+    border-top: 1px solid #ddd;
+}
