@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="styles.css">
     <script defer src="https://cloud.umami.is/script.js" data-website-id="fa05dabe-795b-467a-8f02-aa4b3bac9987"></script>
     <link rel="canonical" href="https://bri-calculator.com/" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -85,7 +84,7 @@
             <p>Health Status: <span id="healthStatus"></span></p>
         </div>
         <div class="result-chart">
-            <canvas id="briChart"></canvas>
+            <div id="briChart"></div>
         </div>
         <div class="result-details">
             <h3>What does this mean?</h3>
@@ -267,57 +266,29 @@
             }
 
             function updateBRIChart(bri) {
-                const ctx = document.getElementById('briChart').getContext('2d');
-                if (window.briChart instanceof Chart) {
-                    window.briChart.destroy();
-                }
-                window.briChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Your BRI', 'Lean', 'Normal', 'Overweight', 'Obese'],
-                        datasets: [{
-                            label: 'BRI Range',
-                            data: [bri, 1, 2, 3, 4],
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.8)',
-                                'rgba(54, 162, 235, 0.5)',
-                                'rgba(75, 192, 192, 0.5)',
-                                'rgba(255, 206, 86, 0.5)',
-                                'rgba(255, 99, 132, 0.5)'
-                            ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(255, 99, 132, 1)'
-                            ],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                max: 5,
-                                title: {
-                                    display: true,
-                                    text: 'BRI Value'
-                                }
-                            }
-                        },
-                        plugins: {
-                            title: {
-                                display: true,
-                                text: 'Your BRI Compared to Health Ranges'
-                            },
-                            legend: {
-                                display: false
-                            }
-                        }
-                    }
-                });
+                const chartContainer = document.getElementById('briChart');
+                chartContainer.innerHTML = `
+                    <div class="bri-bar" style="width: 100%; height: 30px; background-color: #f0f0f0; position: relative;">
+                        <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(75, 192, 192, 0.5); left: 0; width: 20%;"></div>
+                        <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(54, 162, 235, 0.5); left: 20%; width: 20%;"></div>
+                        <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(255, 206, 86, 0.5); left: 40%; width: 20%;"></div>
+                        <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(255, 99, 132, 0.5); left: 60%; width: 40%;"></div>
+                        <div class="bri-marker" style="position: absolute; top: -10px; height: 50px; width: 2px; background-color: red; left: ${Math.min(bri / 5 * 100, 100)}%;"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                        <span>0</span>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>5+</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                        <span>Extremely Lean</span>
+                        <span>Normal</span>
+                        <span>Overweight</span>
+                        <span>Obese</span>
+                    </div>
+                `;
             }
 
             updateUnits();
