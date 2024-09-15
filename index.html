@@ -49,17 +49,17 @@
             </div>
             <div class="input-group">
                 <label for="height">Height:</label>
-                <input type="number" id="height" required>
+                <input type="number" id="height" required min="0" step="0.1">
                 <span id="heightUnit">in</span>
             </div>
             <div class="input-group">
                 <label for="weight">Weight:</label>
-                <input type="number" id="weight" required>
+                <input type="number" id="weight" required min="0" step="0.1">
                 <span id="weightUnit">lbs</span>
             </div>
             <div class="input-group">
                 <label for="waist">Waist Circumference:</label>
-                <input type="number" id="waist" required>
+                <input type="number" id="waist" required min="0" step="0.1">
                 <span id="waistUnit">in</span>
             </div>
             <div class="input-group">
@@ -90,19 +90,22 @@
         <div class="result-details">
             <h3>What does this mean?</h3>
             <p id="briInterpretation"></p>
-            <h3>Health Risks</h3>
+            <h3>Potential Health Risks</h3>
             <ul id="healthRisks"></ul>
             <h3>Recommendations</h3>
             <ul id="recommendations"></ul>
         </div>
-    </div>
-
-    <div id="bmiComparison" class="section" style="display:none;">
-        <h2>BRI vs BMI Comparison</h2>
-        <p>Your Body Mass Index (BMI): <strong id="bmiValue"></strong></p>
-        <p id="bmiComparison"></p>
-        <h3>Why BRI may be more accurate than BMI:</h3>
-        <ul id="briAdvantages"></ul>
+        <div class="bmi-comparison">
+            <h3>BRI vs BMI Comparison</h3>
+            <p>Your Body Mass Index (BMI): <strong id="bmiValue"></strong></p>
+            <p id="bmiComparison"></p>
+            <h4>Why BRI may be more accurate than BMI:</h4>
+            <ul id="briAdvantages"></ul>
+        </div>
+        <div class="action-buttons">
+            <button id="saveResults">Save Results</button>
+            <button id="shareResults">Share Results</button>
+        </div>
     </div>
 
     <div class="section">
@@ -149,7 +152,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('briForm');
             const result = document.getElementById('result');
-            const bmiComparison = document.getElementById('bmiComparison');
             const unitsSelect = document.getElementById('units');
             const heightInput = document.getElementById('height');
             const weightInput = document.getElementById('weight');
@@ -202,70 +204,77 @@
 
             function displayResults(bri, bmi, gender, age) {
                 result.style.display = 'block';
-                bmiComparison.style.display = 'block';
 
-                document.getElementById('briValue').textContent = bri.toFixed(2);
-                document.getElementById('bmiValue').textContent = bmi.toFixed(2);
+                const briValue = document.getElementById('briValue');
+                const healthStatus = document.getElementById('healthStatus');
+                const briInterpretation = document.getElementById('briInterpretation');
+                const healthRisks = document.getElementById('healthRisks');
+                const recommendations = document.getElementById('recommendations');
+                const bmiValue = document.getElementById('bmiValue');
+                const bmiComparison = document.getElementById('bmiComparison');
+                const briAdvantages = document.getElementById('briAdvantages');
 
-                let healthStatus, interpretation, risks, recommendations;
+                briValue.textContent = bri.toFixed(2);
+                bmiValue.textContent = bmi.toFixed(2);
+
+                let status, interpretation, risks, advice;
 
                 if (bri < 1) {
-                    healthStatus = 'Extremely lean';
-                    interpretation = 'Your BRI indicates that you are extremely lean. This may pose health risks.';
+                    status = 'Extremely lean';
+                    interpretation = 'Your BRI indicates that you are extremely lean. This may pose certain health risks.';
                     risks = ['Nutritional deficiencies', 'Weakened immune system', 'Hormonal imbalances'];
-                    recommendations = ['Consult with a healthcare professional', 'Focus on balanced nutrition', 'Gradually increase calorie intake'];
+                    advice = ['Consult with a healthcare professional', 'Focus on balanced nutrition', 'Gradually increase calorie intake'];
                 } else if (bri < 2) {
-                    healthStatus = 'Normal';
+                    status = 'Normal';
                     interpretation = 'Your BRI is within the normal range, indicating a healthy body shape.';
                     risks = ['Low risk for obesity-related health issues'];
-                    recommendations = ['Maintain a balanced diet', 'Regular exercise', 'Regular health check-ups'];
+                    advice = ['Maintain a balanced diet', 'Regular exercise', 'Regular health check-ups'];
                 } else if (bri < 3) {
-                    healthStatus = 'Overweight';
+                    status = 'Overweight';
                     interpretation = 'Your BRI suggests you are overweight, which may increase certain health risks.';
                     risks = ['Increased risk of cardiovascular diseases', 'Higher risk of type 2 diabetes', 'Joint problems'];
-                    recommendations = ['Increase physical activity', 'Adopt a balanced, calorie-controlled diet', 'Consult a nutritionist or dietitian'];
+                    advice = ['Increase physical activity', 'Adopt a balanced, calorie-controlled diet', 'Consult a nutritionist or dietitian'];
                 } else {
-                    healthStatus = 'Obese';
+                    status = 'Obese';
                     interpretation = 'Your BRI indicates obesity, which is associated with various health risks.';
                     risks = ['High risk of cardiovascular diseases', 'Increased risk of certain cancers', 'Sleep apnea', 'Metabolic syndrome'];
-                    recommendations = ['Consult with a healthcare professional', 'Develop a comprehensive weight loss plan', 'Increase daily physical activity', 'Consider professional support for lifestyle changes'];
+                    advice = ['Consult with a healthcare professional', 'Develop a comprehensive weight loss plan', 'Increase daily physical activity', 'Consider professional support for lifestyle changes'];
                 }
 
-                // Adjust interpretation based on age and gender if provided
+                healthStatus.textContent = status;
+                healthStatus.className = `status-${status.toLowerCase().replace(' ', '-')}`;
+                briInterpretation.textContent = interpretation;
+
                 if (age && gender) {
-                    interpretation += ` For a ${gender} at ${age} years old, `;
-                    interpretation += age > 65 ? "it's important to maintain muscle mass while managing weight." : "focus on maintaining a healthy lifestyle to prevent future health issues.";
+                    briInterpretation.textContent += ` As a ${age}-year-old ${gender}, ${age > 65 ? "it's crucial to focus on maintaining muscle mass while managing weight." : "maintaining a healthy lifestyle is key to preventing future health issues."}`;
                 }
 
-                document.getElementById('healthStatus').textContent = healthStatus;
-                document.getElementById('healthStatus').className = healthStatus.toLowerCase().replace(' ', '-');
-                document.getElementById('briInterpretation').textContent = interpretation;
+                healthRisks.innerHTML = risks.map(risk => `<li>${risk}</li>`).join('');
+                recommendations.innerHTML = advice.map(item => `<li>${item}</li>`).join('');
 
-                const risksList = document.getElementById('healthRisks');
-                risksList.innerHTML = risks.map(risk => `<li>${risk}</li>`).join('');
+                bmiComparison.innerHTML = `
+                    While your BMI is ${bmi.toFixed(2)}, BRI provides a more comprehensive assessment by considering your body shape.
+                    Your BRI of ${bri.toFixed(2)} takes into account your waist circumference, offering a more nuanced view of your body composition and potential health risks.
+                `;
 
-                const recommendationsList = document.getElementById('recommendations');
-                recommendationsList.innerHTML = recommendations.map(rec => `<li>${rec}</li>`).join('');
+                briAdvantages.innerHTML = `
+                    <li>BRI considers waist circumference, a key indicator of abdominal fat</li>
+                    <li>More sensitive to changes in body shape and fat distribution</li>
+                    <li>Potentially better at predicting cardiovascular health risks</li>
+                `;
 
-                document.getElementById('bmiComparison').textContent = `While your BMI is ${bmi.toFixed(2)}, BRI provides a more comprehensive assessment by considering your body shape.`;
-
-                const briAdvantages = [
-                    "BRI takes into account your waist circumference, which is a better indicator of abdominal fat.",
-                    "BRI is more sensitive to changes in body shape and fat distribution.",
-                    "BRI has shown better correlation with cardiovascular health risks in some studies."
-                ];
-                document.getElementById('briAdvantages').innerHTML = briAdvantages.map(adv => `<li>${adv}</li>`).join('');
-
-                // Here you would add code to create and update the chart
                 updateBRIChart(bri);
             }
 
             function updateBRIChart(bri) {
                 const ctx = document.getElementById('briChart').getContext('2d');
-                new Chart(ctx, {
+                if (window.briChart instanceof Chart) {
+                    window.briChart.destroy();
+                }
+                window.briChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: ['Your BRI', 'Underweight', 'Normal', 'Overweight', 'Obese'],
+                        labels: ['Your BRI', 'Lean', 'Normal', 'Overweight', 'Obese'],
                         datasets: [{
                             label: 'BRI Range',
                             data: [bri, 1, 2, 3, 4],
@@ -287,10 +296,24 @@
                         }]
                     },
                     options: {
+                        responsive: true,
                         scales: {
                             y: {
                                 beginAtZero: true,
-                                max: 5
+                                max: 5,
+                                title: {
+                                    display: true,
+                                    text: 'BRI Value'
+                                }
+                            }
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Your BRI Compared to Health Ranges'
+                            },
+                            legend: {
+                                display: false
                             }
                         }
                     }
