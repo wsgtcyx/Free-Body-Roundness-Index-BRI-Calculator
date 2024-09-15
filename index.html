@@ -102,7 +102,6 @@
             <h4>Why BRI may be more accurate than BMI:</h4>
             <ul id="briAdvantages"></ul>
         </div>
-        <button id="printBtn">Print Results</button>
     </div>
 
     <div class="section">
@@ -149,7 +148,7 @@
         <h2>Help Us Improve</h2>
         <p>We hope you find our BRI calculator useful. As a free tool, our main goal is to provide practical value to everyone.</p>
         <ul>
-            <li>If you find this website (https://bri-calculator.com/) helpful, please recommend it to others who might benefit from it.</li>
+            <li>If you find <a href="https://bri-calculator.com/">this website</a> helpful, please recommend it to others who might benefit from it.</li>
             <li>Have suggestions for improvement? Ideas for new services? Or encountered any issues while using our calculator?</li>
         </ul>
         <p>We'd love to hear from you! Please send your feedback to <a href="mailto:support@bri-calculator.com">support@bri-calculator.com</a>.</p>
@@ -183,7 +182,6 @@
             const heightUnit = document.getElementById('heightUnit');
             const weightUnit = document.getElementById('weightUnit');
             const waistUnit = document.getElementById('waistUnit');
-            let briChart;
 
             function updateUnits() {
                 const isImperial = unitsSelect.value === 'imperial';
@@ -247,23 +245,55 @@
                 if (bri < 1) {
                     status = 'Extremely lean';
                     interpretation = 'Your BRI indicates that you are extremely lean. This may pose certain health risks.';
-                    risks = ['Nutritional deficiencies', 'Weakened immune system', 'Hormonal imbalances'];
-                    advice = ['Consult with a healthcare professional', 'Focus on balanced nutrition', 'Gradually increase calorie intake'];
+                    risks = [
+                        'Increased risk of nutrient deficiencies, particularly vitamins and minerals',
+                        'Potential for compromised immune function',
+                        'Possible hormonal imbalances affecting reproductive health'
+                    ];
+                    advice = [
+                        'Consult with a registered dietitian to ensure adequate nutrient intake',
+                        'Gradually increase calorie intake with nutrient-dense foods',
+                        'Consider strength training to build muscle mass'
+                    ];
                 } else if (bri < 2) {
                     status = 'Normal';
                     interpretation = 'Your BRI is within the normal range, indicating a healthy body shape.';
-                    risks = ['Low risk for obesity-related health issues'];
-                    advice = ['Maintain a balanced diet', 'Regular exercise', 'Regular health check-ups'];
+                    risks = [
+                        'Generally low risk for obesity-related health issues',
+                        'Maintain awareness of family history for potential genetic health risks'
+                    ];
+                    advice = [
+                        'Maintain a balanced diet rich in fruits, vegetables, lean proteins, and whole grains',
+                        'Engage in regular physical activity, aiming for at least 150 minutes of moderate exercise per week',
+                        'Schedule regular health check-ups to monitor overall health'
+                    ];
                 } else if (bri < 3) {
                     status = 'Overweight';
                     interpretation = 'Your BRI suggests you are overweight, which may increase certain health risks.';
-                    risks = ['Increased risk of cardiovascular diseases', 'Higher risk of type 2 diabetes', 'Joint problems'];
-                    advice = ['Increase physical activity', 'Adopt a balanced, calorie-controlled diet', 'Consult a nutritionist or dietitian'];
+                    risks = [
+                        'Elevated risk of type 2 diabetes and insulin resistance',
+                        'Increased likelihood of developing high blood pressure',
+                        'Higher risk of sleep apnea and breathing problems'
+                    ];
+                    advice = [
+                        'Aim to reduce daily calorie intake by 500 calories through healthier food choices',
+                        'Increase physical activity, targeting 30 minutes of moderate exercise most days of the week',
+                        'Consider consulting a nutritionist for a personalized meal plan'
+                    ];
                 } else {
                     status = 'Obese';
                     interpretation = 'Your BRI indicates obesity, which is associated with various health risks.';
-                    risks = ['High risk of cardiovascular diseases', 'Increased risk of certain cancers', 'Sleep apnea', 'Metabolic syndrome'];
-                    advice = ['Consult with a healthcare professional', 'Develop a comprehensive weight loss plan', 'Increase daily physical activity', 'Consider professional support for lifestyle changes'];
+                    risks = [
+                        'Significantly increased risk of cardiovascular diseases, including heart attack and stroke',
+                        'Higher likelihood of developing certain cancers, such as colon and breast cancer',
+                        'Increased risk of osteoarthritis and joint problems due to excess weight'
+                    ];
+                    advice = [
+                        'Consult with a healthcare professional to develop a comprehensive weight loss plan',
+                        'Start with small, achievable goals like reducing portion sizes and eliminating sugary drinks',
+                        'Incorporate both cardio and strength training exercises, starting with low-impact activities',
+                        'Consider joining a support group or working with a health coach for motivation and accountability'
+                    ];
                 }
 
                 healthStatus.textContent = status;
@@ -271,34 +301,43 @@
                 briInterpretation.textContent = interpretation;
 
                 if (age && gender) {
-                    briInterpretation.textContent += ` As a ${age}-year-old ${gender}, ${age > 65 ? "it's crucial to focus on maintaining muscle mass while managing weight." : "maintaining a healthy lifestyle is key to preventing future health issues."}`;
+                    briInterpretation.textContent += ` As a ${age}-year-old ${gender}, ${age > 65 ? "it's crucial to focus on maintaining muscle mass and bone density while managing weight." : "maintaining a healthy lifestyle is key to preventing future health issues."}`;
                 }
 
                 healthRisks.innerHTML = risks.map(risk => `<li>${risk}</li>`).join('');
                 recommendations.innerHTML = advice.map(item => `<li>${item}</li>`).join('');
 
                 bmiComparison.innerHTML = `
-                    While your BMI is ${bmi.toFixed(2)}, BRI provides a more comprehensive assessment by considering your body shape.
-                    Your BRI of ${bri.toFixed(2)} takes into account your waist circumference, offering a more nuanced view of your body composition and potential health risks.
+                    <p>Your BMI is ${bmi.toFixed(2)}, which falls into the ${getBMICategory(bmi)} category.</p>
+                    <p>While BMI is widely used, BRI provides a more comprehensive assessment by considering your body shape.</p>
+                    <p>Your BRI of ${bri.toFixed(2)} takes into account your waist circumference, offering a more nuanced view of your body composition and potential health risks.</p>
                 `;
 
                 briAdvantages.innerHTML = `
                     <li>BRI considers waist circumference, a key indicator of abdominal fat</li>
                     <li>More sensitive to changes in body shape and fat distribution</li>
                     <li>Potentially better at predicting cardiovascular health risks</li>
+                    <li>Provides a more accurate assessment for people with high muscle mass</li>
                 `;
 
                 updateBRIChart(bri);
+            }
+
+            function getBMICategory(bmi) {
+                if (bmi < 18.5) return 'underweight';
+                if (bmi < 25) return 'normal weight';
+                if (bmi < 30) return 'overweight';
+                return 'obese';
             }
 
             function updateBRIChart(bri) {
                 const chartContainer = document.getElementById('briChart');
                 chartContainer.innerHTML = `
                     <div class="bri-bar" style="width: 100%; height: 40px; background-color: #f0f0f0; position: relative; margin-bottom: 10px;">
-                        <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(75, 192, 192, 0.5); left: 0; width: 20%;"></div>
-                        <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(54, 162, 235, 0.5); left: 20%; width: 20%;"></div>
-                        <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(255, 206, 86, 0.5); left: 40%; width: 20%;"></div>
-                        <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(255, 99, 132, 0.5); left: 60%; width: 40%;"></div>
+                        <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(75, 192, 192, 0.5); left: 0; width: 20%;" title="Extremely Lean: BRI < 1"></div>
+                        <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(54, 162, 235, 0.5); left: 20%; width: 20%;" title="Normal: 1 ≤ BRI < 2"></div>
+                        <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(255, 206, 86, 0.5); left: 40%; width: 20%;" title="Overweight: 2 ≤ BRI < 3"></div>
+                        <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(255, 99, 132, 0.5); left: 60%; width: 40%;" title="Obese: BRI ≥ 3"></div>
                         <div class="bri-marker" style="position: absolute; top: -15px; height: 70px; width: 2px; background-color: red; left: ${Math.min(bri / 5 * 100, 100)}%;">
                             <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-weight: bold;">Your BRI: ${bri.toFixed(2)}</span>
                         </div>
