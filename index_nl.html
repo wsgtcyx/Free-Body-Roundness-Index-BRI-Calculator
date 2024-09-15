@@ -38,199 +38,293 @@
         <p>De Body Roundness Index (BRI) is een maat die wordt gebruikt om lichaamsvorm en gezondheidsrisico's te beoordelen. Onze gratis BRI-Berekenen  combineert lengte- en tailleomtrekmetingen om de "rondheid" van het menselijk lichaam te evalueren. BRI kan helpen bij het beoordelen van gezondheidsrisico's die verband houden met obesitas, zonder kosten voor u.</p>
     </div>
 
-    <div class="section">
-        <h2>Hoe gebruikt u deze gratis Berekenen </h2>
+    <div class="section calculator">
+        <h2>Bereken Uw BRI</h2>
+        <form id="briForm">
+            <div class="input-group">
+                <label for="units">Eenheden:</label>
+                <select id="units">
+                    <option value="metric">Metrisch (cm, kg)</option>
+                    <option value="imperial">Imperiaal (in, lbs)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="height">Lengte:</label>
+                <input type="number" id="height" required min="0" step="0.1" aria-label="Lengte">
+                <span id="heightUnit">cm</span>
+            </div>
+            <div class="input-group">
+                <label for="weight">Gewicht:</label>
+                <input type="number" id="weight" required min="0" step="0.1" aria-label="Gewicht">
+                <span id="weightUnit">kg</span>
+            </div>
+            <div class="input-group">
+                <label for="waist">Tailleomtrek:</label>
+                <input type="number" id="waist" required min="0" step="0.1" aria-label="Tailleomtrek">
+                <span id="waistUnit">cm</span>
+            </div>
+            <div class="input-group">
+                <label for="gender">Geslacht (optioneel):</label>
+                <select id="gender" aria-label="Geslacht">
+                    <option value="">Selecteer</option>
+                    <option value="male">Man</option>
+                    <option value="female">Vrouw</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="age">Leeftijd (optioneel):</label>
+                <input type="number" id="age" min="18" max="120" aria-label="Leeftijd">
+            </div>
+            <button type="submit" id="calculateBtn">Bereken BRI</button>
+        </form>
+    </div>
+
+    <div id="result" class="section" style="display:none;">
+        <h2>Uw BRI Resultaten</h2>
+        <div class="result-summary">
+            <p>Uw Body Roundness Index (BRI): <strong id="briValue"></strong></p>
+            <p>Gezondheidsstatus: <span id="healthStatus"></span></p>
+        </div>
+        <div class="result-chart">
+            <p>De onderstaande grafiek toont uw BRI in relatie tot verschillende gezondheidscategorieën. De rode lijn geeft uw huidige BRI-waarde aan.</p>
+            <div id="briChart"></div>
+        </div>
+        <div class="result-details">
+            <h3>Wat betekent dit?</h3>
+            <p id="briInterpretation"></p>
+            <h3>Potentiële Gezondheidsrisico's</h3>
+            <ul id="healthRisks"></ul>
+            <h3>Aanbevelingen</h3>
+            <ul id="recommendations"></ul>
+        </div>
+        <div class="bmi-comparison">
+            <h3>BRI vs BMI Vergelijking</h3>
+            <p>Uw Body Mass Index (BMI): <strong id="bmiValue"></strong></p>
+            <p id="bmiComparison"></p>
+            <h4>Waarom BRI mogelijk nauwkeuriger is dan BMI:</h4>
+            <ul id="briAdvantages"></ul>
+        </div>
+    </div>
+
+    <div class="section feedback-section">
+        <h2>Help ons verbeteren</h2>
+        <p>We hopen dat u onze BRI-calculator nuttig vindt. Als gratis tool is ons belangrijkste doel om praktische waarde te bieden aan iedereen.</p>
+        <ul>
+            <li>Als u <a href="https://bri-calculator.com/nl">deze website</a> nuttig vindt, deel hem dan met anderen die er baat bij kunnen hebben.</li>
+            <li>Heeft u suggesties voor verbetering? Ideeën voor nieuwe diensten? Of bent u problemen tegengekomen bij het gebruik van onze calculator?</li>
+        </ul>
+        <p>We horen graag van u! Stuur uw feedback naar <a href="mailto:support@bri-calculator.com">support@bri-calculator.com</a>.</p>
+        <p>Uw input wordt zeer gewaardeerd en helpt ons onze service voortdurend te verbeteren.</p>
+    </div>
+
+    <div class="section references">
+        <h2>Referenties</h2>
         <ol>
-            <li>Selecteer uw voorkeursmaatsysteem (Metrisch of Imperiaal)</li>
-            <li>Voer uw geslacht, leeftijd, lengte, gewicht en tailleomtrek in</li>
-            <li>Voeg optioneel heupmetingen toe indien beschikbaar</li>
-            <li>Klik op de knop "BRI Berekenen" om direct uw gratis resultaten te krijgen</li>
+            <li>Thomas, D. M., et al. (2013). Relationships between body roundness with body fat and visceral adipose tissue emerging from a new geometrical model. <em>Obesity</em>, 21(11), 2264-2271.</li>
+            <li>Chang, Y., et al. (2018). Body roundness index and its association with metabolic syndrome in type 2 diabetes mellitus. <em>Diabetes, Metabolic Syndrome and Obesity: Targets and Therapy</em>, 11, 827-833.</li>
+            <li>Rico-Martín, S., et al. (2020). Effectiveness of body roundness index in predicting metabolic syndrome: A systematic review and meta-analysis. <em>Obesity Reviews</em>, 21(9), e13023.</li>
+            <li>Perona, J. S., et al. (2019). Waist circumference and abdominal volume index are the strongest anthropometric discriminators of metabolic syndrome in Spanish adolescents. <em>European Journal of Clinical Investigation</em>, 49(3), e13060.</li>
         </ol>
     </div>
 
-    <div class="section">
-        <form id="briForm">
-            <div>
-                <label for="units">Eenheden:</label>
-                <select id="units">
-                    <option value="metric">Metrisch</option>
-                    <option value="imperial">Imperiaal (VS)</option>
-                </select>
-            </div>
-            <div>
-                <label for="gender">Geslacht:</label>
-                <select id="gender">
-                    <option value="female">Vrouw</option>
-                    <option value="male">Man</option>
-                </select>
-            </div>
-            <div>
-                <label for="ethnicity">Etniciteit (Optioneel):</label>
-                <select id="ethnicity">
-                    <option value="">Selecteer</option>
-                    <option value="caucasian">Kaukasisch</option>
-                    <option value="african">Afrikaans</option>
-                    <option value="asian">Aziatisch</option>
-                    <option value="hispanic">Hispanisch</option>
-                </select>
-            </div>
-            <div>
-                <label for="age">Leeftijd:</label>
-                <input type="number" id="age" required>
-            </div>
-            <div>
-                <label for="height">Lengte:</label>
-                <input type="number" id="height" required>
-                <span id="heightUnit">cm</span>
-            </div>
-            <div>
-                <label for="weight">Gewicht:</label>
-                <input type="number" id="weight" required>
-                <span id="weightUnit">kg</span>
-            </div>
-            <div>
-                <label for="waist">Taille:</label>
-                <input type="number" id="waist" required>
-                <span id="waistUnit">cm</span>
-            </div>
-            <div>
-                <label for="useHip">Heupmeting gebruiken?</label>
-                <select id="useHip">
-                    <option value="yes">Ja</option>
-                    <option value="no">Nee</option>
-                </select>
-            </div>
-            <div>
-                <label for="hip">Heup:</label>
-                <input type="number" id="hip">
-                <span id="hipUnit">cm</span>
-            </div>
-            <button type="submit">BRI Berekenen</button>
-        </form>
-        <div id="result"></div>
-    </div>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2024 BRI Calculator. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
 
     <script>
-        const form = document.getElementById('briForm');
-        const unitsSelect = document.getElementById('units');
-        const heightUnit = document.getElementById('heightUnit');
-        const weightUnit = document.getElementById('weightUnit');
-        const waistUnit = document.getElementById('waistUnit');
-        const hipUnit = document.getElementById('hipUnit');
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('briForm');
+            const result = document.getElementById('result');
+            const unitsSelect = document.getElementById('units');
+            const heightInput = document.getElementById('height');
+            const weightInput = document.getElementById('weight');
+            const waistInput = document.getElementById('waist');
+            const heightUnit = document.getElementById('heightUnit');
+            const weightUnit = document.getElementById('weightUnit');
+            const waistUnit = document.getElementById('waistUnit');
 
-        unitsSelect.addEventListener('change', updateUnits);
+            function updateUnits() {
+                const isMetric = unitsSelect.value === 'metric';
+                heightUnit.textContent = isMetric ? 'cm' : 'in';
+                weightUnit.textContent = isMetric ? 'kg' : 'lbs';
+                waistUnit.textContent = isMetric ? 'cm' : 'in';
+            }
 
-        function updateUnits() {
-            const isMetric = unitsSelect.value === 'metric';
-            heightUnit.textContent = isMetric ? 'cm' : 'in';
-            weightUnit.textContent = isMetric ? 'kg' : 'lbs';
-            waistUnit.textContent = isMetric ? 'cm' : 'in';
-            hipUnit.textContent = isMetric ? 'cm' : 'in';
-        }
+            unitsSelect.addEventListener('change', updateUnits);
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            calculateBRI();
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                calculateBRI();
+            });
+
+            function calculateBRI() {
+                const height = parseFloat(heightInput.value);
+                const weight = parseFloat(weightInput.value);
+                const waist = parseFloat(waistInput.value);
+                const gender = document.getElementById('gender').value;
+                const age = parseInt(document.getElementById('age').value);
+                const isMetric = unitsSelect.value === 'metric';
+
+                if (height && weight && waist) {
+                    let heightM, waistM, weightKg;
+                    if (isMetric) {
+                        heightM = height / 100;
+                        waistM = waist / 100;
+                        weightKg = weight;
+                    } else {
+                        heightM = height * 0.0254;
+                        waistM = waist * 0.0254;
+                        weightKg = weight * 0.453592;
+                    }
+
+                    const bri = 364.2 - 365.5 * Math.sqrt(1 - ((waistM / (2 * Math.PI)) ** 2) / ((0.5 * heightM) ** 2));
+                    const bmi = weightKg / (heightM * heightM);
+                    displayResults(bri, bmi, gender, age);
+                } else {
+                    alert('Vul alstublieft alle verplichte velden in.');
+                }
+            }
+
+            function displayResults(bri, bmi, gender, age) {
+                result.style.display = 'block';
+
+                const briValue = document.getElementById('briValue');
+                const healthStatus = document.getElementById('healthStatus');
+                const briInterpretation = document.getElementById('briInterpretation');
+                const healthRisks = document.getElementById('healthRisks');
+                const recommendations = document.getElementById('recommendations');
+                const bmiValue = document.getElementById('bmiValue');
+                const bmiComparison = document.getElementById('bmiComparison');
+                const briAdvantages = document.getElementById('briAdvantages');
+
+                briValue.textContent = bri.toFixed(2);
+                bmiValue.textContent = bmi.toFixed(2);
+
+                let status, interpretation, risks, advice;
+
+                if (bri < 1) {
+                    status = 'Extreem mager';
+                    interpretation = 'Uw BRI geeft aan dat u extreem mager bent. Dit kan bepaalde gezondheidsrisico\'s met zich meebrengen.';
+                    risks = [
+                        'Verhoogd risico op voedingstekorten, vooral vitaminen en mineralen',
+                        'Mogelijke verzwakking van het immuunsysteem',
+                        'Mogelijke hormonale onbalans die de voortplantingsgezondheid beïnvloedt'
+                    ];
+                    advice = [
+                        'Raadpleeg een geregistreerde diëtist om voldoende voedingsinname te garanderen',
+                        'Verhoog geleidelijk de calorie-inname met voedzame levensmiddelen',
+                        'Overweeg krachttraining om spiermassa op te bouwen'
+                    ];
+                } else if (bri < 2) {
+                    status = 'Normaal';
+                    interpretation = 'Uw BRI valt binnen het normale bereik, wat duidt op een gezonde lichaamsvorm.';
+                    risks = [
+                        'Over het algemeen laag risico op obesitas-gerelateerde gezondheidsproblemen',
+                        'Blijf bewust van familiegeschiedenis voor mogelijke genetische gezondheidsrisico\'s'
+                    ];
+                    advice = [
+                        'Handhaaf een evenwichtig dieet rijk aan fruit, groenten, magere eiwitten en volkoren granen',
+                        'Doe regelmatig aan lichaamsbeweging, streef naar ten minste 150 minuten matige beweging per week',
+                        'Plan regelmatige gezondheidscontroles om uw algehele gezondheid te monitoren'
+                    ];
+                } else if (bri < 3) {
+                    status = 'Overgewicht';
+                    interpretation = 'Uw BRI suggereert dat u overgewicht heeft, wat bepaalde gezondheidsrisico\'s kan verhogen.';
+                    risks = [
+                        'Verhoogd risico op type 2 diabetes en insulineresistentie',
+                        'Verhoogde kans op het ontwikkelen van hoge bloeddruk',
+                        'Hoger risico op slaapapneu en ademhalingsproblemen'
+                    ];
+                    advice = [
+                        'Streef ernaar de dagelijkse calorie-inname met 500 calorieën te verminderen door gezondere voedselkeuzes',
+                        'Verhoog de lichaamsbeweging, richt op 30 minuten matige beweging op de meeste dagen van de week',
+                        'Overweeg een voedingsdeskundige te raadplegen voor een persoonlijk voedingsplan'
+                    ];
+                } else {
+                    status = 'Obesitas';
+                    interpretation = 'Uw BRI wijst op obesitas, wat geassocieerd wordt met verschillende gezondheidsrisico\'s.';
+                    risks = [
+                        'Aanzienlijk verhoogd risico op hart- en vaatziekten, waaronder hartaanval en beroerte',
+                        'Hogere kans op het ontwikkelen van bepaalde vormen van kanker, zoals darm- en borstkanker',
+                        'Verhoogd risico op osteoartritis en gewrichtsproblemen door overgewicht'
+                    ];
+                    advice = [
+                        'Raadpleeg een zorgprofessional om een uitgebreid gewichtsverliesplan te ontwikkelen',
+                        'Begin met kleine, haalbare doelen zoals het verkleinen van porties en het elimineren van suikerhoudende dranken',
+                        'Integreer zowel cardio- als krachttraining, begin met activiteiten met lage impact',
+                        'Overweeg om lid te worden van een ondersteuningsgroep of samen te werken met een gezondheidscoach voor motivatie en verantwoording'
+                    ];
+                }
+
+                healthStatus.textContent = status;
+                healthStatus.className = `status-${status.toLowerCase().replace(' ', '-')}`;
+                briInterpretation.textContent = interpretation;
+
+                if (age && gender) {
+                    briInterpretation.textContent += ` Als ${age}-jarige ${gender === 'male' ? 'man' : 'vrouw'}, ${age > 65 ? "is het cruciaal om te focussen op het behouden van spiermassa en botdichtheid terwijl u uw gewicht beheert." : "is het handhaven van een gezonde levensstijl essentieel om toekomstige gezondheidsproblemen te voorkomen."}`;
+                }
+
+                healthRisks.innerHTML = risks.map(risk => `<li>${risk}</li>`).join('');
+                recommendations.innerHTML = advice.map(item => `<li>${item}</li>`).join('');
+
+                bmiComparison.innerHTML = `
+                    <p>Uw BMI is ${bmi.toFixed(2)}, wat in de categorie ${getBMICategory(bmi)} valt.</p>
+                    <p>Hoewel BMI veel wordt gebruikt, biedt BRI een uitgebreidere beoordeling door rekening te houden met uw lichaamsvorm.</p>
+                    <p>Uw BRI van ${bri.toFixed(2)} houdt rekening met uw tailleomtrek, wat een genuanceerder beeld geeft van uw lichaamssamenstelling en potentiële gezondheidsrisico's.</p>
+                `;
+
+                briAdvantages.innerHTML = `
+                    <li>BRI houdt rekening met de tailleomtrek, een belangrijke indicator van buikvet</li>
+                    <li>Gevoeliger voor veranderingen in lichaamsvorm en vetverdeling</li>
+                    <li>Mogelijk beter in het voorspellen van cardiovasculaire gezondheidsrisico's</li>
+                    <li>Biedt een nauwkeurigere beoordeling voor mensen met een hoge spiermassa</li>
+                `;
+
+                updateBRIChart(bri);
+            }
+
+            function getBMICategory(bmi) {
+                if (bmi < 18.5) return 'ondergewicht';
+                if (bmi < 25) return 'normaal gewicht';
+                if (bmi < 30) return 'overgewicht';
+                return 'obesitas';
+            }
+
+            function updateBRIChart(bri) {
+                const chartContainer = document.getElementById('briChart');
+                chartContainer.innerHTML = `
+                    <div class="bri-chart-container" style="position: relative; height: 150px; margin-bottom: 40px;">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; text-align: center; font-weight: bold;">
+                            Uw BRI: ${bri.toFixed(2)}
+                        </div>
+                        <div class="bri-bar" style="width: 100%; height: 40px; background-color: #f0f0f0; position: absolute; bottom: 40px;">
+                            <div class="bri-range" style="position: absolute; bottom: 0; height: 100%; background-color: rgba(75, 192, 192, 0.5); left: 0; width: 20%;" title="Extreem Mager: BRI < 1"></div>
+                            <div class="bri-range" style="position: absolute; bottom: 0; height: 100%; background-color: rgba(54, 162, 235, 0.5); left: 20%; width: 20%;" title="Normaal: 1 ≤ BRI < 2"></div>
+                            <div class="bri-range" style="position: absolute; bottom: 0; height: 100%; background-color: rgba(255, 206, 86, 0.5); left: 40%; width: 20%;" title="Overgewicht: 2 ≤ BRI < 3"></div>
+                            <div class="bri-range" style="position: absolute; bottom: 0; height: 100%; background-color: rgba(255, 99, 132, 0.5); left: 60%; width: 40%;" title="Obesitas: BRI ≥ 3"></div>
+                            <div class="bri-marker" style="position: absolute; bottom: 0; height: 60px; width: 2px; background-color: red; left: ${Math.min(bri / 5 * 100, 100)}%;"></div>
+                        </div>
+                        <div style="position: absolute; bottom: 0; left: 0; right: 0; display: flex; justify-content: space-between;">
+                            <span style="width: 20%; text-align: center;">0</span>
+                            <span style="width: 20%; text-align: center;">1</span>
+                            <span style="width: 20%; text-align: center;">2</span>
+                            <span style="width: 20%; text-align: center;">3</span>
+                            <span style="width: 20%; text-align: right;">5+</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="width: 20%; text-align: center;">Extreem<br>Mager</span>
+                        <span style="width: 20%; text-align: center;">Normaal</span>
+                        <span style="width: 20%; text-align: center;">Overgewicht</span>
+                        <span style="width: 40%; text-align: center;">Obesitas</span>
+                    </div>
+                `;
+            }
+
+            updateUnits();
         });
-
-        function calculateBRI() {
-            const isMetric = document.getElementById('units').value === 'metric';
-            let height = parseFloat(document.getElementById('height').value);
-            let waist = parseFloat(document.getElementById('waist').value);
-            const gender = document.getElementById('gender').value;
-            const age = parseInt(document.getElementById('age').value);
-            const ethnicity = document.getElementById('ethnicity').value;
-            
-            // Converteer naar meters als metrisch systeem wordt gebruikt
-            if (isMetric) {
-                height /= 100;
-                waist /= 100;
-            } else {
-                // Converteer inches naar meters
-                height *= 0.0254;
-                waist *= 0.0254;
-            }
-
-            const bri = 364.2 - 365.5 * Math.sqrt(1 - ((waist / (2 * Math.PI))**2 / (0.5 * height)**2));
-            
-            let interpretation = "";
-            let detailedInterpretation = "";
-            if (bri < 1) {
-                interpretation = "Extreem mager";
-                detailedInterpretation = `U heeft een zeer laag percentage lichaamsvet. Dit kan gezondheidsrisico's met zich meebrengen, vooral voor ${gender === 'female' ? 'vrouwen' : 'mannen'} ${age > 50 ? 'boven de 50' : 'van uw leeftijd'}. Het is raadzaam om met een arts of diëtist te overleggen over een gezond voedingsplan.`;
-            } else if (bri < 2) {
-                interpretation = "Normale lichaamsvorm";
-                detailedInterpretation = `Uw lichaamsvorm valt binnen het gezonde bereik. Dit suggereert een goede balans tussen spiermassa en vetpercentage. Voor ${gender === 'female' ? 'vrouwen' : 'mannen'} ${age > 50 ? 'boven de 50' : 'van uw leeftijd'} is het behouden van deze balans cruciaal voor de gezondheid op lange termijn.`;
-            } else if (bri < 3) {
-                interpretation = "Overgewicht";
-                detailedInterpretation = `U heeft mogelijk een verhoogd risico op gezondheidsproblemen. ${gender === 'female' ? 'Vrouwen' : 'Mannen'} ${age > 50 ? 'boven de 50' : 'van uw leeftijd'} moeten vooral letten op hun cardiovasculaire gezondheid. Overweeg om uw eetgewoonten aan te passen en meer te bewegen.`;
-            } else {
-                interpretation = "Obesitas";
-                detailedInterpretation = `U heeft een verhoogd risico op verschillende ernstige gezondheidsproblemen. ${gender === 'female' ? 'Vrouwen' : 'Mannen'} ${age > 50 ? 'boven de 50' : 'van uw leeftijd'} moeten dit serieus nemen. Het wordt sterk aanbevolen om een arts of diëtist te raadplegen voor een persoonlijk gezondheidsplan.`;
-            }
-
-            // Voeg etniciteitspecifiek advies toe
-            if (ethnicity) {
-                detailedInterpretation += ` Mensen van ${ethnicity} afkomst kunnen verschillende gezonde BRI-bereiken hebben. Raadpleeg een zorgprofessional die bekend is met uw etnische achtergrond voor meer persoonlijk advies.`;
-            }
-
-            document.getElementById('result').innerHTML = `
-                <h2>Resultaten:</h2>
-                <p>Uw Body Roundness Index (BRI): <strong>${bri.toFixed(2)}</strong></p>
-                <p>Interpretatie: <strong>${interpretation}</strong></p>
-                <p>${detailedInterpretation}</p>
-                <p>Vergeet niet dat BRI slechts één indicator is van uw algehele gezondheid. Voor een volledig beeld is het raadzaam om andere factoren zoals bloeddruk, cholesterol en levensstijl in overweging te nemen.</p>
-            `;
-
-            // Toon gezondheidsadvies na berekening
-            document.getElementById('healthAdvice').style.display = 'block';
-        }
-
-        updateUnits();
     </script>
-
-    <div id="healthAdvice" class="section" style="display: none;">
-        <h2>Algemene Gezondheidsadviezen</h2>
-        <ul>
-            <li>Eet een gevarieerd en evenwichtig dieet met veel groenten, fruit, volkoren producten en magere eiwitten.</li>
-            <li>Beweeg regelmatig, streef naar minstens 30 minuten matige activiteit per dag, zoals wandelen, fietsen of zwemmen.</li>
-            <li>Drink voldoende water, ongeveer 1,5 tot 2 liter per dag, om goed gehydrateerd te blijven.</li>
-            <li>Beperk de inname van verzadigde vetten, suiker en zout. Kies voor gezonde vetten uit noten, zaden en vette vis.</li>
-            <li>Zorg voor voldoende slaap, gemiddeld 7-9 uur per nacht, om uw lichaam te laten herstellen en uw stofwisseling te ondersteunen.</li>
-            <li>Vermijd roken en beperk alcoholconsumptie tot maximaal één (voor vrouwen) of twee (voor mannen) glazen per dag.</li>
-            <li>Laat regelmatig een gezondheidscheck uitvoeren bij uw huisarts, inclusief bloeddruk, cholesterol en bloedsuikertests.</li>
-            <li>Probeer stress te verminderen door ontspanningstechnieken zoals meditatie, yoga of diepe ademhalingsoefeningen.</li>
-            <li>Blijf mentaal actief door nieuwe dingen te leren, puzzels op te lossen of sociale activiteiten te ondernemen.</li>
-        </ul>
-        <p>Onthoud dat deze adviezen algemeen zijn. Voor persoonlijk gezondheidsadvies is het altijd het beste om een zorgprofessional te raadplegen.</p>
-    </div>
-
-    <div class="faq-section">
-        <h2>Veelgestelde vragen (FAQ)</h2>
-        <div class="faq-item">
-            <div class="faq-question">1. Hoe bereken je BRI?</div>
-            <div class="faq-answer">BRI wordt berekend met de formule: BRI = 364,2 - 365,5 * √(1 - ((TO / (2π))² / (0,5 * L)²)), waarbij TO de tailleomtrek is en L de lengte, beide in meters.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">2. Is BRI beter dan BMI?</div>
-            <div class="faq-answer">BRI kan nauwkeuriger zijn dan BMI bij het beoordelen van lichaamsvorm en vetverdeling. Het houdt rekening met de tailleomtrek, wat BMI niet doet.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">3. Wat is het verschil tussen BMI en BRI?</div>
-            <div class="faq-answer">BMI gebruikt alleen lengte en gewicht, terwijl BRI ook de tailleomtrek meeneemt. Hierdoor kan BRI beter rekening houden met lichaamsvorm en vetverdeling.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">4. Is de BRI nuttig?</div>
-            <div class="faq-answer">Ja, BRI kan nuttig zijn omdat het een uitgebreidere beoordeling geeft van lichaamsvorm en potentiële gezondheidsrisico's in vergelijking met alleen BMI.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">5. Hoe meet je de taille voor BRI?</div>
-            <div class="faq-answer">Meet uw tailleomtrek op het middelpunt tussen de onderrand van de laatste voelbare rib en de bovenkant van de heupkam, meestal rond het navelniveau.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">6. Wat zijn de nadelen van BRI?</div>
-            <div class="faq-answer">BRI is mogelijk niet zo algemeen erkend als BMI, en zoals alle lichaamsmetingen houdt het geen rekening met factoren zoals spiermassa of botdichtheid.</div>
-        </div>
-    </div>
 </body>
 </html>
