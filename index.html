@@ -84,6 +84,7 @@
             <p>Health Status: <span id="healthStatus"></span></p>
         </div>
         <div class="result-chart">
+            <p>The chart below shows your BRI in relation to different health categories. The red line indicates your current BRI value.</p>
             <div id="briChart"></div>
         </div>
         <div class="result-details">
@@ -100,10 +101,6 @@
             <p id="bmiComparison"></p>
             <h4>Why BRI may be more accurate than BMI:</h4>
             <ul id="briAdvantages"></ul>
-        </div>
-        <div class="action-buttons">
-            <button id="saveResults">Save Results</button>
-            <button id="shareResults">Share Results</button>
         </div>
     </div>
 
@@ -268,25 +265,27 @@
             function updateBRIChart(bri) {
                 const chartContainer = document.getElementById('briChart');
                 chartContainer.innerHTML = `
-                    <div class="bri-bar" style="width: 100%; height: 30px; background-color: #f0f0f0; position: relative;">
+                    <div class="bri-bar" style="width: 100%; height: 40px; background-color: #f0f0f0; position: relative; margin-bottom: 10px;">
                         <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(75, 192, 192, 0.5); left: 0; width: 20%;"></div>
                         <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(54, 162, 235, 0.5); left: 20%; width: 20%;"></div>
                         <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(255, 206, 86, 0.5); left: 40%; width: 20%;"></div>
                         <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(255, 99, 132, 0.5); left: 60%; width: 40%;"></div>
-                        <div class="bri-marker" style="position: absolute; top: -10px; height: 50px; width: 2px; background-color: red; left: ${Math.min(bri / 5 * 100, 100)}%;"></div>
+                        <div class="bri-marker" style="position: absolute; top: -15px; height: 70px; width: 2px; background-color: red; left: ${Math.min(bri / 5 * 100, 100)}%;">
+                            <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-weight: bold;">Your BRI: ${bri.toFixed(2)}</span>
+                        </div>
                     </div>
-                    <div style="display: flex; justify-content: space-between; margin-top: 5px;">
-                        <span>0</span>
-                        <span>1</span>
-                        <span>2</span>
-                        <span>3</span>
-                        <span>5+</span>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span style="width: 20%; text-align: center;">0</span>
+                        <span style="width: 20%; text-align: center;">1</span>
+                        <span style="width: 20%; text-align: center;">2</span>
+                        <span style="width: 20%; text-align: center;">3</span>
+                        <span style="width: 20%; text-align: right;">5+</span>
                     </div>
-                    <div style="display: flex; justify-content: space-between; margin-top: 5px;">
-                        <span>Extremely Lean</span>
-                        <span>Normal</span>
-                        <span>Overweight</span>
-                        <span>Obese</span>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="width: 20%; text-align: center;">Extremely<br>Lean</span>
+                        <span style="width: 20%; text-align: center;">Normal</span>
+                        <span style="width: 20%; text-align: center;">Overweight</span>
+                        <span style="width: 40%; text-align: center;">Obese</span>
                     </div>
                 `;
             }
