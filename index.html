@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles.css">
     <script defer src="https://cloud.umami.is/script.js" data-website-id="fa05dabe-795b-467a-8f02-aa4b3bac9987"></script>
     <link rel="canonical" href="https://bri-calculator.com/" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -48,22 +49,22 @@
             </div>
             <div class="input-group">
                 <label for="height">Height:</label>
-                <input type="number" id="height" required min="0" step="0.1">
+                <input type="number" id="height" required min="0" step="0.1" aria-label="Height">
                 <span id="heightUnit">in</span>
             </div>
             <div class="input-group">
                 <label for="weight">Weight:</label>
-                <input type="number" id="weight" required min="0" step="0.1">
+                <input type="number" id="weight" required min="0" step="0.1" aria-label="Weight">
                 <span id="weightUnit">lbs</span>
             </div>
             <div class="input-group">
                 <label for="waist">Waist Circumference:</label>
-                <input type="number" id="waist" required min="0" step="0.1">
+                <input type="number" id="waist" required min="0" step="0.1" aria-label="Waist Circumference">
                 <span id="waistUnit">in</span>
             </div>
             <div class="input-group">
                 <label for="gender">Gender (optional):</label>
-                <select id="gender">
+                <select id="gender" aria-label="Gender">
                     <option value="">Select</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
@@ -71,7 +72,7 @@
             </div>
             <div class="input-group">
                 <label for="age">Age (optional):</label>
-                <input type="number" id="age" min="18" max="120">
+                <input type="number" id="age" min="18" max="120" aria-label="Age">
             </div>
             <button type="submit" id="calculateBtn">Calculate BRI</button>
         </form>
@@ -102,6 +103,7 @@
             <h4>Why BRI may be more accurate than BMI:</h4>
             <ul id="briAdvantages"></ul>
         </div>
+        <button id="printBtn">Print Results</button>
     </div>
 
     <div class="section">
@@ -155,6 +157,22 @@
         <p>Your input is greatly appreciated and helps us continually improve our service.</p>
     </div>
 
+    <div class="section references">
+        <h2>References</h2>
+        <ol>
+            <li>Thomas, D. M., et al. (2013). Relationships between body roundness with body fat and visceral adipose tissue emerging from a new geometrical model. <em>Obesity</em>, 21(11), 2264-2271.</li>
+            <li>Chang, Y., et al. (2018). Body roundness index and its association with metabolic syndrome in type 2 diabetes mellitus. <em>Diabetes, Metabolic Syndrome and Obesity: Targets and Therapy</em>, 11, 827-833.</li>
+            <li>Rico-Martín, S., et al. (2020). Effectiveness of body roundness index in predicting metabolic syndrome: A systematic review and meta-analysis. <em>Obesity Reviews</em>, 21(9), e13023.</li>
+            <li>Perona, J. S., et al. (2019). Waist circumference and abdominal volume index are the strongest anthropometric discriminators of metabolic syndrome in Spanish adolescents. <em>European Journal of Clinical Investigation</em>, 49(3), e13060.</li>
+        </ol>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2023 BRI Calculator. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('briForm');
@@ -166,6 +184,7 @@
             const heightUnit = document.getElementById('heightUnit');
             const weightUnit = document.getElementById('weightUnit');
             const waistUnit = document.getElementById('waistUnit');
+            let briChart;
 
             function updateUnits() {
                 const isImperial = unitsSelect.value === 'imperial';
