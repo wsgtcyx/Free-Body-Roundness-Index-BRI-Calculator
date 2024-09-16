@@ -1,6 +1,8 @@
 {
     "routes": [
       { "src": "/nl", "dest": "/index_nl.html" },
-      { "src": "/nl/(.*)", "dest": "/index_nl.html" }
+      { "src": "/nl/(.*)", "dest": "/index_nl.html" },
+      { "src": "/de", "dest": "/index_de.html" },
+      { "src": "/de/(.*)", "dest": "/index_de.html" }
     ]
   }

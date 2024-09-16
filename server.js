@@ -8,6 +8,8 @@ const server = http.createServer((req, res) => {
         filePath = './index.html';
     } else if (filePath === './nl') {
         filePath = './index_nl.html';
+    } else if (filePath === './de') {
+        filePath = './index_de.html';
     }
 
     const extname = String(path.extname(filePath)).toLowerCase();
