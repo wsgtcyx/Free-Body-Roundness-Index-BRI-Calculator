@@ -101,11 +101,30 @@
             <h3>BRI vs BMI Vergelijking</h3>
             <p>Uw Body Mass Index (BMI): <strong id="bmiValue"></strong></p>
             <p id="bmiComparison"></p>
-            <h4>Waarom BRI mogelijk nauwkeuriger is dan BMI:</h4>
-            <ul id="briAdvantages"></ul>
         </div>
     </div>
 
+    <div class="section">
+        <h2>Waarom BRI mogelijk nauwkeuriger is dan BMI:</h2>
+        <ul>
+            <li>BRI houdt rekening met de tailleomtrek, een belangrijke indicator van buikvet</li>
+            <li>Gevoeliger voor veranderingen in lichaamsvorm en vetverdeling</li>
+            <li>Mogelijk beter in het voorspellen van cardiovasculaire gezondheidsrisico's</li>
+            <li>Biedt een nauwkeurigere beoordeling voor mensen met een hoge spiermassa</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Hoe de resultaten te interpreteren</h2>
+        <p>Onze gratis calculator geeft uw BRI-waarde en een interpretatie:</p>
+        <ul>
+            <li>BRI < 1: Extreem mager</li>
+            <li>1 ≤ BRI < 2: Normale lichaamsvorm</li>
+            <li>2 ≤ BRI < 3: Overgewicht</li>
+            <li>BRI ≥ 3: Obesitas</li>
+        </ul>
+        <p>Houd er rekening mee dat BRI slechts één gezondheidsindicator is. Voor een uitgebreid inzicht in uw gezondheidstoestand is het raadzaam een zorgprofessional te raadplegen.</p>
+    </div>
 
     <div class="faq-section">
         <h2>Veelgestelde Vragen (FAQ)</h2>
@@ -135,15 +154,6 @@
         </div>
     </div>
 
-    <div class="section references">
-        <h2>Referenties</h2>
-        <ol>
-            <li>Thomas, D. M., et al. (2013). Relationships between body roundness with body fat and visceral adipose tissue emerging from a new geometrical model. <em>Obesity</em>, 21(11), 2264-2271.</li>
-            <li>Chang, Y., et al. (2018). Body roundness index and its association with metabolic syndrome in type 2 diabetes mellitus. <em>Diabetes, Metabolic Syndrome and Obesity: Targets and Therapy</em>, 11, 827-833.</li>
-            <li>Rico-Martín, S., et al. (2020). Effectiveness of body roundness index in predicting metabolic syndrome: A systematic review and meta-analysis. <em>Obesity Reviews</em>, 21(9), e13023.</li>
-            <li>Perona, J. S., et al. (2019). Waist circumference and abdominal volume index are the strongest anthropometric discriminators of metabolic syndrome in Spanish adolescents. <em>European Journal of Clinical Investigation</em>, 49(3), e13060.</li>
-        </ol>
-    </div>
 
     <div class="section feedback-section">
         <h2>Help ons verbeteren</h2>
@@ -154,6 +164,16 @@
         </ul>
         <p>We horen graag van u! Stuur uw feedback naar <a href="mailto:support@bri-calculator.com">support@bri-calculator.com</a>.</p>
         <p>Uw input wordt zeer gewaardeerd en helpt ons onze service voortdurend te verbeteren.</p>
+    </div>
+
+    <div class="section references">
+        <h2>Referenties</h2>
+        <ol>
+            <li>Thomas, D. M., et al. (2013). Relationships between body roundness with body fat and visceral adipose tissue emerging from a new geometrical model. <em>Obesity</em>, 21(11), 2264-2271.</li>
+            <li>Chang, Y., et al. (2018). Body roundness index and its association with metabolic syndrome in type 2 diabetes mellitus. <em>Diabetes, Metabolic Syndrome and Obesity: Targets and Therapy</em>, 11, 827-833.</li>
+            <li>Rico-Martín, S., et al. (2020). Effectiveness of body roundness index in predicting metabolic syndrome: A systematic review and meta-analysis. <em>Obesity Reviews</em>, 21(9), e13023.</li>
+            <li>Perona, J. S., et al. (2019). Waist circumference and abdominal volume index are the strongest anthropometric discriminators of metabolic syndrome in Spanish adolescents. <em>European Journal of Clinical Investigation</em>, 49(3), e13060.</li>
+        </ol>
     </div>
 
     <footer class="site-footer">
@@ -226,7 +246,6 @@
                 const recommendations = document.getElementById('recommendations');
                 const bmiValue = document.getElementById('bmiValue');
                 const bmiComparison = document.getElementById('bmiComparison');
-                const briAdvantages = document.getElementById('briAdvantages');
 
                 briValue.textContent = bri.toFixed(2);
                 bmiValue.textContent = bmi.toFixed(2);
@@ -302,13 +321,6 @@
                     <p>Uw BMI is ${bmi.toFixed(2)}, wat in de categorie ${getBMICategory(bmi)} valt.</p>
                     <p>Hoewel BMI veel wordt gebruikt, biedt BRI een uitgebreidere beoordeling door rekening te houden met uw lichaamsvorm.</p>
                     <p>Uw BRI van ${bri.toFixed(2)} houdt rekening met uw tailleomtrek, wat een genuanceerder beeld geeft van uw lichaamssamenstelling en potentiële gezondheidsrisico's.</p>
-                `;
-
-                briAdvantages.innerHTML = `
-                    <li>BRI houdt rekening met de tailleomtrek, een belangrijke indicator van buikvet</li>
-                    <li>Gevoeliger voor veranderingen in lichaamsvorm en vetverdeling</li>
-                    <li>Mogelijk beter in het voorspellen van cardiovasculaire gezondheidsrisico's</li>
-                    <li>Biedt een nauwkeurigere beoordeling voor mensen met een hoge spiermassa</li>
                 `;
 
                 updateBRIChart(bri);
