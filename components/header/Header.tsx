@@ -14,13 +14,12 @@ const Header = () => {
               <Image
                 alt={siteConfig.name}
                 src="/logo.svg"
-                className="w-8 h-8"
+                className="w-12 h-12"
                 width={32}
                 height={32}
               />
-              <span className="text-gray-950 dark:text-gray-300">Clean</span>
-              <span className="text-blue-600">Next.js</span>
-              <span className="text-gray-950 dark:text-gray-300">Starter</span>
+              <span className="text-gray-950 dark:text-gray-300">BRI </span>
+              <span className="text-gray-950 dark:text-gray-300">Calculator</span>
             </Link>
             <div className="hidden md:flex md:gap-x-6"></div>
           </div>
