@@ -116,9 +116,6 @@ function getHealthStatusColor(bri: number): string {
   return "text-red-500";
 }
 
-function getBRIProgressValue(bri: number): number {
-  return Math.min(bri / 5 * 100, 100);
-}
 
 function getHealthStatus(bri: number): string {
   if (bri < 1) return "Extremely lean";

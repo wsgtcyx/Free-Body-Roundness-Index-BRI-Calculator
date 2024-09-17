@@ -66,7 +66,8 @@ const BRIChart: React.FC<BRIChartProps> = ({ bri }) => {
             y={-20} // 调整文本的位置
             textAnchor="middle"
             fontSize={12}
-            fill="black"
+            fill="currentColor"
+            className="text-gray-800 dark:text-gray-200"
           >
             Your BRI: {bri.toFixed(2)}
           </text>
