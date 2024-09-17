@@ -1,5 +1,6 @@
 import BRIChart from "@/components/home/BRIChart";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { AlertTriangle, BarChart2, Info, ThumbsUp } from 'lucide-react';
 import { FC } from 'react';
 
 interface BRIResultProps {
@@ -10,61 +11,100 @@ interface BRIResultProps {
 }
 
 export const BRIResult: FC<BRIResultProps> = ({ bri, bmi, gender, age }) => {
+  const healthStatus = getHealthStatus(bri);
+  const interpretation = getBRIInterpretation(bri, gender, age);
+  const risks = getHealthRisks(bri);
+  const recommendations = getRecommendations(bri);
+  const bmiCategory = getBMICategory(bmi);
+
   return (
     <div className="space-y-6 mt-6">
-      <Card>
+      <Card className="bg-gradient-to-r from-primary/10 to-primary/5">
         <CardHeader>
-          <CardTitle>Your BRI Results</CardTitle>
+          <CardTitle className="text-primary">Your Body Composition Results</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="space-y-2">
-            <p>Your Body Roundness Index (BRI): <strong>{bri.toFixed(2)}</strong></p>
-            <p>Health Status: <span className={`font-semibold ${getHealthStatusColor(bri)}`}>{getHealthStatus(bri)}</span></p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-4">
+              <div>
+                <span className="text-lg">Body Roundness Index (BRI):</span>
+                <span className="text-2xl font-bold text-primary ml-2">{bri.toFixed(2)}</span>
+              </div>
+              <div>
+                <span className="text-lg">Health Status:</span>
+                <span className={`text-xl font-semibold ml-2 ${getHealthStatusColor(bri)}`}>{healthStatus}</span>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <div>
+                <span className="text-lg">Body Mass Index (BMI):</span>
+                <span className="text-2xl font-bold text-primary ml-2">{bmi.toFixed(2)}</span>
+              </div>
+              <div>
+                <span className="text-lg">BMI Category:</span>
+                <span className={`text-xl font-semibold ml-2 ${getBMICategoryColor(bmi)}`}>{bmiCategory}</span>
+              </div>
+            </div>
+          </div>
+          <div className="mt-6">
             <BRIChart bri={bri} />
           </div>
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>What does this mean?</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p>{getBRIInterpretation(bri, gender, age)}</p>
-        </CardContent>
-      </Card>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <Card className="bg-blue-50 dark:bg-blue-900">
+          <CardHeader>
+            <CardTitle className="flex items-center text-blue-600 dark:text-blue-300">
+              <Info className="mr-2" />
+              What does this mean?
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-gray-800 dark:text-gray-200">{interpretation}</p>
+          </CardContent>
+        </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Potential Health Risks</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ul className="list-disc pl-5 space-y-1">
-            {getHealthRisks(bri)}
-          </ul>
-        </CardContent>
-      </Card>
+        <Card className="bg-yellow-50 dark:bg-yellow-900">
+          <CardHeader>
+            <CardTitle className="flex items-center text-yellow-600 dark:text-yellow-300">
+              <AlertTriangle className="mr-2" />
+              Potential Health Risks
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
+              {risks.map((risk, index) => <li key={index}>{risk}</li>)}
+            </ul>
+          </CardContent>
+        </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Recommendations</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ul className="list-disc pl-5 space-y-1">
-            {getRecommendations(bri)}
-          </ul>
-        </CardContent>
-      </Card>
+        <Card className="bg-green-50 dark:bg-green-900">
+          <CardHeader>
+            <CardTitle className="flex items-center text-green-600 dark:text-green-300">
+              <ThumbsUp className="mr-2" />
+              Recommendations
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
+              {recommendations.map((recommendation, index) => <li key={index}>{recommendation}</li>)}
+            </ul>
+          </CardContent>
+        </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>BRI vs BMI Comparison</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p>Your Body Mass Index (BMI): <strong>{bmi.toFixed(2)}</strong></p>
-          <p className="mt-2">{getBMIComparison(bmi, bri)}</p>
-        </CardContent>
-      </Card>
+        <Card className="bg-purple-50 dark:bg-purple-900">
+          <CardHeader>
+            <CardTitle className="flex items-center text-purple-600 dark:text-purple-300">
+              <BarChart2 className="mr-2" />
+              BRI vs BMI
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-gray-800 dark:text-gray-200">{getBMIComparison(bmi, bri)}</p>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 };
@@ -109,7 +149,7 @@ function getBRIInterpretation(bri: number, gender?: string, age?: string): strin
   return interpretation;
 }
 
-function getHealthRisks(bri: number): JSX.Element {
+function getHealthRisks(bri: number): string[] {
   let risks: string[] = [];
   if (bri < 1) {
     risks = [
@@ -135,10 +175,10 @@ function getHealthRisks(bri: number): JSX.Element {
       "Increased risk of osteoarthritis and joint problems due to excess weight",
     ];
   }
-  return <>{risks.map((risk, index) => <li key={index}>{risk}</li>)}</>;
+  return risks;
 }
 
-function getRecommendations(bri: number): JSX.Element {
+function getRecommendations(bri: number): string[] {
   let recommendations: string[] = [];
   if (bri < 1) {
     recommendations = [
@@ -166,15 +206,23 @@ function getRecommendations(bri: number): JSX.Element {
       "Consider joining a support group or working with a health coach for motivation and accountability",
     ];
   }
-  return <>{recommendations.map((recommendation, index) => <li key={index}>{recommendation}</li>)}</>;
+  return recommendations;
+}
+
+function getBMICategory(bmi: number): string {
+  if (bmi < 18.5) return "Underweight";
+  if (bmi < 25) return "Normal weight";
+  if (bmi < 30) return "Overweight";
+  return "Obese";
+}
+
+function getBMICategoryColor(bmi: number): string {
+  if (bmi < 18.5) return "text-blue-500";
+  if (bmi < 25) return "text-green-500";
+  if (bmi < 30) return "text-yellow-500";
+  return "text-red-500";
 }
 
 function getBMIComparison(bmi: number, bri: number): string {
-  let bmiCategory = "";
-  if (bmi < 18.5) bmiCategory = "underweight";
-  else if (bmi < 25) bmiCategory = "normal weight";
-  else if (bmi < 30) bmiCategory = "overweight";
-  else bmiCategory = "obese";
-
-  return `Your BMI is ${bmi.toFixed(2)}, which falls into the ${bmiCategory} category. While BMI is widely used, BRI provides a more comprehensive assessment by considering your body shape. Your BRI of ${bri.toFixed(2)} takes into account your waist circumference, offering a more nuanced view of your body composition and potential health risks.`;
+  return `While BMI (${bmi.toFixed(2)}) is widely used, BRI (${bri.toFixed(2)}) provides a more comprehensive assessment by considering your body shape and waist circumference, offering a more nuanced view of your body composition and potential health risks.`;
 }
