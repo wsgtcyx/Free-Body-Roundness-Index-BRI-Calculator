@@ -1,5 +1,5 @@
+import BRIChart from "@/components/home/BRIChart";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { FC } from 'react';
 
 interface BRIResultProps {
@@ -20,7 +20,7 @@ export const BRIResult: FC<BRIResultProps> = ({ bri, bmi, gender, age }) => {
           <div className="space-y-2">
             <p>Your Body Roundness Index (BRI): <strong>{bri.toFixed(2)}</strong></p>
             <p>Health Status: <span className={`font-semibold ${getHealthStatusColor(bri)}`}>{getHealthStatus(bri)}</span></p>
-            <Progress value={getBRIProgressValue(bri)} className="w-full" />
+            <BRIChart bri={bri} />
           </div>
         </CardContent>
       </Card>
