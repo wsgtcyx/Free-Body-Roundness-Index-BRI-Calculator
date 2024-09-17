@@ -2,18 +2,21 @@ import BRICalculator from '@/components/home/BRICalculator'
 import FAQ from '@/components/home/FAQ'
 import Feedback from '@/components/home/Feedback'
 import References from '@/components/home/References'
-import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function Home() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-center mb-6">Free Body Roundness Index (BRI) Calculator</h1>
-      <Badge variant="secondary" className="mx-auto mb-8">100% Free - No Registration Required</Badge>
+      <h1 className="text-4xl font-bold text-center mb-6 text-[#009b7d]">Free Body Roundness Index (BRI) Calculator</h1>
+      <div className="flex justify-center mb-8">
+        <div className="bg-[#33af97] text-white px-4 py-2 rounded-full text-lg font-bold inline-block shadow-md hover:bg-[#008068] transition-colors">
+          100% Free - No Registration Required
+        </div>
+      </div>
 
-      <Card className="mb-8">
+      <Card className="mb-8 border-t-4 border-[#009b7d]">
         <CardHeader>
-          <CardTitle>What is the Body Roundness Index (BRI)?</CardTitle>
+          <CardTitle className="text-[#009b7d] text-center">What is the Body Roundness Index (BRI)?</CardTitle>
         </CardHeader>
         <CardContent>
           <p>
@@ -26,11 +29,30 @@ export default function Home() {
         </CardContent>
       </Card>
 
+      <Card className="mb-8 border-t-4 border-[#009b7d]">
+        <CardHeader>
+          <CardTitle className="text-[#009b7d] text-center">How to Use This Calculator</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ol className="list-decimal pl-5 space-y-2">
+            <li>Choose units and enter height and weight.</li>
+            <li>Measure and input waist circumference.</li>
+            <li>Optional: Enter gender and age for personalized results.</li>
+            <li>Click "Calculate BRI" to see your results.</li>
+          </ol>
+          <p className="mt-4">
+            Remember, for the most accurate waist measurement, measure at the
+            midpoint between the lower margin of the last palpable rib and the top
+            of the iliac crest, typically around navel level.
+          </p>
+        </CardContent>
+      </Card>
+
       <BRICalculator />
 
-      <Card className="mb-8">
+      <Card className="mb-8 border-t-4 border-[#009b7d]">
         <CardHeader>
-          <CardTitle>Why BRI may be more accurate than BMI:</CardTitle>
+          <CardTitle className="text-[#009b7d] text-center">Why BRI may be more accurate than BMI:</CardTitle>
         </CardHeader>
         <CardContent>
           <ul className="list-disc pl-5 space-y-2">
@@ -42,9 +64,9 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      <Card className="mb-8">
+      <Card className="mb-8 border-t-4 border-[#009b7d]">
         <CardHeader>
-          <CardTitle>How to Interpret the Results</CardTitle>
+          <CardTitle className="text-[#009b7d] text-center">How to Interpret the Results</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="mb-4">Our free calculator provides your BRI value and an interpretation:</p>
