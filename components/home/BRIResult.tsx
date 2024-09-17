@@ -52,27 +52,27 @@ export const BRIResult: FC<BRIResultProps> = ({ bri, bmi, gender, age }) => {
         </CardContent>
       </Card>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Card className="bg-blue-50 dark:bg-blue-900">
-          <CardHeader>
+          <CardHeader className="p-4">
             <CardTitle className="flex items-center text-blue-600 dark:text-blue-300">
-              <Info className="mr-2" />
+              <Info className="mr-2 h-5 w-5" />
               What does this mean?
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="p-4 pt-0">
             <p className="text-gray-800 dark:text-gray-200">{interpretation}</p>
           </CardContent>
         </Card>
 
         <Card className="bg-yellow-50 dark:bg-yellow-900">
-          <CardHeader>
+          <CardHeader className="p-4">
             <CardTitle className="flex items-center text-yellow-600 dark:text-yellow-300">
-              <AlertTriangle className="mr-2" />
+              <AlertTriangle className="mr-2 h-5 w-5" />
               Potential Health Risks
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="p-4 pt-0">
             <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
               {risks.map((risk, index) => <li key={index}>{risk}</li>)}
             </ul>
@@ -80,13 +80,13 @@ export const BRIResult: FC<BRIResultProps> = ({ bri, bmi, gender, age }) => {
         </Card>
 
         <Card className="bg-green-50 dark:bg-green-900">
-          <CardHeader>
+          <CardHeader className="p-4">
             <CardTitle className="flex items-center text-green-600 dark:text-green-300">
-              <ThumbsUp className="mr-2" />
+              <ThumbsUp className="mr-2 h-5 w-5" />
               Recommendations
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="p-4 pt-0">
             <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
               {recommendations.map((recommendation, index) => <li key={index}>{recommendation}</li>)}
             </ul>
@@ -94,13 +94,13 @@ export const BRIResult: FC<BRIResultProps> = ({ bri, bmi, gender, age }) => {
         </Card>
 
         <Card className="bg-purple-50 dark:bg-purple-900">
-          <CardHeader>
+          <CardHeader className="p-4">
             <CardTitle className="flex items-center text-purple-600 dark:text-purple-300">
-              <BarChart2 className="mr-2" />
+              <BarChart2 className="mr-2 h-5 w-5" />
               BRI vs BMI
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="p-4 pt-0">
             <p className="text-gray-800 dark:text-gray-200">{getBMIComparison(bmi, bri)}</p>
           </CardContent>
         </Card>
