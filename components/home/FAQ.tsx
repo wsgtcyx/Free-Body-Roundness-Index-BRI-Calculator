@@ -7,7 +7,7 @@ export default function FAQ() {
   return (
     <Card className="mb-8">
       <CardHeader>
-        <CardTitle>Frequently Asked Questions (FAQ)</CardTitle>
+        <CardTitle className="text-center">Frequently Asked Questions (FAQ)</CardTitle>
       </CardHeader>
       <CardContent>
         <Accordion type="single" collapsible>

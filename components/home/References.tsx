@@ -4,7 +4,7 @@ export default function References() {
   return (
     <Card className="mb-8">
       <CardHeader>
-        <CardTitle>References</CardTitle>
+        <CardTitle className="text-center">References</CardTitle>
       </CardHeader>
       <CardContent>
         <ol className="list-decimal pl-5 space-y-2">

@@ -5,7 +5,7 @@ export default function Feedback() {
   return (
     <Card className="mb-8">
       <CardHeader>
-        <CardTitle>Help Us Improve</CardTitle>
+        <CardTitle className="text-center">Help Us Improve</CardTitle>
       </CardHeader>
       <CardContent>
         <p className="mb-4">
