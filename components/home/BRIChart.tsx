@@ -10,7 +10,7 @@ interface BRIChartProps {
 const BRIChart: React.FC<BRIChartProps> = ({ bri }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
-  const height = 80; // 稍微增加高度以容纳刻度标签
+  const height = 100; // 增加 SVG 的高度
   const segments = [
     { name: 'Extremely Lean', range: [0, 1], color: '#8dd3c7' },
     { name: 'Normal', range: [1, 2], color: '#80b1d3' },
@@ -36,7 +36,7 @@ const BRIChart: React.FC<BRIChartProps> = ({ bri }) => {
   });
 
   const barHeight = 30;
-  const yOffset = 10;
+  const yOffset = 30; // 增加顶部偏移量
 
   return (
     <div ref={containerRef} className="mt-4 w-full">
@@ -55,7 +55,7 @@ const BRIChart: React.FC<BRIChartProps> = ({ bri }) => {
           ))}
           <line
             x1={xScale(bri)}
-            y1={-5}
+            y1={-15} // 调整线的起点
             x2={xScale(bri)}
             y2={barHeight + 5}
             stroke="red"
@@ -63,7 +63,7 @@ const BRIChart: React.FC<BRIChartProps> = ({ bri }) => {
           />
           <text
             x={xScale(bri)}
-            y={-10}
+            y={-20} // 调整文本的位置
             textAnchor="middle"
             fontSize={12}
             fill="black"
@@ -89,7 +89,7 @@ const BRIChart: React.FC<BRIChartProps> = ({ bri }) => {
         {segments.map((segment, index) => (
           <div key={index} className="flex items-center">
             <div className="w-4 h-4 mr-2" style={{ backgroundColor: segment.color }}></div>
-            <span>{segment.name} ({segment.range[0]} ≤ BRI {index === segments.length - 1 ? '≥' : '<'} {segment.range[1]})</span>
+            <span>{segment.name} ({segment.range[0]} ≤ BRI {'<'} {segment.range[1]})</span>
           </div>
         ))}
       </div>
