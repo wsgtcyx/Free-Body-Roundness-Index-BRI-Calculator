@@ -1,58 +1,71 @@
 import { SiteConfig } from "@/types/siteConfig";
-import { BsGithub, BsTwitterX, BsWechat } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
-import { SiBuymeacoffee, SiJuejin } from "react-icons/si";
 
 const baseSiteConfig = {
-  name: "Clean Next.js Starter",
+  name: "Free Body Roundness Index (BRI) Calculator",
   description:
-    "Clean Next.js Starter is a meticulously designed Next.js starter template aimed at providing developers with a clean, efficient, and scalable foundation for quickly launching.",
-  url: "https://starter.weijunext.com",
-  ogImage: "https://starter.weijunext.com/og.png",
-  metadataBase: '/',
-  keywords: ["next.js starter", "next.js template", "awesome starter", "study next.js"],
+    "Use our 100% free Body Roundness Index (BRI) calculator to assess your body shape and health risks. Easy to use, no registration required.",
+  url: "https://bri-calculator.com",
+  ogImage: "https://bri-calculator.com/og.png",
+  metadataBase: "/",
+  keywords: [
+    "free BRI calculator",
+    "Body Roundness Index",
+    "free health assessment",
+    "body shape calculator",
+    "no cost BRI tool",
+  ],
   authors: [
     {
-      name: "weijunext",
-      url: "https://weijunext.com",
-      twitter: 'https://twitter.com/weijunext',
-    }
+      name: "BRI Calculator Team",
+      url: "https://bri-calculator.com",
+    },
   ],
-  creator: '@weijunext',
+  creator: "@yxchen1994",
   themeColors: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
-  defaultNextTheme: 'system', // next-theme option: system | dark | light
+  defaultNextTheme: "light",
   icons: {
     icon: "/favicon.ico",
     shortcut: "/logo.png",
-    apple: "/logo.png", // apple-touch-icon.png
+    apple: "/logo.png",
   },
   headerLinks: [
-    { name: 'repo', href: "https://github.com/weijunext/clean-nextjs-starter", icon: BsGithub },
-    { name: 'twitter', href: "https://twitter.com/weijunext", icon: BsTwitterX },
-    { name: 'buyMeCoffee', href: "https://www.buymeacoffee.com/weijunext", icon: SiBuymeacoffee }
+    // {
+    //   name: "github",
+    //   href: "https://github.com/wsgtcyx",
+    //   icon: BsGithub,
+    // },
+    // {
+    //   name: "twitter",
+    //   href: "https://twitter.com/your-twitter",
+    //   icon: BsTwitterX,
+    // },
   ],
   footerLinks: [
-    { name: 'email', href: "mailto:weijunext@gmail.com", icon: MdEmail },
-    { name: 'twitter', href: "https://twitter.com/weijunext", icon: BsTwitterX },
-    { name: 'github', href: "https://github.com/weijunext/", icon: BsGithub },
-    { name: 'buyMeCoffee', href: "https://www.buymeacoffee.com/weijunext", icon: SiBuymeacoffee },
-    { name: 'juejin', href: "https://juejin.cn/user/26044008768029", icon: SiJuejin },
-    { name: 'weChat', href: "https://weijunext.com/make-a-friend", icon: BsWechat }
+    { name: "email", href: "mailto:support@bri-calculator.com", icon: MdEmail },
+    // {
+    //   name: "twitter",
+    //   href: "https://twitter.com/your-twitter",
+    //   icon: BsTwitterX,
+    // },
+    // {
+    //   name: "github",
+    //   href: "https://github.com/your-github-repo",
+    //   icon: BsGithub,
+    // },
+    // {
+    //   name: "buyMeCoffee",
+    //   href: "https://www.buymeacoffee.com/your-profile",
+    //   icon: SiBuymeacoffee,
+    // },
   ],
   footerProducts: [
-    { url: 'https://phcopilot.ai/', name: 'Product Hunt Copilot' },
-    { url: 'https://smartexcel.cc/', name: 'Smart Excel' },
-    { url: 'https://landingpage.weijunext.com/', name: 'Landing Page Boilerplate' },
-    { url: 'https://nextjscn.org/', name: 'Next.js 中文文档' },
-    { url: 'https://nextjs.weijunext.com/', name: 'Next.js Practice' },
-    { url: 'https://starter.weijunext.com/', name: 'Next.js Starter' },
-    { url: 'https://github.com/weijunext/indie-hacker-tools', name: 'Indie Hacker Tools' },
-    { url: 'https://weijunext.com/', name: 'J实验室' },
-  ]
-}
+    { url: "https://bri-calculator.com/", name: "BRI Calculator" },
+  ],
+};
 
 export const siteConfig: SiteConfig = {
   ...baseSiteConfig,
@@ -72,4 +85,4 @@ export const siteConfig: SiteConfig = {
     images: [`${baseSiteConfig.url}/og.png`],
     creator: baseSiteConfig.creator,
   },
-}
+};

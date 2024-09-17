@@ -1,34 +1,70 @@
-import logger from "@/lib/logger";
+import BRICalculator from '@/components/home/BRICalculator'
+import FAQ from '@/components/home/FAQ'
+import Feedback from '@/components/home/Feedback'
+import References from '@/components/home/References'
+import { Badge } from "@/components/ui/badge"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function Home() {
-  logger.debug("Debug message");
-  logger.info("Info message");
-  logger.warn("Warning message");
-  logger.error("Error message");
   return (
-    <>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 pt-24 text-center">
-        <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-tight text-slate-900 sm:text-7xl dark:text-gray-200">
-          Clean{" "}
-          <span className="relative whitespace-nowrap text-blue-600">
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 418 42"
-              className="absolute left-0 top-2/3 h-[0.58em] w-full fill-blue-300/70"
-              preserveAspectRatio="none"
-            >
-              <path d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z"></path>
-            </svg>
-            <span className="relative"> Next.js </span>{" "}
-          </span>
-          Starter
-        </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-2xl tracking-tight text-slate-700 dark:text-slate-500">
-          Clean Next.js Starter is a meticulously designed Next.js starter
-          template aimed at providing developers with a clean, efficient, and
-          scalable foundation for quickly launching.
-        </p>
-      </div>
-    </>
-  );
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-4xl font-bold text-center mb-6">Free Body Roundness Index (BRI) Calculator</h1>
+      <Badge variant="secondary" className="mx-auto mb-8">100% Free - No Registration Required</Badge>
+
+      <Card className="mb-8">
+        <CardHeader>
+          <CardTitle>What is the Body Roundness Index (BRI)?</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p>
+            The Body Roundness Index (BRI) is a measure used to assess body shape
+            and health risks. Our free BRI calculator combines height and waist
+            circumference measurements to evaluate the "roundness" of the human
+            body. BRI can help assess health risks associated with obesity at no
+            cost to you.
+          </p>
+        </CardContent>
+      </Card>
+
+      <BRICalculator />
+
+      <Card className="mb-8">
+        <CardHeader>
+          <CardTitle>Why BRI may be more accurate than BMI:</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>BRI considers waist circumference, a key indicator of abdominal fat</li>
+            <li>More sensitive to changes in body shape and fat distribution</li>
+            <li>Potentially better at predicting cardiovascular health risks</li>
+            <li>Provides a more accurate assessment for people with high muscle mass</li>
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card className="mb-8">
+        <CardHeader>
+          <CardTitle>How to Interpret the Results</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="mb-4">Our free calculator provides your BRI value and an interpretation:</p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>BRI &lt; 1: Extremely lean</li>
+            <li>1 ≤ BRI &lt; 2: Normal body shape</li>
+            <li>2 ≤ BRI &lt; 3: Overweight</li>
+            <li>BRI ≥ 3: Obese</li>
+          </ul>
+          <p className="mt-4">
+            Please note that BRI is just one indicator of health. For a
+            comprehensive understanding of your health status, it's recommended to
+            consult with a healthcare professional.
+          </p>
+        </CardContent>
+      </Card>
+
+      <FAQ />
+      <Feedback />
+      <References />
+    </div>
+  )
 }

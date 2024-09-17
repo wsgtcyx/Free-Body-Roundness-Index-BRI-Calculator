@@ -1,4 +1,3 @@
-import BaiDuAnalytics from "@/app/BaiDuAnalytics";
 import GoogleAnalytics from "@/app/GoogleAnalytics";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
@@ -62,7 +61,6 @@ export default async function RootLayout({
         ) : (
           <>
             <GoogleAnalytics />
-            <BaiDuAnalytics />
           </>
         )}
       </body>
