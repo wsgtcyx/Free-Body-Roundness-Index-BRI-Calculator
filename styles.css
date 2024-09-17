@@ -259,3 +259,13 @@ button:hover {
     padding: 20px 0;
     border-top: 1px solid #ddd;
 }
+
+.subtle-link {
+    color: #999;
+    font-size: 0.9em;
+    text-decoration: none;
+}
+
+.subtle-link:hover {
+    text-decoration: underline;
+}
