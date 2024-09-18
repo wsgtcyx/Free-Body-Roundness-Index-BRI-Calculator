@@ -1,21 +1,17 @@
 "use client";
-import HeaderLinks from "@/components/header/HeaderLinks";
 import { LangSwitcher } from "@/components/header/LangSwitcher";
-import { siteConfig } from "@/config/site";
-import { MenuIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useState } from "react";
-import { CgClose } from "react-icons/cg";
 import { ThemedButton } from "../ThemedButton";
 
-const links = [
-  { label: "Features", href: "#Features" },
-  { label: "Pricing", href: "#Pricing" },
-  { label: "Testimonials", href: "#Testimonials" },
-  { label: "FAQ", href: "#FAQ" },
-];
+// const links = [
+//   { label: "Features", href: "#Features" },
+//   { label: "Pricing", href: "#Pricing" },
+//   { label: "Testimonials", href: "#Testimonials" },
+//   { label: "FAQ", href: "#FAQ" },
+// ];
 
 const Header = () => {
   const params = useParams();
@@ -23,31 +19,31 @@ const Header = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <header className="py-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <header className="py-10 pb-1 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <nav className="relative z-50 flex justify-between items-center">
         {/* Left section */}
         <div className="flex items-center md:gap-x-12 flex-1">
           <Link
             href="/"
-            aria-label="Landing Page Boilerplate"
-            title="Landing Page Boilerplate"
+            aria-label="BRI Calculator"
+            title="BRI Calculator"
             className="flex items-center space-x-1 font-bold"
           >
             <Image
               alt="Logo"
               src="/logo.svg"
-              className="w-16 h-16"
+              className="w-12 h-12 rounded-lg"
               width={32}
               height={32}
             />
             <span className="text-gray-950 dark:text-gray-300 hidden md:block">
-              {siteConfig.name}
+              BRI Calculator
             </span>
           </Link>
         </div>
 
         {/* Center section - Navigation */}
-        <ul className="hidden md:flex items-center justify-center gap-6 flex-1">
+        {/* <ul className="hidden md:flex items-center justify-center gap-6 flex-1">
           {links.map((link) => (
             <li key={link.label}>
               <Link
@@ -60,17 +56,19 @@ const Header = () => {
               </Link>
             </li>
           ))}
-        </ul>
+        </ul> */}
 
         {/* Right section */}
-        <div className="hidden md:flex items-center justify-end gap-x-6 flex-1">
-          <HeaderLinks />
-          <ThemedButton />
-          <LangSwitcher />
+        <div className="flex items-center justify-end gap-x-6 flex-1">
+          {/* <HeaderLinks /> */}
+          <div className="flex items-center space-x-2">
+            <ThemedButton />
+            <LangSwitcher />
+          </div>
         </div>
 
         {/* Mobile menu button */}
-        <div className="md:hidden">
+        {/* <div className="md:hidden">
           <button
             aria-label="Open Menu"
             title="Open Menu"
@@ -113,7 +111,7 @@ const Header = () => {
                     </button>
                   </div>
                 </div>
-                <nav>
+                {/* <nav>
                   <ul className="space-y-4">
                     {links.map((link) => (
                       <li key={link.label}>
@@ -129,7 +127,7 @@ const Header = () => {
                       </li>
                     ))}
                   </ul>
-                </nav>
+                </nav> 
                 <div className="pt-4">
                   <div className="flex items-center gap-x-5 justify-between">
                     <HeaderLinks />
@@ -142,7 +140,7 @@ const Header = () => {
               </div>
             </div>
           )}
-        </div>
+        </div>  */}
       </nav>
     </header>
   );
