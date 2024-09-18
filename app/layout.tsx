@@ -55,7 +55,7 @@ export default async function RootLayout({
           enableSystem
         >
           <Header />
-          <main className="flex flex-col items-center py-3">{children}</main>
+          <main className="flex flex-col items-center py-3 max-w-5xl mx-auto">{children}</main>
           <Footer />
           <Analytics />
           <TailwindIndicator />

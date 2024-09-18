@@ -19,7 +19,7 @@ const WhatIsBRI = ({ locale }: { locale: string }) => {
   const { title, content } = translations[locale as keyof typeof translations] || translations.en;
   return (
     <div>
-      <Card className="mt-16 mb-8 border-t-4 border-[#009b7d]">
+      <Card className="mt-10 mb-10 border-t-4 border-[#009b7d]">
         <CardHeader>
           <CardTitle className="text-[#009b7d] dark:text-[#19a58a] text-center">{title}</CardTitle>
         </CardHeader>
