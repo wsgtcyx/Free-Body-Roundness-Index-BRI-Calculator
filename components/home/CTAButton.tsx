@@ -1,21 +1,26 @@
 import { Button } from "@/components/ui/button";
-import { RocketIcon } from "lucide-react";
+import { CalculatorIcon } from "lucide-react";
 import Link from "next/link";
 
-const CTAButton = ({ locale }: { locale: any }) => {
+const CTAButton = ({ locale }: { locale: string }) => {
   return (
     <Link
-      href="https://github.com/weijunext/landing-page-boilerplate"
-      target="_blank"
-      rel="noopener noreferrer nofollow"
+      href="#calculator"
     >
       <Button
         variant="default"
-        className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white"
-        aria-label="Get Boilerplate"
+        className="flex items-center gap-2 bg-[#19a58a] hover:bg-[#148f77] text-white text-base"
+        aria-label="Calculate BRI now"
       >
-        <RocketIcon />
-        {locale.title}
+        <CalculatorIcon />
+        {(() => {
+          const ctaText = {
+            en: "Calculate BRI now",
+            de: "BRI jetzt berechnen",
+            nl: "Bereken BRI nu"
+          };
+          return ctaText[locale as keyof typeof ctaText] || ctaText.en;
+        })()}
       </Button>
     </Link>
   );

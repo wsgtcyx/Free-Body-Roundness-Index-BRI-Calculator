@@ -45,7 +45,7 @@ export default function BRICalculator() {
   }
 
   return (
-    <Card className="mb-8">
+    <Card className="mb-8" id="calculator">
       <CardHeader>
         <CardTitle>Calculate Your BRI</CardTitle>
       </CardHeader>
