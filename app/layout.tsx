@@ -54,7 +54,7 @@ export default async function RootLayout({
           defaultTheme={siteConfig.nextThemeColor}
           enableSystem
         >
-          <Header lang={lang || defaultLocale} />
+          <Header />
           <main className="flex flex-col items-center py-3">{children}</main>
           <Footer />
           <Analytics />

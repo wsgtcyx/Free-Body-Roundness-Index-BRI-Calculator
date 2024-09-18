@@ -1,5 +1,6 @@
 "use client";
 import { LangSwitcher } from "@/components/header/LangSwitcher";
+import { defaultLocale } from "@/lib/i18n";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -21,8 +22,8 @@ const titleConfig: { [key: string]: string } = {
 
 const Header = () => {
   const params = useParams();
-  const lang = params.lang;
-  const locale = lang === "" ? "en" : lang;
+  const lang = params.lang as string;
+  const locale = (lang in titleConfig) ? lang : defaultLocale;
 
   // const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
