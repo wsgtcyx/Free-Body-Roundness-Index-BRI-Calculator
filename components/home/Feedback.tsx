@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function Feedback() {
   return (
-    <Card className="mb-8">
+    <Card className="mt-8 border-2 border-[#009b7d] dark:border-[#33af97]">
       <CardHeader>
         <CardTitle className="text-center">Help Us Improve</CardTitle>
       </CardHeader>
