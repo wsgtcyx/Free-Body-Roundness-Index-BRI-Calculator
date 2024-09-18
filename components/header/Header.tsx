@@ -3,7 +3,6 @@ import { LangSwitcher } from "@/components/header/LangSwitcher";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useState } from "react";
 import { ThemedButton } from "../ThemedButton";
 
 // const links = [
@@ -13,11 +12,19 @@ import { ThemedButton } from "../ThemedButton";
 //   { label: "FAQ", href: "#FAQ" },
 // ];
 
+// 我希望添加title的config，这样我可以根据不同的语言显示不同的title，包括英语、德语、荷兰语
+const titleConfig: { [key: string]: string } = {
+  en: "BRI Calculator",
+  de: "BRI Rechner",
+  nl: "BRI Rekenmachine",
+};
+
 const Header = () => {
   const params = useParams();
   const lang = params.lang;
+  const locale = lang === "" ? "en" : lang;
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <header className="py-10 pb-1 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <nav className="relative z-50 flex justify-between items-center">
@@ -37,7 +44,7 @@ const Header = () => {
               height={32}
             />
             <span className="text-gray-950 dark:text-gray-300 hidden md:block">
-              BRI Calculator
+              {titleConfig[locale as keyof typeof titleConfig]}
             </span>
           </Link>
         </div>
