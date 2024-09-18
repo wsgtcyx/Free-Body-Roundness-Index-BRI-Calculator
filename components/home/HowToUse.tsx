@@ -46,7 +46,12 @@ const HowToUse = ({ locale }: { locale: string }) => {
         <CardContent>
           <ol className="list-decimal pl-5 space-y-2">
             {steps.map((step, index) => (
-              <li key={index}>{step}</li>
+              <li key={index} className="flex items-center mb-6 bg-gradient-to-r from-[#e6f7f5] to-white dark:from-[#1a2e2b] dark:to-[#1f2937] p-2 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg">
+                <span className="flex-shrink-0 w-6 h-6 bg-[#009b7d] text-white rounded-full flex items-center justify-center mr-4 text-lg font-bold">
+                  {index + 1}
+                </span>
+                <span className="text-gray-800 dark:text-gray-200">{step}</span>
+              </li>
             ))}
           </ol>
           <p className="mt-4">{tip}</p>
