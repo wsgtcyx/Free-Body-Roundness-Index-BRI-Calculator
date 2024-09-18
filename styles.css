@@ -269,3 +269,30 @@ button:hover {
 .subtle-link:hover {
     text-decoration: underline;
 }
+
+.bri-averages {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.bri-averages-male, .bri-averages-female {
+    width: 48%;
+}
+
+.bri-averages h3 {
+    margin-bottom: 10px;
+}
+
+.bri-averages ul {
+    padding-left: 20px;
+}
+
+@media (max-width: 768px) {
+    .bri-averages {
+        flex-direction: column;
+    }
+    .bri-averages-male, .bri-averages-female {
+        width: 100%;
+    }
+}

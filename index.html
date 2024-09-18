@@ -19,6 +19,33 @@
         .subtle-link:hover {
             text-decoration: underline;
         }
+
+        .bri-averages {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .bri-averages-male, .bri-averages-female {
+            width: 48%;
+        }
+
+        .bri-averages h3 {
+            margin-bottom: 10px;
+        }
+
+        .bri-averages ul {
+            padding-left: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .bri-averages {
+                flex-direction: column;
+            }
+            .bri-averages-male, .bri-averages-female {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
@@ -143,6 +170,36 @@
             <li>BRI ≥ 3: Obese</li>
         </ul>
         <p>Please note that BRI is just one indicator of health. For a comprehensive understanding of your health status, it's recommended to consult with a healthcare professional.</p>
+    </div>
+
+    <div class="section">
+        <h2>Average BRI by Age and Gender</h2>
+        <p>The following data from the study "Body Roundness Index and All-Cause Mortality Among US Adults" (Zhang et al.) shows average BRI values for different age groups and genders:</p>
+        <div class="bri-averages">
+            <div class="bri-averages-male">
+                <h3>Males</h3>
+                <ul>
+                    <li>18-29 years: 2.91 ± 0.98</li>
+                    <li>30-39 years: 3.54 ± 1.12</li>
+                    <li>40-49 years: 3.92 ± 1.18</li>
+                    <li>50-59 years: 4.21 ± 1.23</li>
+                    <li>60-69 years: 4.35 ± 1.25</li>
+                    <li>≥70 years: 4.31 ± 1.27</li>
+                </ul>
+            </div>
+            <div class="bri-averages-female">
+                <h3>Females</h3>
+                <ul>
+                    <li>18-29 years: 2.61 ± 0.89</li>
+                    <li>30-39 years: 3.13 ± 1.12</li>
+                    <li>40-49 years: 3.67 ± 1.30</li>
+                    <li>50-59 years: 4.25 ± 1.40</li>
+                    <li>60-69 years: 4.61 ± 1.46</li>
+                    <li>≥70 years: 4.71 ± 1.51</li>
+                </ul>
+            </div>
+        </div>
+        <p>These averages can help you compare your BRI to others in your age and gender group. However, remember that individual health factors are complex and these averages should be used as a general reference only.</p>
     </div>
 
     <div class="faq-section">
