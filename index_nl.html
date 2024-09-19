@@ -115,25 +115,24 @@
     </div>
 
     <div class="section">
-        <h2>Waarom BRI mogelijk nauwkeuriger is dan BMI:</h2>
-        <ul>
-            <li>BRI houdt rekening met de tailleomtrek, een belangrijke indicator van buikvet</li>
-            <li>Gevoeliger voor veranderingen in lichaamsvorm en vetverdeling</li>
-            <li>Mogelijk beter in het voorspellen van cardiovasculaire gezondheidsrisico's</li>
-            <li>Biedt een nauwkeurigere beoordeling voor mensen met een hoge spiermassa</li>
-        </ul>
-    </div>
-
-    <div class="section">
         <h2>Hoe de resultaten te interpreteren</h2>
-        <p>Onze gratis calculator geeft uw BRI-waarde en een interpretatie:</p>
+        <p>Onze gratis calculator geeft uw BRI-waarde en een interpretatie gebaseerd op recent onderzoek:</p>
         <ul>
-            <li>BRI < 1: Extreem mager</li>
-            <li>1 ≤ BRI < 2: Normale lichaamsvorm</li>
-            <li>2 ≤ BRI < 3: Overgewicht</li>
-            <li>BRI ≥ 3: Obesitas</li>
+            <li>BRI < 3,41: Zeer slanke lichaamsvorm (laagste 20% van de bevolking)</li>
+            <li>3,41 ≤ BRI < 4,45: Slank tot gemiddelde lichaamsvorm (lagere 20-40% van de bevolking)</li>
+            <li>4,45 ≤ BRI < 5,46: Gemiddelde lichaamsvorm (middelste 40-60% van de bevolking)</li>
+            <li>5,46 ≤ BRI < 6,91: Bovengemiddelde lichaamsrondheid (bovenste 60-80% van de bevolking)</li>
+            <li>BRI ≥ 6,91: Hoge lichaamsrondheid (bovenste 20% van de bevolking)</li>
         </ul>
-        <p>Houd er rekening mee dat BRI slechts één gezondheidsindicator is. Voor een uitgebreid inzicht in uw gezondheidstoestand is het raadzaam een zorgprofessional te raadplegen.</p>
+        <p>Om u te helpen uw resultaten te begrijpen:</p>
+        <ul>
+            <li>Als uw BRI lager is dan 3,41, heeft u een zeer slanke lichaamsvorm met een relatief kleine tailleomtrek.</li>
+            <li>Een BRI tussen 3,41 en 4,45 duidt op een slanke tot gemiddelde lichaamsvorm, met een tailleomvang kleiner dan de meeste mensen.</li>
+            <li>Als uw BRI tussen 4,45 en 5,46 ligt, heeft u een gemiddelde lichaamsvorm, niet bijzonder slank of rond.</li>
+            <li>Een BRI tussen 5,46 en 6,91 wijst op een bovengemiddelde lichaamsrondheid, met een tailleomtrek groter dan de meeste mensen.</li>
+            <li>Als uw BRI 6,91 of hoger is, heeft u een hoge lichaamsrondheid, wat geassocieerd kan zijn met verhoogde gezondheidsrisico's.</li>
+        </ul>
+        <p>Houd er rekening mee dat BRI slechts één indicator van gezondheid is. Voor een uitgebreid inzicht in uw gezondheidstoestand wordt aangeraden een zorgprofessional te raadplegen. Zij kunnen bij het interpreteren van uw BRI rekening houden met andere factoren zoals dieet, bewegingsgewoonten, genetica en algehele gezondheid.</p>
     </div>
 
     <div class="section">
@@ -164,6 +163,16 @@
             </div>
         </div>
         <p>Deze gemiddelden kunnen u helpen uw BRI te vergelijken met anderen in uw leeftijds- en geslachtsgroep. Onthoud echter dat individuele gezondheidsfactoren complex zijn en dat deze gemiddelden alleen als algemene referentie moeten worden gebruikt.</p>
+    </div>
+
+    <div class="section">
+        <h2>Waarom BRI mogelijk nauwkeuriger is dan BMI:</h2>
+        <ul>
+            <li>BRI houdt rekening met de tailleomtrek, een belangrijke indicator van buikvet</li>
+            <li>Gevoeliger voor veranderingen in lichaamsvorm en vetverdeling</li>
+            <li>Mogelijk beter in het voorspellen van cardiovasculaire gezondheidsrisico's</li>
+            <li>Biedt een nauwkeurigere beoordeling voor mensen met een hoge spiermassa</li>
+        </ul>
     </div>
 
     <div class="faq-section">
@@ -292,9 +301,9 @@
 
                 let status, interpretation, risks, advice;
 
-                if (bri < 1) {
-                    status = 'Extreem mager';
-                    interpretation = 'Uw BRI geeft aan dat u extreem mager bent. Dit kan bepaalde gezondheidsrisico\'s met zich meebrengen.';
+                if (bri < 3.41) {
+                    status = 'Zeer slank';
+                    interpretation = 'Uw BRI geeft aan dat u zeer slank bent. Dit kan bepaalde gezondheidsrisico\'s met zich meebrengen.';
                     risks = [
                         'Verhoogd risico op voedingstekorten, vooral vitaminen en mineralen',
                         'Mogelijke verzwakking van het immuunsysteem',
@@ -305,9 +314,9 @@
                         'Verhoog geleidelijk de calorie-inname met voedzame levensmiddelen',
                         'Overweeg krachttraining om spiermassa op te bouwen'
                     ];
-                } else if (bri < 2) {
-                    status = 'Normaal';
-                    interpretation = 'Uw BRI valt binnen het normale bereik, wat duidt op een gezonde lichaamsvorm.';
+                } else if (bri < 4.45) {
+                    status = 'Slank tot gemiddeld';
+                    interpretation = 'Uw BRI valt binnen het bereik van slank tot gemiddeld, wat duidt op een gezonde lichaamsvorm.';
                     risks = [
                         'Over het algemeen laag risico op obesitas-gerelateerde gezondheidsproblemen',
                         'Blijf bewust van familiegeschiedenis voor mogelijke genetische gezondheidsrisico\'s'
@@ -317,9 +326,21 @@
                         'Doe regelmatig aan lichaamsbeweging, streef naar ten minste 150 minuten matige beweging per week',
                         'Plan regelmatige gezondheidscontroles om uw algehele gezondheid te monitoren'
                     ];
-                } else if (bri < 3) {
-                    status = 'Overgewicht';
-                    interpretation = 'Uw BRI suggereert dat u overgewicht heeft, wat bepaalde gezondheidsrisico\'s kan verhogen.';
+                } else if (bri < 5.46) {
+                    status = 'Gemiddeld';
+                    interpretation = 'Uw BRI suggereert dat u een gemiddelde lichaamsvorm hebt, wat geen specifieke gezondheidsrisico\'s impliceert.';
+                    risks = [
+                        'Over het algemeen laag risico op obesitas-gerelateerde gezondheidsproblemen',
+                        'Blijf bewust van familiegeschiedenis voor mogelijke genetische gezondheidsrisico\'s'
+                    ];
+                    advice = [
+                        'Handhaaf een evenwichtig dieet rijk aan fruit, groenten, magere eiwitten en volkoren granen',
+                        'Doe regelmatig aan lichaamsbeweging, streef naar ten minste 150 minuten matige beweging per week',
+                        'Plan regelmatige gezondheidscontroles om uw algehele gezondheid te monitoren'
+                    ];
+                } else if (bri < 6.91) {
+                    status = 'Bovengemiddeld';
+                    interpretation = 'Uw BRI wijst op een bovengemiddelde lichaamsrondheid, wat geassocieerd wordt met een verhoogd risico op bepaalde gezondheidsproblemen.';
                     risks = [
                         'Verhoogd risico op type 2 diabetes en insulineresistentie',
                         'Verhoogde kans op het ontwikkelen van hoge bloeddruk',
@@ -331,8 +352,8 @@
                         'Overweeg een voedingsdeskundige te raadplegen voor een persoonlijk voedingsplan'
                     ];
                 } else {
-                    status = 'Obesitas';
-                    interpretation = 'Uw BRI wijst op obesitas, wat geassocieerd wordt met verschillende gezondheidsrisico\'s.';
+                    status = 'Hoog';
+                    interpretation = 'Uw BRI wijst op een hoge lichaamsrondheid, wat geassocieerd wordt met verschillende gezondheidsrisico\'s.';
                     risks = [
                         'Aanzienlijk verhoogd risico op hart- en vaatziekten, waaronder hartaanval en beroerte',
                         'Hogere kans op het ontwikkelen van bepaalde vormen van kanker, zoals darm- en borstkanker',
@@ -375,43 +396,48 @@
 
             function updateBRIChart(bri) {
                 const chartContainer = document.getElementById('briChart');
-                const briPosition = Math.min(bri / 5 * 100, 100);
+                const briPosition = Math.min(bri / 16 * 100, 100);
                 chartContainer.innerHTML = `
                     <div class="bri-chart-container" style="position: relative; height: 130px; margin-bottom: 20px;">
                         <div style="position: absolute; top: 5%; left: ${briPosition}%; transform: translateX(-50%); text-align: center; font-weight: bold; white-space: nowrap;">
                             Uw BRI: ${bri.toFixed(2)}
                         </div>
                         <div class="bri-bar" style="width: 100%; height: 30px; background-color: #f0f0f0; position: absolute; top: 25%;">
-                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(75, 192, 192, 0.5); left: 0; width: 20%;" title="Extreem Mager: BRI < 1"></div>
-                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(54, 162, 235, 0.5); left: 20%; width: 20%;" title="Normaal: 1 ≤ BRI < 2"></div>
-                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(255, 206, 86, 0.5); left: 40%; width: 20%;" title="Overgewicht: 2 ≤ BRI < 3"></div>
-                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(255, 99, 132, 0.5); left: 60%; width: 40%;" title="Obesitas: BRI ≥ 3"></div>
+                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(75, 192, 192, 0.5); left: 0; width: 21.3125%;" title="Zeer slank: BRI < 3,41"></div>
+                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(54, 162, 235, 0.5); left: 21.3125%; width: 6.5%;" title="Slank tot gemiddeld: 3,41 ≤ BRI < 4,45"></div>
+                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(255, 206, 86, 0.5); left: 27.8125%; width: 6.3125%;" title="Gemiddeld: 4,45 ≤ BRI < 5,46"></div>
+                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(255, 99, 132, 0.5); left: 34.125%; width: 9.0625%;" title="Bovengemiddeld: 5,46 ≤ BRI < 6,91"></div>
+                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(255, 0, 0, 0.5); left: 43.1875%; width: 56.8125%;" title="Hoog: BRI ≥ 6,91"></div>
                             <div class="bri-marker" style="position: absolute; top: -10px; height: 50px; width: 2px; background-color: red; left: ${briPosition}%;"></div>
                         </div>
                         <div style="position: absolute; top: 70%; left: 0; right: 0; font-size: 12px;">
                             <span style="position: absolute; left: 0; transform: translateX(-50%);">0</span>
-                            <span style="position: absolute; left: 20%; transform: translateX(-50%);">1</span>
-                            <span style="position: absolute; left: 40%; transform: translateX(-50%);">2</span>
-                            <span style="position: absolute; left: 60%; transform: translateX(-50%);">3</span>
-                            <span style="position: absolute; left: 100%; transform: translateX(-50%);">5+</span>
+                            <span style="position: absolute; left: 25%; transform: translateX(-50%);">4</span>
+                            <span style="position: absolute; left: 50%; transform: translateX(-50%);">8</span>
+                            <span style="position: absolute; left: 75%; transform: translateX(-50%);">12</span>
+                            <span style="position: absolute; left: 100%; transform: translateX(-50%);">16</span>
                         </div>
                     </div>
                     <div style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 5px; font-size: 12px;">
                         <div style="display: flex; align-items: center; margin-right: 5px; margin-bottom: 5px;">
                             <span style="width: 15px; height: 15px; background-color: rgba(75, 192, 192, 0.5); display: inline-block; margin-right: 3px;"></span>
-                            <span>Extreem Mager (BRI &lt; 1)</span>
+                            <span>Zeer slank (BRI &lt; 3,41)</span>
                         </div>
                         <div style="display: flex; align-items: center; margin-right: 5px; margin-bottom: 5px;">
                             <span style="width: 15px; height: 15px; background-color: rgba(54, 162, 235, 0.5); display: inline-block; margin-right: 3px;"></span>
-                            <span>Normaal (1 ≤ BRI &lt; 2)</span>
+                            <span>Slank tot gemiddeld (3,41 ≤ BRI &lt; 4,45)</span>
                         </div>
                         <div style="display: flex; align-items: center; margin-right: 5px; margin-bottom: 5px;">
                             <span style="width: 15px; height: 15px; background-color: rgba(255, 206, 86, 0.5); display: inline-block; margin-right: 3px;"></span>
-                            <span>Overgewicht (2 ≤ BRI &lt; 3)</span>
+                            <span>Gemiddeld (4,45 ≤ BRI &lt; 5,46)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; margin-right: 5px; margin-bottom: 5px;">
+                            <span style="width: 15px; height: 15px; background-color: rgba(255, 99, 132, 0.5); display: inline-block; margin-right: 3px;"></span>
+                            <span>Bovengemiddeld (5,46 ≤ BRI &lt; 6,91)</span>
                         </div>
                         <div style="display: flex; align-items: center; margin-bottom: 5px;">
-                            <span style="width: 15px; height: 15px; background-color: rgba(255, 99, 132, 0.5); display: inline-block; margin-right: 3px;"></span>
-                            <span>Obesitas (BRI ≥ 3)</span>
+                            <span style="width: 15px; height: 15px; background-color: rgba(255, 0, 0, 0.5); display: inline-block; margin-right: 3px;"></span>
+                            <span>Hoog (BRI ≥ 6,91)</span>
                         </div>
                     </div>
                 `;
