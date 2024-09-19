@@ -8,6 +8,54 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useState } from 'react'
 
+const translations = {
+  "en": {
+    "title": "Calculate Your BRI",
+    "units": "Units:",
+    "imperial": "Imperial (in, lbs)",
+    "metric": "Metric (cm, kg)",
+    "height": "Height:",
+    "weight": "Weight:",
+    "waist": "Waist Circumference:",
+    "gender": "Gender (optional):",
+    "age": "Age (optional):",
+    "male": "Male",
+    "female": "Female",
+    "calculate": "Calculate BRI",
+    "fillAllFields": "Please fill in all required fields."
+  },
+  "nl": {
+    "title": "Bereken uw BRI",
+    "units": "Eenheden:",
+    "imperial": "Imperiaal (in, lbs)",
+    "metric": "Metrisch (cm, kg)",
+    "height": "Lengte:",
+    "weight": "Gewicht:",
+    "waist": "Tailleomtrek:",
+    "gender": "Geslacht (optioneel):",
+    "age": "Leeftijd (optioneel):",
+    "male": "Man",
+    "female": "Vrouw",
+    "calculate": "Bereken BRI",
+    "fillAllFields": "Vul alstublieft alle verplichte velden in."
+  },
+  "de": {
+    "title": "Berechnen Sie Ihren BRI",
+    "units": "Einheiten:",
+    "imperial": "Imperial (in, lbs)",
+    "metric": "Metrisch (cm, kg)",
+    "height": "Größe:",
+    "weight": "Gewicht:",
+    "waist": "Taillenumfang:",
+    "gender": "Geschlecht (optional):",
+    "age": "Alter (optional):",
+    "male": "Männlich",
+    "female": "Weiblich",
+    "calculate": "BRI berechnen",
+    "fillAllFields": "Bitte füllen Sie alle erforderlichen Felder aus."
+  }
+};
+
 export default function BRICalculator({ locale }: { locale: string }) {
   const [units, setUnits] = useState('imperial')
   const [height, setHeight] = useState('')
@@ -17,6 +65,8 @@ export default function BRICalculator({ locale }: { locale: string }) {
   const [age, setAge] = useState('')
   const [bri, setBri] = useState<number | null>(null)
   const [bmi, setBmi] = useState<number | null>(null)
+
+  const t = translations[locale as keyof typeof translations];
 
   const inputClassName = "border-2 border-[#009b7d] dark:border-[#33af97] focus:ring-2 focus:ring-[#009b7d] dark:focus:ring-[#33af97]"
 
@@ -42,32 +92,32 @@ export default function BRICalculator({ locale }: { locale: string }) {
       setBri(bri);
       setBmi(bmi);
     } else {
-      alert("Please fill in all required fields.");
+      alert(t.fillAllFields);
     }
   }
 
   return (
     <Card className="mx-auto max-w-5xl mb-8 border-2 border-[#009b7d] dark:border-[#33af97]" id="calculator">
       <CardHeader>
-        <CardTitle className="text-[#009b7d] dark:text-[#33af97] text-center">Calculate Your BRI</CardTitle>
+        <CardTitle className="text-[#009b7d] dark:text-[#33af97] text-center">{t.title}</CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={calculateBRI} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="units">Units:</Label>
+              <Label htmlFor="units">{t.units}</Label>
               <Select onValueChange={(value) => setUnits(value)}>
                 <SelectTrigger id="units" className={inputClassName}>
-                  <SelectValue placeholder="Select units" />
+                  <SelectValue placeholder={t.units} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="imperial">Imperial (in, lbs)</SelectItem>
-                  <SelectItem value="metric">Metric (cm, kg)</SelectItem>
+                  <SelectItem value="imperial">{t.imperial}</SelectItem>
+                  <SelectItem value="metric">{t.metric}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="height">Height:</Label>
+              <Label htmlFor="height">{t.height}</Label>
               <Input
                 id="height"
                 type="number"
@@ -79,7 +129,7 @@ export default function BRICalculator({ locale }: { locale: string }) {
               <span>{units === 'imperial' ? 'in' : 'cm'}</span>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="weight">Weight:</Label>
+              <Label htmlFor="weight">{t.weight}</Label>
               <Input
                 id="weight"
                 type="number"
@@ -91,7 +141,7 @@ export default function BRICalculator({ locale }: { locale: string }) {
               <span>{units === 'imperial' ? 'lbs' : 'kg'}</span>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="waist">Waist Circumference:</Label>
+              <Label htmlFor="waist">{t.waist}</Label>
               <Input
                 id="waist"
                 type="number"
@@ -103,19 +153,19 @@ export default function BRICalculator({ locale }: { locale: string }) {
               <span>{units === 'imperial' ? 'in' : 'cm'}</span>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="gender">Gender (optional):</Label>
+              <Label htmlFor="gender">{t.gender}</Label>
               <Select onValueChange={(value) => setGender(value)}>
                 <SelectTrigger id="gender" className={inputClassName}>
-                  <SelectValue placeholder="Select" />
+                  <SelectValue placeholder={t.gender} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="male">Male</SelectItem>
-                  <SelectItem value="female">Female</SelectItem>
+                  <SelectItem value="male">{t.male}</SelectItem>
+                  <SelectItem value="female">{t.female}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="age">Age (optional):</Label>
+              <Label htmlFor="age">{t.age}</Label>
               <Input
                 id="age"
                 type="number"
@@ -127,7 +177,7 @@ export default function BRICalculator({ locale }: { locale: string }) {
               />
             </div>
           </div>
-          <Button type="submit" className="w-full">Calculate BRI</Button>
+          <Button type="submit" className="w-full">{t.calculate}</Button>
         </form>
         {bri !== null && bmi !== null && (
           <BRIResult locale={locale} bri={bri} bmi={bmi} gender={gender} age={age} />
