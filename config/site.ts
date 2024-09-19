@@ -8,13 +8,7 @@ const baseSiteConfig = {
   url: "https://bri-calculator.com",
   ogImage: "https://bri-calculator.com/og.png",
   metadataBase: "/",
-  keywords: [
-    "free BRI calculator",
-    "Body Roundness Index",
-    "free health assessment",
-    "body shape calculator",
-    "no cost BRI tool",
-  ],
+  keywords: [],
   authors: [
     {
       name: "BRI Calculator Team",
