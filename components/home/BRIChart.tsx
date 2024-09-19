@@ -3,20 +3,52 @@ import { scaleLinear } from '@visx/scale';
 import { Bar } from '@visx/shape';
 import React, { useEffect, useRef, useState } from 'react';
 
+const translations = {
+  "en": {
+    "chartDescription": "The chart below shows your BRI in relation to different health categories. The red line indicates your current BRI value.",
+    "yourBRI": "Your BRI:",
+    "veryLean": "Very lean",
+    "leanToAverage": "Lean to average",
+    "average": "Average",
+    "aboveAverage": "Above average",
+    "high": "High"
+  },
+  "nl": {
+    "chartDescription": "De onderstaande grafiek toont uw BRI in relatie tot verschillende gezondheidscategorieën. De rode lijn geeft uw huidige BRI-waarde aan.",
+    "yourBRI": "Uw BRI:",
+    "veryLean": "Zeer slank",
+    "leanToAverage": "Slank tot gemiddeld",
+    "average": "Gemiddeld",
+    "aboveAverage": "Bovengemiddeld",
+    "high": "Hoog"
+  },
+  "de": {
+    "chartDescription": "Das folgende Diagramm zeigt Ihren BRI in Bezug auf verschiedene Gesundheitskategorien. Die rote Linie zeigt Ihren aktuellen BRI-Wert an.",
+    "yourBRI": "Ihr BRI:",
+    "veryLean": "Sehr schlank",
+    "leanToAverage": "Schlank bis durchschnittlich",
+    "average": "Durchschnittlich",
+    "aboveAverage": "Überdurchschnittlich",
+    "high": "Hoch"
+  }
+};
+
 interface BRIChartProps {
   bri: number;
+  locale: string;
 }
 
-const BRIChart: React.FC<BRIChartProps & { locale: string }> = ({ bri, locale }) => {
+const BRIChart: React.FC<BRIChartProps> = ({ bri, locale }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
   const height = 100;
+  const t = translations[locale as keyof typeof translations];
   const segments = [
-    { name: 'Very lean', range: [0, 3.41], color: '#8dd3c7' },
-    { name: 'Lean to average', range: [3.41, 4.45], color: '#80b1d3' },
-    { name: 'Average', range: [4.45, 5.46], color: '#fdb462' },
-    { name: 'Above average', range: [5.46, 6.91], color: '#fb8072' },
-    { name: 'High', range: [6.91, 16], color: '#e31a1c' },
+    { name: t.veryLean, range: [0, 3.41], color: '#8BC34A' },
+    { name: t.leanToAverage, range: [3.41, 4.45], color: '#4CAF50' },
+    { name: t.average, range: [4.45, 5.46], color: '#009688' },
+    { name: t.aboveAverage, range: [5.46, 6.91], color: '#00796B' },
+    { name: t.high, range: [6.91, 16], color: '#004D40' },
   ];
 
   useEffect(() => {
@@ -41,7 +73,7 @@ const BRIChart: React.FC<BRIChartProps & { locale: string }> = ({ bri, locale })
 
   return (
     <div ref={containerRef} className="mt-4 w-full">
-      <p className="text-sm mb-2">The chart below shows your BRI in relation to different health categories. The red line indicates your current BRI value.</p>
+      <p className="text-sm mb-2">{t.chartDescription}</p>
       <svg width={width} height={height} className="mx-auto">
         <Group top={yOffset}>
           {segments.map((segment, index) => (
@@ -70,9 +102,8 @@ const BRIChart: React.FC<BRIChartProps & { locale: string }> = ({ bri, locale })
             fill="currentColor"
             className="text-gray-800 dark:text-gray-200"
           >
-            Your BRI: {bri.toFixed(2)}
+            {t.yourBRI} {bri.toFixed(2)}
           </text>
-          {/* 更新刻度标签为类别分界线 */}
           {[0, 3.41, 4.45, 5.46, 6.91, 16].map((tick, index) => (
             <React.Fragment key={tick}>
               <line

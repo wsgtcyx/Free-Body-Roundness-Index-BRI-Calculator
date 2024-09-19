@@ -177,7 +177,7 @@ export default function BRICalculator({ locale }: { locale: string }) {
               />
             </div>
           </div>
-          <Button type="submit" className="w-full">{t.calculate}</Button>
+          <Button type="submit" className="w-full bg-[#19a58a] hover:bg-[#148f77] text-white">{t.calculate}</Button>
         </form>
         {bri !== null && bmi !== null && (
           <BRIResult locale={locale} bri={bri} bmi={bmi} gender={gender} age={age} />
