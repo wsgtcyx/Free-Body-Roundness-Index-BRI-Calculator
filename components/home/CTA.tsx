@@ -9,7 +9,10 @@ const locales = {
     highlight1: "More accurate",
     highlight2: "more insightful",
     highlight3: "comprehensive view",
-    content: "than BMI, for your health journey. BRI offers a of your body composition, empowering you to make informed decisions about your wellness.",
+    content1: "than BMI for your health journey.",
+    content2: "BRI offers a",
+    content3: "of your body composition,",
+    content4: "empowering you to make informed decisions about your wellness.",
     cta: "Calculate Your BRI Now"
   },
   nl: {
@@ -18,7 +21,9 @@ const locales = {
     highlight1: "Nauwkeuriger",
     highlight2: "meer inzichtelijk",
     highlight3: "uitgebreid beeld",
-    content: "dan BMI, voor uw gezondheidsreis. BRI biedt een van uw lichaamssamenstelling, waardoor u geïnformeerde beslissingen kunt nemen over uw welzijn.",
+    content1: "dan BMI, voor uw gezondheidsreis.",
+    content2: "BRI biedt een",
+    content3: "van uw lichaamssamenstelling, waardoor u geïnformeerde beslissingen kunt nemen over uw welzijn.",
     cta: "Bereken nu uw BRI"
   },
   de: {
@@ -27,7 +32,9 @@ const locales = {
     highlight1: "Genauer",
     highlight2: "aufschlussreicher",
     highlight3: "umfassenden Überblick",
-    content: "als BMI für Ihre Gesundheitsreise. BRI bietet einen über Ihre Körperzusammensetzung und ermöglicht es Ihnen, fundierte Entscheidungen über Ihr Wohlbefinden zu treffen.",
+    content1: "als BMI für Ihre Gesundheitsreise.",
+    content2: "BRI bietet einen",
+    content3: "über Ihre Körperzusammensetzung und ermöglicht es Ihnen, fundierte Entscheidungen über Ihr Wohlbefinden zu treffen.",
     cta: "Berechnen Sie jetzt Ihren BRI"
   }
 };
@@ -44,13 +51,15 @@ const CTA = ({ locale = "en" }: { locale: string }) => {
           <RoughNotation type="box" color="#b71c1c" show={true}>
             {text.highlight1}
           </RoughNotation>{" "}
+          {text.content1} {text.content2}{" "}
           <RoughNotation type="box" color="#b71c1c" show={true}>
             {text.highlight2}
           </RoughNotation>{" "}
+          and{" "}
           <RoughNotation type="box" color="#b71c1c" show={true}>
             {text.highlight3}
           </RoughNotation>{" "}
-          {text.content}
+          {text.content3} {text.content4}
         </p>
       </div>
       <CTAButton locale={text.cta} />

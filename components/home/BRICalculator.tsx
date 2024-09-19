@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Calendar, Ruler, RulerIcon, Scale, Users, Weight } from 'lucide-react'
 import { useState } from 'react'
 
 const translations = {
@@ -105,7 +106,10 @@ export default function BRICalculator({ locale }: { locale: string }) {
         <form onSubmit={calculateBRI} className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="units">{t.units}</Label>
+              <Label htmlFor="units" className="flex items-center gap-2">
+                <Scale className="w-5 h-5" />
+                {t.units}
+              </Label>
               <Select onValueChange={(value) => setUnits(value)}>
                 <SelectTrigger id="units" className={inputClassName}>
                   <SelectValue placeholder={t.units} />
@@ -117,7 +121,10 @@ export default function BRICalculator({ locale }: { locale: string }) {
               </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="height">{t.height}</Label>
+              <Label htmlFor="height" className="flex items-center gap-2">
+                <RulerIcon className="w-5 h-5" />
+                {t.height}
+              </Label>
               <Input
                 id="height"
                 type="number"
@@ -129,7 +136,10 @@ export default function BRICalculator({ locale }: { locale: string }) {
               <span>{units === 'imperial' ? 'in' : 'cm'}</span>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="weight">{t.weight}</Label>
+              <Label htmlFor="weight" className="flex items-center gap-2">
+                <Weight className="w-5 h-5" />
+                {t.weight}
+              </Label>
               <Input
                 id="weight"
                 type="number"
@@ -141,7 +151,10 @@ export default function BRICalculator({ locale }: { locale: string }) {
               <span>{units === 'imperial' ? 'lbs' : 'kg'}</span>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="waist">{t.waist}</Label>
+              <Label htmlFor="waist" className="flex items-center gap-2">
+                <Ruler className="w-5 h-5" />
+                {t.waist}
+              </Label>
               <Input
                 id="waist"
                 type="number"
@@ -153,7 +166,10 @@ export default function BRICalculator({ locale }: { locale: string }) {
               <span>{units === 'imperial' ? 'in' : 'cm'}</span>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="gender">{t.gender}</Label>
+              <Label htmlFor="gender" className="flex items-center gap-2">
+                <Users className="w-5 h-5" />
+                {t.gender}
+              </Label>
               <Select onValueChange={(value) => setGender(value)}>
                 <SelectTrigger id="gender" className={inputClassName}>
                   <SelectValue placeholder={t.gender} />
@@ -165,7 +181,10 @@ export default function BRICalculator({ locale }: { locale: string }) {
               </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="age">{t.age}</Label>
+              <Label htmlFor="age" className="flex items-center gap-2">
+                <Calendar className="w-5 h-5" />
+                {t.age}
+              </Label>
               <Input
                 id="age"
                 type="number"
