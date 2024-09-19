@@ -7,7 +7,7 @@ interface BRIChartProps {
   bri: number;
 }
 
-const BRIChart: React.FC<BRIChartProps> = ({ bri }) => {
+const BRIChart: React.FC<BRIChartProps & { locale: string }> = ({ bri, locale }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
   const height = 100;
