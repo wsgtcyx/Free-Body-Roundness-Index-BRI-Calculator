@@ -13,7 +13,7 @@ export default async function HomeIndex({ lang }: { lang: string }) {
       <Hero locale={langName} />
       <WhatIsBRI locale={langName} />
       <HowToUse locale={langName} />
-      <BRICalculator />
+      <BRICalculator locale={langName} />
 
       {/* 
 

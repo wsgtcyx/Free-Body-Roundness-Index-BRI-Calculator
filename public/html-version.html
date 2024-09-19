@@ -1,570 +1,488 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Body Roundness Index (BRI) Calculator | Calculate BRI</title>
-    <meta
-      name="description"
-      content="Use our 100% free Body Roundness Index (BRI) calculator to assess your body shape and health risks. Easy to use, no registration required."
-    />
-    <meta
-      name="keywords"
-      content="free BRI calculator, Body Roundness Index, free health assessment, body shape calculator, no cost BRI tool"
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <script
-      defer
-      src="https://cloud.umami.is/script.js"
-      data-website-id="fa05dabe-795b-467a-8f02-aa4b3bac9987"
-    ></script>
+    <meta name="description" content="Use our 100% free Body Roundness Index (BRI) calculator to assess your body shape and health risks. Easy to use, no registration required.">
+    <meta name="keywords" content="free BRI calculator, Body Roundness Index, free health assessment, body shape calculator, no cost BRI tool">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="fa05dabe-795b-467a-8f02-aa4b3bac9987"></script>
     <link rel="canonical" href="https://bri-calculator.com/" />
     <style>
-      .subtle-link {
-        color: #999;
-        font-size: 0.9em;
-        text-decoration: none;
-      }
+        .subtle-link {
+            color: #999;
+            font-size: 0.9em;
+            text-decoration: none;
+        }
 
-      .subtle-link:hover {
-        text-decoration: underline;
-      }
+        .subtle-link:hover {
+            text-decoration: underline;
+        }
+
+        .bri-averages {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .bri-averages-male, .bri-averages-female {
+            width: 48%;
+        }
+
+        .bri-averages h3 {
+            margin-bottom: 10px;
+        }
+
+        .bri-averages ul {
+            padding-left: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .bri-averages {
+                flex-direction: column;
+            }
+            .bri-averages-male, .bri-averages-female {
+                width: 100%;
+            }
+        }
     </style>
-  </head>
+</head>
 
-  <!-- Google tag (gtag.js) -->
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=G-6LM13XCDB2"
-  ></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6LM13XCDB2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    gtag("config", "G-6LM13XCDB2");
-  </script>
+  gtag('config', 'G-6LM13XCDB2');
+</script>
 
-  <body>
+<body>
     <h1>Free Body Roundness Index (BRI) Calculator</h1>
     <div class="free-badge-container">
-      <p class="free-badge">100% Free - No Registration Required</p>
+        <p class="free-badge">100% Free - No Registration Required</p>
     </div>
 
     <div class="language-switcher">
-      <span>English</span> | <a href="/nl">Nederlands</a> |
-      <a href="/de">Deutsch</a>
+        <span>English</span> | <a href="/nl">Nederlands</a> | <a href="/de">Deutsch</a>
+    </div>
+    
+    <div class="section">
+        <h2>What is the Body Roundness Index (BRI)?</h2>
+        <p>The Body Roundness Index (BRI) is a measure used to assess body shape and health risks. Our free BRI calculator combines height and waist circumference measurements to evaluate the "roundness" of the human body. BRI can help assess health risks associated with obesity at no cost to you.</p>
     </div>
 
     <div class="section">
-      <h2>What is the Body Roundness Index (BRI)?</h2>
-      <p>
-        The Body Roundness Index (BRI) is a measure used to assess body shape
-        and health risks. Our free BRI calculator combines height and waist
-        circumference measurements to evaluate the "roundness" of the human
-        body. BRI can help assess health risks associated with obesity at no
-        cost to you.
-      </p>
-    </div>
-
-    <div class="section">
-      <h2>How to Use This Calculator</h2>
-      <ol>
-        <li>
-          Select your preferred units (Imperial or Metric) from the dropdown
-          menu.
-        </li>
-        <li>
-          Enter your height in the specified unit (inches or centimeters).
-        </li>
-        <li>Input your weight in pounds or kilograms.</li>
-        <li>
-          Measure and enter your waist circumference in inches or centimeters.
-        </li>
-        <li>
-          Optionally, select your gender and enter your age for more
-          personalized results.
-        </li>
-        <li>Click the "Calculate BRI" button to see your results.</li>
-        <li>
-          Review your BRI value, health status, and personalized
-          recommendations.
-        </li>
-      </ol>
-      <p>
-        Remember, for the most accurate waist measurement, measure at the
-        midpoint between the lower margin of the last palpable rib and the top
-        of the iliac crest, typically around navel level.
-      </p>
+        <h2>How to Use This Calculator</h2>
+        <ol>
+            <li>Select units and enter your height, weight, and waist circumference.</li>
+            <li>Optionally, input your gender and age for more personalized results.</li>
+            <li>Click "Calculate BRI" to view your BRI value and health status assessment.</li>
+        </ol>
+        <p>Remember, for the most accurate waist measurement, measure at the midpoint between the lower margin of the last palpable rib and the top of the iliac crest, typically around navel level.</p>
     </div>
 
     <div class="section calculator">
-      <h2>Calculate Your BRI</h2>
-      <form id="briForm">
-        <div class="input-group">
-          <label for="units">Units:</label>
-          <select id="units">
-            <option value="imperial" selected>Imperial (in, lbs)</option>
-            <option value="metric">Metric (cm, kg)</option>
-          </select>
-        </div>
-        <div class="input-group">
-          <label for="height">Height:</label>
-          <input
-            type="number"
-            id="height"
-            required
-            min="0"
-            step="0.1"
-            aria-label="Height"
-          />
-          <span id="heightUnit">in</span>
-        </div>
-        <div class="input-group">
-          <label for="weight">Weight:</label>
-          <input
-            type="number"
-            id="weight"
-            required
-            min="0"
-            step="0.1"
-            aria-label="Weight"
-          />
-          <span id="weightUnit">lbs</span>
-        </div>
-        <div class="input-group">
-          <label for="waist">Waist Circumference:</label>
-          <input
-            type="number"
-            id="waist"
-            required
-            min="0"
-            step="0.1"
-            aria-label="Waist Circumference"
-          />
-          <span id="waistUnit">in</span>
-        </div>
-        <div class="input-group">
-          <label for="gender">Gender (optional):</label>
-          <select id="gender" aria-label="Gender">
-            <option value="">Select</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
-        </div>
-        <div class="input-group">
-          <label for="age">Age (optional):</label>
-          <input type="number" id="age" min="18" max="120" aria-label="Age" />
-        </div>
-        <button type="submit" id="calculateBtn">Calculate BRI</button>
-      </form>
+        <h2>Calculate Your BRI</h2>
+        <form id="briForm">
+            <div class="input-group">
+                <label for="units">Units:</label>
+                <select id="units">
+                    <option value="imperial" selected>Imperial (in, lbs)</option>
+                    <option value="metric">Metric (cm, kg)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="height">Height:</label>
+                <input type="number" id="height" required min="0" step="0.1" aria-label="Height">
+                <span id="heightUnit">in</span>
+            </div>
+            <div class="input-group">
+                <label for="weight">Weight:</label>
+                <input type="number" id="weight" required min="0" step="0.1" aria-label="Weight">
+                <span id="weightUnit">lbs</span>
+            </div>
+            <div class="input-group">
+                <label for="waist">Waist Circumference:</label>
+                <input type="number" id="waist" required min="0" step="0.1" aria-label="Waist Circumference">
+                <span id="waistUnit">in</span>
+            </div>
+            <div class="input-group">
+                <label for="gender">Gender (optional):</label>
+                <select id="gender" aria-label="Gender">
+                    <option value="">Select</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="age">Age (optional):</label>
+                <input type="number" id="age" min="18" max="120" aria-label="Age">
+            </div>
+            <button type="submit" id="calculateBtn">Calculate BRI</button>
+        </form>
     </div>
 
-    <div id="result" class="section" style="display: none">
-      <h2>Your BRI Results</h2>
-      <div class="result-summary">
-        <p>Your Body Roundness Index (BRI): <strong id="briValue"></strong></p>
-        <p>Health Status: <span id="healthStatus"></span></p>
-      </div>
-      <div class="result-chart">
-        <p>
-          The chart below shows your BRI in relation to different health
-          categories. The red line indicates your current BRI value.
-        </p>
-        <div id="briChart"></div>
-      </div>
-      <div class="result-details">
-        <h3>What does this mean?</h3>
-        <p id="briInterpretation"></p>
-        <h3>Potential Health Risks</h3>
-        <ul id="healthRisks"></ul>
-        <h3>Recommendations</h3>
-        <ul id="recommendations"></ul>
-      </div>
-      <div class="bmi-comparison">
-        <h3>BRI vs BMI Comparison</h3>
-        <p>Your Body Mass Index (BMI): <strong id="bmiValue"></strong></p>
-        <p id="bmiComparison"></p>
-      </div>
+    <div id="result" class="section" style="display:none;">
+        <h2>Your BRI Results</h2>
+        <div class="result-summary">
+            <p>Your Body Roundness Index (BRI): <strong id="briValue"></strong></p>
+            <p>Health Status: <span id="healthStatus"></span></p>
+        </div>
+        <div class="result-chart">
+            <p>The chart below shows your BRI in relation to different health categories. The red line indicates your current BRI value.</p>
+            <div id="briChart"></div>
+        </div>
+        <div class="result-details">
+            <h3>What does this mean?</h3>
+            <p id="briInterpretation"></p>
+            <h3>Potential Health Risks</h3>
+            <ul id="healthRisks"></ul>
+            <h3>Recommendations</h3>
+            <ul id="recommendations"></ul>
+        </div>
+        <div class="bmi-comparison">
+            <h3>BRI vs BMI Comparison</h3>
+            <p>Your Body Mass Index (BMI): <strong id="bmiValue"></strong></p>
+            <p id="bmiComparison"></p>
+        </div>
     </div>
 
     <div class="section">
-      <h2>Why BRI may be more accurate than BMI:</h2>
-      <ul>
-        <li>
-          BRI considers waist circumference, a key indicator of abdominal fat
-        </li>
-        <li>More sensitive to changes in body shape and fat distribution</li>
-        <li>Potentially better at predicting cardiovascular health risks</li>
-        <li>
-          Provides a more accurate assessment for people with high muscle mass
-        </li>
-      </ul>
+        <h2>How to Interpret the Results</h2>
+        <p>Our free calculator provides your BRI value and an interpretation based on recent research:</p>
+        <ul>
+            <li>BRI < 3.41: Very lean body shape (lowest 20% of the population)</li>
+            <li>3.41 ≤ BRI < 4.45: Lean to average body shape (lower 20-40% of the population)</li>
+            <li>4.45 ≤ BRI < 5.46: Average body shape (middle 40-60% of the population)</li>
+            <li>5.46 ≤ BRI < 6.91: Above average body roundness (upper 60-80% of the population)</li>
+            <li>BRI ≥ 6.91: High body roundness (top 20% of the population)</li>
+        </ul>
+        <p>To help you understand your results:</p>
+        <ul>
+            <li>If your BRI is below 3.41, you have a very lean body shape with a relatively small waist circumference.</li>
+            <li>A BRI between 3.41 and 4.45 suggests a lean to average body shape, with a waist size smaller than most people.</li>
+            <li>If your BRI falls between 4.45 and 5.46, you have an average body shape, neither particularly slim nor round.</li>
+            <li>A BRI between 5.46 and 6.91 indicates above-average body roundness, with a waist circumference larger than most people.</li>
+            <li>If your BRI is 6.91 or higher, you have high body roundness, which may be associated with increased health risks.</li>
+        </ul>
+        <p>Remember, BRI is just one indicator of health. For a comprehensive understanding of your health status, it's recommended to consult with a healthcare professional. They can consider other factors such as diet, exercise habits, genetics, and overall health when interpreting your BRI.</p>
     </div>
 
     <div class="section">
-      <h2>How to Interpret the Results</h2>
-      <p>Our free calculator provides your BRI value and an interpretation:</p>
-      <ul>
-        <li>BRI < 1: Extremely lean</li>
-        <li>1 ≤ BRI < 2: Normal body shape</li>
-        <li>2 ≤ BRI < 3: Overweight</li>
-        <li>BRI ≥ 3: Obese</li>
-      </ul>
-      <p>
-        Please note that BRI is just one indicator of health. For a
-        comprehensive understanding of your health status, it's recommended to
-        consult with a healthcare professional.
-      </p>
+        <h2>Average BRI by Age and Gender</h2>
+        <p>The following data from the study "Body Roundness Index and All-Cause Mortality Among US Adults" (Zhang et al.) shows average BRI values for different age groups and genders:</p>
+        <div class="bri-averages">
+            <div class="bri-averages-male">
+                <h3>Males</h3>
+                <ul>
+                    <li>18-29 years: 2.91 ± 0.98</li>
+                    <li>30-39 years: 3.54 ± 1.12</li>
+                    <li>40-49 years: 3.92 ± 1.18</li>
+                    <li>50-59 years: 4.21 ± 1.23</li>
+                    <li>60-69 years: 4.35 ± 1.25</li>
+                    <li>≥70 years: 4.31 ± 1.27</li>
+                </ul>
+            </div>
+            <div class="bri-averages-female">
+                <h3>Females</h3>
+                <ul>
+                    <li>18-29 years: 2.61 ± 0.89</li>
+                    <li>30-39 years: 3.13 ± 1.12</li>
+                    <li>40-49 years: 3.67 ± 1.30</li>
+                    <li>50-59 years: 4.25 ± 1.40</li>
+                    <li>60-69 years: 4.61 ± 1.46</li>
+                    <li>≥70 years: 4.71 ± 1.51</li>
+                </ul>
+            </div>
+        </div>
+        <p>These averages can help you compare your BRI to others in your age and gender group. However, remember that individual health factors are complex and these averages should be used as a general reference only.</p>
+    </div>
+
+    <div class="section">
+        <h2>Why BRI may be more accurate than BMI:</h2>
+        <ul>
+            <li>BRI considers waist circumference, a key indicator of abdominal fat</li>
+            <li>More sensitive to changes in body shape and fat distribution</li>
+            <li>Potentially better at predicting cardiovascular health risks</li>
+            <li>Provides a more accurate assessment for people with high muscle mass</li>
+        </ul>
     </div>
 
     <div class="faq-section">
-      <h2>Frequently Asked Questions (FAQ)</h2>
-      <div class="faq-item">
-        <div class="faq-question">1. How do you calculate BRI?</div>
-        <div class="faq-answer">
-          BRI is calculated using the formula: BRI = 364.2 - 365.5 * √(1 - ((WC
-          / (2π))² / (0.5 * H)²), where WC is waist circumference and H is
-          height, both in meters.
+        <h2>Frequently Asked Questions (FAQ)</h2>
+        <div class="faq-item">
+            <div class="faq-question">1. How do you calculate BRI?</div>
+            <div class="faq-answer">BRI is calculated using the formula: BRI = 364.2 - 365.5 * √(1 - ((WC / (2π))² / (0.5 * H)²), where WC is waist circumference and H is height, both in meters.</div>
         </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">2. Is BRI better than BMI?</div>
-        <div class="faq-answer">
-          BRI may be more accurate than BMI in assessing body shape and fat
-          distribution. It takes into account waist circumference, which BMI
-          doesn't consider.
+        <div class="faq-item">
+            <div class="faq-question">2. Is BRI better than BMI?</div>
+            <div class="faq-answer">BRI may be more accurate than BMI in assessing body shape and fat distribution. It takes into account waist circumference, which BMI doesn't consider.</div>
         </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">
-          3. What is the difference between BMI and BRI?
+        <div class="faq-item">
+            <div class="faq-question">3. What is the difference between BMI and BRI?</div>
+            <div class="faq-answer">BMI uses only height and weight, while BRI incorporates waist circumference. This allows BRI to better account for body shape and fat distribution.</div>
         </div>
-        <div class="faq-answer">
-          BMI uses only height and weight, while BRI incorporates waist
-          circumference. This allows BRI to better account for body shape and
-          fat distribution.
+        <div class="faq-item">
+            <div class="faq-question">4. Is the BRI beneficial?</div>
+            <div class="faq-answer">Yes, BRI can be beneficial as it provides a more comprehensive assessment of body shape and potential health risks compared to BMI alone.</div>
         </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">4. Is the BRI beneficial?</div>
-        <div class="faq-answer">
-          Yes, BRI can be beneficial as it provides a more comprehensive
-          assessment of body shape and potential health risks compared to BMI
-          alone.
+        <div class="faq-item">
+            <div class="faq-question">5. How to measure waist for BRI?</div>
+            <div class="faq-answer">Measure your waist circumference at the midpoint between the lower margin of the last palpable rib and the top of the iliac crest, usually around the navel level.</div>
         </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">5. How to measure waist for BRI?</div>
-        <div class="faq-answer">
-          Measure your waist circumference at the midpoint between the lower
-          margin of the last palpable rib and the top of the iliac crest,
-          usually around the navel level.
+        <div class="faq-item">
+            <div class="faq-question">6. What are the disadvantages of BRI?</div>
+            <div class="faq-answer">BRI may not be as widely recognized as BMI, and like all body measurements, it doesn't account for factors such as muscle mass or bone density.</div>
         </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">6. What are the disadvantages of BRI?</div>
-        <div class="faq-answer">
-          BRI may not be as widely recognized as BMI, and like all body
-          measurements, it doesn't account for factors such as muscle mass or
-          bone density.
-        </div>
-      </div>
     </div>
 
     <div class="section feedback-section">
-      <h2>Help Us Improve</h2>
-      <p>
-        We hope you find our BRI calculator useful. As a free tool, our main
-        goal is to provide practical value to everyone.
-      </p>
-      <ul>
-        <li>
-          If you find
-          <a href="https://bri-calculator.com/">this website</a> helpful, please
-          recommend it to others who might benefit from it.
-        </li>
-        <li>
-          Have suggestions for improvement? Ideas for new services? Or
-          encountered any issues while using our calculator?
-        </li>
-      </ul>
-      <p>
-        We'd love to hear from you! Please send your feedback to
-        <a href="mailto:support@bri-calculator.com"
-          >support@bri-calculator.com</a
-        >.
-      </p>
-      <p>
-        Your input is greatly appreciated and helps us continually improve our
-        service.
-      </p>
+        <h2>Help Us Improve</h2>
+        <p>We hope you find our BRI calculator useful. As a free tool, our main goal is to provide practical value to everyone.</p>
+        <ul>
+            <li>If you find <a href="https://bri-calculator.com/">this website</a> helpful, please recommend it to others who might benefit from it.</li>
+            <li>Have suggestions for improvement? Ideas for new services? Or encountered any issues while using our calculator?</li>
+        </ul>
+        <p>We'd love to hear from you! Please send your feedback to <a href="mailto:support@bri-calculator.com">support@bri-calculator.com</a>.</p>
+        <p>Your input is greatly appreciated and helps us continually improve our service.</p>
     </div>
 
     <div class="section references">
-      <h2>References</h2>
-      <ol>
-        <li>
-          Thomas, D. M., et al. (2013). Relationships between body roundness
-          with body fat and visceral adipose tissue emerging from a new
-          geometrical model. <em>Obesity</em>, 21(11), 2264-2271.
-        </li>
-        <li>
-          Chang, Y., et al. (2018). Body roundness index and its association
-          with metabolic syndrome in type 2 diabetes mellitus.
-          <em>Diabetes, Metabolic Syndrome and Obesity: Targets and Therapy</em
-          >, 11, 827-833.
-        </li>
-        <li>
-          Rico-Martín, S., et al. (2020). Effectiveness of body roundness index
-          in predicting metabolic syndrome: A systematic review and
-          meta-analysis. <em>Obesity Reviews</em>, 21(9), e13023.
-        </li>
-        <li>
-          Perona, J. S., et al. (2019). Waist circumference and abdominal volume
-          index are the strongest anthropometric discriminators of metabolic
-          syndrome in Spanish adolescents.
-          <em>European Journal of Clinical Investigation</em>, 49(3), e13060.
-        </li>
-      </ol>
+        <h2>References</h2>
+        <ol>
+            <li>Thomas, D. M., et al. (2013). Relationships between body roundness with body fat and visceral adipose tissue emerging from a new geometrical model. <em>Obesity</em>, 21(11), 2264-2271.</li>
+            <li>Chang, Y., et al. (2018). Body roundness index and its association with metabolic syndrome in type 2 diabetes mellitus. <em>Diabetes, Metabolic Syndrome and Obesity: Targets and Therapy</em>, 11, 827-833.</li>
+            <li>Rico-Martín, S., et al. (2020). Effectiveness of body roundness index in predicting metabolic syndrome: A systematic review and meta-analysis. <em>Obesity Reviews</em>, 21(9), e13023.</li>
+            <li>Perona, J. S., et al. (2019). Waist circumference and abdominal volume index are the strongest anthropometric discriminators of metabolic syndrome in Spanish adolescents. <em>European Journal of Clinical Investigation</em>, 49(3), e13060.</li>
+        </ol>
     </div>
 
     <footer class="site-footer">
-      <div class="footer-content">
-        <p>&copy; 2024 BRI Calculator. All rights reserved.</p>
-        <p>
-          <a href="https://www.lasso.net/go/link/PL3Kdz" class="subtle-link"
-            >Discover more interesting links</a
-          >
-        </p>
-      </div>
+        <div class="footer-content">
+            <p>&copy; 2024 BRI Calculator. All rights reserved.</p>
+            <p><a href="https://www.lasso.net/go/link/PL3Kdz" class="subtle-link">Discover more interesting links</a></p>
+        </div>
     </footer>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const form = document.getElementById("briForm");
-        const result = document.getElementById("result");
-        const unitsSelect = document.getElementById("units");
-        const heightInput = document.getElementById("height");
-        const weightInput = document.getElementById("weight");
-        const waistInput = document.getElementById("waist");
-        const heightUnit = document.getElementById("heightUnit");
-        const weightUnit = document.getElementById("weightUnit");
-        const waistUnit = document.getElementById("waistUnit");
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('briForm');
+            const result = document.getElementById('result');
+            const unitsSelect = document.getElementById('units');
+            const heightInput = document.getElementById('height');
+            const weightInput = document.getElementById('weight');
+            const waistInput = document.getElementById('waist');
+            const heightUnit = document.getElementById('heightUnit');
+            const weightUnit = document.getElementById('weightUnit');
+            const waistUnit = document.getElementById('waistUnit');
 
-        function updateUnits() {
-          const isImperial = unitsSelect.value === "imperial";
-          heightUnit.textContent = isImperial ? "in" : "cm";
-          weightUnit.textContent = isImperial ? "lbs" : "kg";
-          waistUnit.textContent = isImperial ? "in" : "cm";
-        }
-
-        unitsSelect.addEventListener("change", updateUnits);
-
-        form.addEventListener("submit", function (event) {
-          event.preventDefault();
-          calculateBRI();
-        });
-
-        function calculateBRI() {
-          const height = parseFloat(heightInput.value);
-          const weight = parseFloat(weightInput.value);
-          const waist = parseFloat(waistInput.value);
-          const gender = document.getElementById("gender").value;
-          const age = parseInt(document.getElementById("age").value);
-          const isImperial = unitsSelect.value === "imperial";
-
-          if (height && weight && waist) {
-            let heightM, waistM, weightKg;
-            if (isImperial) {
-              heightM = height * 0.0254;
-              waistM = waist * 0.0254;
-              weightKg = weight * 0.453592;
-            } else {
-              heightM = height / 100;
-              waistM = waist / 100;
-              weightKg = weight;
+            function updateUnits() {
+                const isImperial = unitsSelect.value === 'imperial';
+                heightUnit.textContent = isImperial ? 'in' : 'cm';
+                weightUnit.textContent = isImperial ? 'lbs' : 'kg';
+                waistUnit.textContent = isImperial ? 'in' : 'cm';
             }
 
-            const bri =
-              364.2 -
-              365.5 *
-                Math.sqrt(
-                  1 - (waistM / (2 * Math.PI)) ** 2 / (0.5 * heightM) ** 2
-                );
-            const bmi = weightKg / (heightM * heightM);
-            displayResults(bri, bmi, gender, age);
-          } else {
-            alert("Please fill in all required fields.");
-          }
-        }
+            unitsSelect.addEventListener('change', updateUnits);
 
-        function displayResults(bri, bmi, gender, age) {
-          result.style.display = "block";
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                calculateBRI();
+            });
 
-          const briValue = document.getElementById("briValue");
-          const healthStatus = document.getElementById("healthStatus");
-          const briInterpretation =
-            document.getElementById("briInterpretation");
-          const healthRisks = document.getElementById("healthRisks");
-          const recommendations = document.getElementById("recommendations");
-          const bmiValue = document.getElementById("bmiValue");
-          const bmiComparison = document.getElementById("bmiComparison");
+            function calculateBRI() {
+                const height = parseFloat(heightInput.value);
+                const weight = parseFloat(weightInput.value);
+                const waist = parseFloat(waistInput.value);
+                const gender = document.getElementById('gender').value;
+                const age = parseInt(document.getElementById('age').value);
+                const isImperial = unitsSelect.value === 'imperial';
 
-          briValue.textContent = bri.toFixed(2);
-          bmiValue.textContent = bmi.toFixed(2);
+                if (height && weight && waist) {
+                    let heightM, waistM, weightKg;
+                    if (isImperial) {
+                        heightM = height * 0.0254;
+                        waistM = waist * 0.0254;
+                        weightKg = weight * 0.453592;
+                    } else {
+                        heightM = height / 100;
+                        waistM = waist / 100;
+                        weightKg = weight;
+                    }
 
-          let status, interpretation, risks, advice;
+                    const bri = 364.2 - 365.5 * Math.sqrt(1 - ((waistM / (2 * Math.PI)) ** 2) / ((0.5 * heightM) ** 2));
+                    const bmi = weightKg / (heightM * heightM);
+                    displayResults(bri, bmi, gender, age);
+                } else {
+                    alert('Please fill in all required fields.');
+                }
+            }
 
-          if (bri < 1) {
-            status = "Extremely lean";
-            interpretation =
-              "Your BRI indicates that you are extremely lean. This may pose certain health risks.";
-            risks = [
-              "Increased risk of nutrient deficiencies, particularly vitamins and minerals",
-              "Potential for compromised immune function",
-              "Possible hormonal imbalances affecting reproductive health",
-            ];
-            advice = [
-              "Consult with a registered dietitian to ensure adequate nutrient intake",
-              "Gradually increase calorie intake with nutrient-dense foods",
-              "Consider strength training to build muscle mass",
-            ];
-          } else if (bri < 2) {
-            status = "Normal";
-            interpretation =
-              "Your BRI is within the normal range, indicating a healthy body shape.";
-            risks = [
-              "Generally low risk for obesity-related health issues",
-              "Maintain awareness of family history for potential genetic health risks",
-            ];
-            advice = [
-              "Maintain a balanced diet rich in fruits, vegetables, lean proteins, and whole grains",
-              "Engage in regular physical activity, aiming for at least 150 minutes of moderate exercise per week",
-              "Schedule regular health check-ups to monitor overall health",
-            ];
-          } else if (bri < 3) {
-            status = "Overweight";
-            interpretation =
-              "Your BRI suggests you are overweight, which may increase certain health risks.";
-            risks = [
-              "Elevated risk of type 2 diabetes and insulin resistance",
-              "Increased likelihood of developing high blood pressure",
-              "Higher risk of sleep apnea and breathing problems",
-            ];
-            advice = [
-              "Aim to reduce daily calorie intake by 500 calories through healthier food choices",
-              "Increase physical activity, targeting 30 minutes of moderate exercise most days of the week",
-              "Consider consulting a nutritionist for a personalized meal plan",
-            ];
-          } else {
-            status = "Obese";
-            interpretation =
-              "Your BRI indicates obesity, which is associated with various health risks.";
-            risks = [
-              "Significantly increased risk of cardiovascular diseases, including heart attack and stroke",
-              "Higher likelihood of developing certain cancers, such as colon and breast cancer",
-              "Increased risk of osteoarthritis and joint problems due to excess weight",
-            ];
-            advice = [
-              "Consult with a healthcare professional to develop a comprehensive weight loss plan",
-              "Start with small, achievable goals like reducing portion sizes and eliminating sugary drinks",
-              "Incorporate both cardio and strength training exercises, starting with low-impact activities",
-              "Consider joining a support group or working with a health coach for motivation and accountability",
-            ];
-          }
+            function displayResults(bri, bmi, gender, age) {
+                result.style.display = 'block';
 
-          healthStatus.textContent = status;
-          healthStatus.className = `status-${status
-            .toLowerCase()
-            .replace(" ", "-")}`;
-          briInterpretation.textContent = interpretation;
+                const briValue = document.getElementById('briValue');
+                const healthStatus = document.getElementById('healthStatus');
+                const briInterpretation = document.getElementById('briInterpretation');
+                const healthRisks = document.getElementById('healthRisks');
+                const recommendations = document.getElementById('recommendations');
+                const bmiValue = document.getElementById('bmiValue');
+                const bmiComparison = document.getElementById('bmiComparison');
 
-          if (age && gender) {
-            briInterpretation.textContent += ` As a ${age}-year-old ${gender}, ${
-              age > 65
-                ? "it's crucial to focus on maintaining muscle mass and bone density while managing weight."
-                : "maintaining a healthy lifestyle is key to preventing future health issues."
-            }`;
-          }
+                briValue.textContent = bri.toFixed(2);
+                bmiValue.textContent = bmi.toFixed(2);
 
-          healthRisks.innerHTML = risks
-            .map((risk) => `<li>${risk}</li>`)
-            .join("");
-          recommendations.innerHTML = advice
-            .map((item) => `<li>${item}</li>`)
-            .join("");
+                let status, interpretation, risks, advice;
 
-          bmiComparison.innerHTML = `
-                    <p>Your BMI is ${bmi.toFixed(
-                      2
-                    )}, which falls into the ${getBMICategory(
-            bmi
-          )} category.</p>
+                if (bri < 3.41) {
+                    status = 'Very lean';
+                    interpretation = 'Your BRI indicates that you have a very lean body shape with a relatively small waist circumference. This may pose certain health risks.';
+                    risks = [
+                        'Increased risk of nutrient deficiencies, particularly vitamins and minerals',
+                        'Potential for compromised immune function',
+                        'Possible hormonal imbalances affecting reproductive health'
+                    ];
+                    advice = [
+                        'Consult with a registered dietitian to ensure adequate nutrient intake',
+                        'Gradually increase calorie intake with nutrient-dense foods',
+                        'Consider strength training to build muscle mass'
+                    ];
+                } else if (bri < 4.45) {
+                    status = 'Lean to average';
+                    interpretation = 'Your BRI suggests a lean to average body shape, with a waist size smaller than most people.';
+                    risks = [
+                        'Generally low risk for obesity-related health issues',
+                        'Maintain awareness of family history for potential genetic health risks'
+                    ];
+                    advice = [
+                        'Maintain a balanced diet rich in fruits, vegetables, lean proteins, and whole grains',
+                        'Engage in regular physical activity, aiming for at least 150 minutes of moderate exercise per week',
+                        'Schedule regular health check-ups to monitor overall health'
+                    ];
+                } else if (bri < 5.46) {
+                    status = 'Average';
+                    interpretation = 'Your BRI falls into the average body shape range, neither particularly slim nor round.';
+                    risks = [
+                        'Elevated risk of type 2 diabetes and insulin resistance',
+                        'Increased likelihood of developing high blood pressure',
+                        'Higher risk of sleep apnea and breathing problems'
+                    ];
+                    advice = [
+                        'Aim to reduce daily calorie intake by 500 calories through healthier food choices',
+                        'Increase physical activity, targeting 30 minutes of moderate exercise most days of the week',
+                        'Consider consulting a nutritionist for a personalized meal plan'
+                    ];
+                } else if (bri < 6.91) {
+                    status = 'Above average';
+                    interpretation = 'Your BRI indicates above-average body roundness, with a waist circumference larger than most people.';
+                    risks = [
+                        'Significantly increased risk of cardiovascular diseases, including heart attack and stroke',
+                        'Higher likelihood of developing certain cancers, such as colon and breast cancer',
+                        'Increased risk of osteoarthritis and joint problems due to excess weight'
+                    ];
+                    advice = [
+                        'Consult with a healthcare professional to develop a comprehensive weight loss plan',
+                        'Start with small, achievable goals like reducing portion sizes and eliminating sugary drinks',
+                        'Incorporate both cardio and strength training exercises, starting with low-impact activities',
+                        'Consider joining a support group or working with a health coach for motivation and accountability'
+                    ];
+                } else {
+                    status = 'High';
+                    interpretation = 'Your BRI indicates high body roundness, which is associated with various health risks.';
+                    risks = [
+                        'Significantly increased risk of cardiovascular diseases, including heart attack and stroke',
+                        'Higher likelihood of developing certain cancers, such as colon and breast cancer',
+                        'Increased risk of osteoarthritis and joint problems due to excess weight'
+                    ];
+                    advice = [
+                        'Consult with a healthcare professional to develop a comprehensive weight loss plan',
+                        'Start with small, achievable goals like reducing portion sizes and eliminating sugary drinks',
+                        'Incorporate both cardio and strength training exercises, starting with low-impact activities',
+                        'Consider joining a support group or working with a health coach for motivation and accountability'
+                    ];
+                }
+
+                healthStatus.textContent = status;
+                healthStatus.className = `status-${status.toLowerCase().replace(' ', '-')}`;
+                briInterpretation.textContent = interpretation;
+
+                if (age && gender) {
+                    briInterpretation.textContent += ` As a ${age}-year-old ${gender}, ${age > 65 ? "it's crucial to focus on maintaining muscle mass and bone density while managing weight." : "maintaining a healthy lifestyle is key to preventing future health issues."}`;
+                }
+
+                healthRisks.innerHTML = risks.map(risk => `<li>${risk}</li>`).join('');
+                recommendations.innerHTML = advice.map(item => `<li>${item}</li>`).join('');
+
+                bmiComparison.innerHTML = `
+                    <p>Your BMI is ${bmi.toFixed(2)}, which falls into the ${getBMICategory(bmi)} category.</p>
                     <p>While BMI is widely used, BRI provides a more comprehensive assessment by considering your body shape.</p>
-                    <p>Your BRI of ${bri.toFixed(
-                      2
-                    )} takes into account your waist circumference, offering a more nuanced view of your body composition and potential health risks.</p>
+                    <p>Your BRI of ${bri.toFixed(2)} takes into account your waist circumference, offering a more nuanced view of your body composition and potential health risks.</p>
                 `;
 
-          updateBRIChart(bri);
-        }
+                updateBRIChart(bri);
+            }
 
-        function getBMICategory(bmi) {
-          if (bmi < 18.5) return "underweight";
-          if (bmi < 25) return "normal weight";
-          if (bmi < 30) return "overweight";
-          return "obese";
-        }
+            function getBMICategory(bmi) {
+                if (bmi < 18.5) return 'underweight';
+                if (bmi < 25) return 'normal weight';
+                if (bmi < 30) return 'overweight';
+                return 'obese';
+            }
 
-        function updateBRIChart(bri) {
-          const chartContainer = document.getElementById("briChart");
-          const briPosition = Math.min((bri / 5) * 100, 100);
-          chartContainer.innerHTML = `
+            function updateBRIChart(bri) {
+                const chartContainer = document.getElementById('briChart');
+                const briPosition = Math.min(bri / 16 * 100, 100);
+                chartContainer.innerHTML = `
                     <div class="bri-chart-container" style="position: relative; height: 130px; margin-bottom: 20px;">
                         <div style="position: absolute; top: 5%; left: ${briPosition}%; transform: translateX(-50%); text-align: center; font-weight: bold; white-space: nowrap;">
                             Your BRI: ${bri.toFixed(2)}
                         </div>
                         <div class="bri-bar" style="width: 100%; height: 30px; background-color: #f0f0f0; position: absolute; top: 25%;">
-                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(75, 192, 192, 0.5); left: 0; width: 20%;" title="Extremely Lean: BRI < 1"></div>
-                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(54, 162, 235, 0.5); left: 20%; width: 20%;" title="Normal: 1 ≤ BRI < 2"></div>
-                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(255, 206, 86, 0.5); left: 40%; width: 20%;" title="Overweight: 2 ≤ BRI < 3"></div>
-                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(255, 99, 132, 0.5); left: 60%; width: 40%;" title="Obese: BRI ≥ 3"></div>
+                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(75, 192, 192, 0.5); left: 0; width: 21.3125%;" title="Very lean: BRI < 3.41"></div>
+                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(54, 162, 235, 0.5); left: 21.3125%; width: 6.5%;" title="Lean to average: 3.41 ≤ BRI < 4.45"></div>
+                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(255, 206, 86, 0.5); left: 27.8125%; width: 6.3125%;" title="Average: 4.45 ≤ BRI < 5.46"></div>
+                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(255, 99, 132, 0.5); left: 34.125%; width: 9.0625%;" title="Above average: 5.46 ≤ BRI < 6.91"></div>
+                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(255, 0, 0, 0.5); left: 43.1875%; width: 56.8125%;" title="High: BRI ≥ 6.91"></div>
                             <div class="bri-marker" style="position: absolute; top: -10px; height: 50px; width: 2px; background-color: red; left: ${briPosition}%;"></div>
                         </div>
                         <div style="position: absolute; top: 70%; left: 0; right: 0; font-size: 12px;">
                             <span style="position: absolute; left: 0; transform: translateX(-50%);">0</span>
-                            <span style="position: absolute; left: 20%; transform: translateX(-50%);">1</span>
-                            <span style="position: absolute; left: 40%; transform: translateX(-50%);">2</span>
-                            <span style="position: absolute; left: 60%; transform: translateX(-50%);">3</span>
-                            <span style="position: absolute; left: 100%; transform: translateX(-50%);">5+</span>
+                            <span style="position: absolute; left: 25%; transform: translateX(-50%);">4</span>
+                            <span style="position: absolute; left: 50%; transform: translateX(-50%);">8</span>
+                            <span style="position: absolute; left: 75%; transform: translateX(-50%);">12</span>
+                            <span style="position: absolute; left: 100%; transform: translateX(-50%);">16</span>
                         </div>
                     </div>
                     <div style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 5px; font-size: 12px;">
                         <div style="display: flex; align-items: center; margin-right: 5px; margin-bottom: 5px;">
                             <span style="width: 15px; height: 15px; background-color: rgba(75, 192, 192, 0.5); display: inline-block; margin-right: 3px;"></span>
-                            <span>Extremely Lean (BRI &lt; 1)</span>
+                            <span>Very lean (BRI &lt; 3.41)</span>
                         </div>
                         <div style="display: flex; align-items: center; margin-right: 5px; margin-bottom: 5px;">
                             <span style="width: 15px; height: 15px; background-color: rgba(54, 162, 235, 0.5); display: inline-block; margin-right: 3px;"></span>
-                            <span>Normal (1 ≤ BRI &lt; 2)</span>
+                            <span>Lean to average (3.41 ≤ BRI &lt; 4.45)</span>
                         </div>
                         <div style="display: flex; align-items: center; margin-right: 5px; margin-bottom: 5px;">
                             <span style="width: 15px; height: 15px; background-color: rgba(255, 206, 86, 0.5); display: inline-block; margin-right: 3px;"></span>
-                            <span>Overweight (2 ≤ BRI &lt; 3)</span>
+                            <span>Average (4.45 ≤ BRI &lt; 5.46)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; margin-right: 5px; margin-bottom: 5px;">
+                            <span style="width: 15px; height: 15px; background-color: rgba(255, 99, 132, 0.5); display: inline-block; margin-right: 3px;"></span>
+                            <span>Above average (5.46 ≤ BRI &lt; 6.91)</span>
                         </div>
                         <div style="display: flex; align-items: center; margin-bottom: 5px;">
-                            <span style="width: 15px; height: 15px; background-color: rgba(255, 99, 132, 0.5); display: inline-block; margin-right: 3px;"></span>
-                            <span>Obese (BRI ≥ 3)</span>
+                            <span style="width: 15px; height: 15px; background-color: rgba(255, 0, 0, 0.5); display: inline-block; margin-right: 3px;"></span>
+                            <span>High (BRI ≥ 6.91)</span>
                         </div>
                     </div>
                 `;
-        }
+            }
 
-        updateUnits();
-      });
+            updateUnits();
+        });
     </script>
-  </body>
+</body>
 </html>

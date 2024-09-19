@@ -10,12 +10,13 @@ interface BRIChartProps {
 const BRIChart: React.FC<BRIChartProps> = ({ bri }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
-  const height = 100; // 增加 SVG 的高度
+  const height = 100;
   const segments = [
-    { name: 'Extremely Lean', range: [0, 1], color: '#8dd3c7' },
-    { name: 'Normal', range: [1, 2], color: '#80b1d3' },
-    { name: 'Overweight', range: [2, 3], color: '#fdb462' },
-    { name: 'Obese', range: [3, 5], color: '#fb8072' },
+    { name: 'Very lean', range: [0, 3.41], color: '#8dd3c7' },
+    { name: 'Lean to average', range: [3.41, 4.45], color: '#80b1d3' },
+    { name: 'Average', range: [4.45, 5.46], color: '#fdb462' },
+    { name: 'Above average', range: [5.46, 6.91], color: '#fb8072' },
+    { name: 'High', range: [6.91, 16], color: '#e31a1c' },
   ];
 
   useEffect(() => {
@@ -31,12 +32,12 @@ const BRIChart: React.FC<BRIChartProps> = ({ bri }) => {
   }, []);
 
   const xScale = scaleLinear({
-    domain: [0, 5],
+    domain: [0, 16],
     range: [0, width],
   });
 
   const barHeight = 30;
-  const yOffset = 30; // 增加顶部偏移量
+  const yOffset = 30;
 
   return (
     <div ref={containerRef} className="mt-4 w-full">
@@ -55,7 +56,7 @@ const BRIChart: React.FC<BRIChartProps> = ({ bri }) => {
           ))}
           <line
             x1={xScale(bri)}
-            y1={-15} // 调整线的起点
+            y1={-15}
             x2={xScale(bri)}
             y2={barHeight + 5}
             stroke="red"
@@ -63,7 +64,7 @@ const BRIChart: React.FC<BRIChartProps> = ({ bri }) => {
           />
           <text
             x={xScale(bri)}
-            y={-20} // 调整文本的位置
+            y={-20}
             textAnchor="middle"
             fontSize={12}
             fill="currentColor"
@@ -71,18 +72,27 @@ const BRIChart: React.FC<BRIChartProps> = ({ bri }) => {
           >
             Your BRI: {bri.toFixed(2)}
           </text>
-          {/* 添加刻度标签 */}
-          {[0, 1, 2, 3, 5].map((tick) => (
-            <text
-              key={tick}
-              x={xScale(tick)}
-              y={barHeight + 20}
-              textAnchor="middle"
-              fontSize={12}
-              fill="black"
-            >
-              {tick}{tick === 5 ? '+' : ''}
-            </text>
+          {/* 更新刻度标签为类别分界线 */}
+          {[0, 3.41, 4.45, 5.46, 6.91, 16].map((tick, index) => (
+            <React.Fragment key={tick}>
+              <line
+                x1={xScale(tick)}
+                y1={barHeight}
+                x2={xScale(tick)}
+                y2={barHeight + 5}
+                stroke="black"
+                strokeWidth={1}
+              />
+              <text
+                x={xScale(tick)}
+                y={barHeight + 20}
+                textAnchor={index === 0 ? "start" : index === 5 ? "end" : "middle"}
+                fontSize={10}
+                fill="black"
+              >
+                {tick === 16 ? "16+" : tick.toFixed(2)}
+              </text>
+            </React.Fragment>
           ))}
         </Group>
       </svg>
@@ -90,7 +100,7 @@ const BRIChart: React.FC<BRIChartProps> = ({ bri }) => {
         {segments.map((segment, index) => (
           <div key={index} className="flex items-center">
             <div className="w-4 h-4 mr-2" style={{ backgroundColor: segment.color }}></div>
-            <span>{segment.name} ({segment.range[0]} ≤ BRI {'<'} {segment.range[1]})</span>
+            <span>{segment.name} ({segment.range[0]} ≤ BRI {index === segments.length - 1 ? '≤' : '<'} {segment.range[1]})</span>
           </div>
         ))}
       </div>

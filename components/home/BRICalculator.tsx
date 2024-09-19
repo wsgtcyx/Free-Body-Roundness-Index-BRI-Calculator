@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useState } from 'react'
 
-export default function BRICalculator() {
+export default function BRICalculator({ locale }: { locale: string }) {
   const [units, setUnits] = useState('imperial')
   const [height, setHeight] = useState('')
   const [weight, setWeight] = useState('')
@@ -45,9 +45,9 @@ export default function BRICalculator() {
   }
 
   return (
-    <Card className="mb-8" id="calculator">
+    <Card className="mb-8 border-2 border-[#009b7d] dark:border-[#33af97]" id="calculator">
       <CardHeader>
-        <CardTitle>Calculate Your BRI</CardTitle>
+        <CardTitle className="text-[#009b7d] dark:text-[#33af97]">Calculate Your BRI</CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={calculateBRI} className="space-y-4">
@@ -99,7 +99,7 @@ export default function BRICalculator() {
           <Button type="submit" className="w-full">Calculate BRI</Button>
         </form>
         {bri !== null && bmi !== null && (
-          <BRIResult bri={bri} bmi={bmi} gender={gender} age={age} />
+          <BRIResult locale={locale} bri={bri} bmi={bmi} gender={gender} age={age} />
         )}
       </CardContent>
     </Card>
