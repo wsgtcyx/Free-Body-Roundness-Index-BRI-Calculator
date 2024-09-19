@@ -309,21 +309,21 @@ button:hover {
 }
 
 .btn-primary {
-    background-color: var(--primary-color);
+    background-color: #2196F3; /* 更亮的蓝色 */
     color: white;
 }
 
 .btn-primary:hover {
-    background-color: #3a7bc8;
+    background-color: #64B5F6; /* 更亮的悬停蓝色 */
 }
 
 .btn-secondary {
-    background-color: #6c757d;
+    background-color: #FF9800; /* 更亮的橙色 */
     color: white;
 }
 
 .btn-secondary:hover {
-    background-color: #545b62;
+    background-color: #FFB74D; /* 更亮的悬停橙色 */
 }
 
 .feedback-buttons {
