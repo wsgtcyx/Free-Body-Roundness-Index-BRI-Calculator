@@ -2,6 +2,7 @@ import AverageBRI from "@/components/home/AverageBRI";
 import BRICalculator from "@/components/home/BRICalculator";
 import CTA from "@/components/home/CTA";
 import FAQ from "@/components/home/FAQ";
+import Feedback from "@/components/home/Feedback";
 import Hero from "@/components/home/Hero";
 import HowToUse from "@/components/home/HowToUse";
 import Interpret from "@/components/home/Interpret";
@@ -24,6 +25,7 @@ export default async function HomeIndex({ lang }: { lang: string }) {
       <WhyBRI locale={langName} />
       <FAQ locale={langName} />
       <CTA locale={langName} />
+      <Feedback locale={langName} />
 
       {/* 
 
@@ -39,7 +41,7 @@ export default async function HomeIndex({ lang }: { lang: string }) {
         
 
         
-        <Feedback />
+
         <References />
       </div> */}
     </>
