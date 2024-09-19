@@ -18,6 +18,8 @@ export default function BRICalculator({ locale }: { locale: string }) {
   const [bri, setBri] = useState<number | null>(null)
   const [bmi, setBmi] = useState<number | null>(null)
 
+  const inputClassName = "border-2 border-[#009b7d] dark:border-[#33af97] focus:ring-2 focus:ring-[#009b7d] dark:focus:ring-[#33af97]"
+
   const calculateBRI = (e: React.FormEvent) => {
     e.preventDefault()
 
@@ -45,9 +47,9 @@ export default function BRICalculator({ locale }: { locale: string }) {
   }
 
   return (
-    <Card className="mb-8 border-2 border-[#009b7d] dark:border-[#33af97]" id="calculator">
+    <Card className="mx-auto max-w-5xl mb-8 border-2 border-[#009b7d] dark:border-[#33af97]" id="calculator">
       <CardHeader>
-        <CardTitle className="text-[#009b7d] dark:text-[#33af97]">Calculate Your BRI</CardTitle>
+        <CardTitle className="text-[#009b7d] dark:text-[#33af97] text-center">Calculate Your BRI</CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={calculateBRI} className="space-y-4">
@@ -55,7 +57,7 @@ export default function BRICalculator({ locale }: { locale: string }) {
             <div className="space-y-2">
               <Label htmlFor="units">Units:</Label>
               <Select onValueChange={(value) => setUnits(value)}>
-                <SelectTrigger id="units">
+                <SelectTrigger id="units" className={inputClassName}>
                   <SelectValue placeholder="Select units" />
                 </SelectTrigger>
                 <SelectContent>
@@ -66,23 +68,44 @@ export default function BRICalculator({ locale }: { locale: string }) {
             </div>
             <div className="space-y-2">
               <Label htmlFor="height">Height:</Label>
-              <Input id="height" type="number" value={height} onChange={(e) => setHeight(e.target.value)} required />
+              <Input
+                id="height"
+                type="number"
+                value={height}
+                onChange={(e) => setHeight(e.target.value)}
+                required
+                className={inputClassName}
+              />
               <span>{units === 'imperial' ? 'in' : 'cm'}</span>
             </div>
             <div className="space-y-2">
               <Label htmlFor="weight">Weight:</Label>
-              <Input id="weight" type="number" value={weight} onChange={(e) => setWeight(e.target.value)} required />
+              <Input
+                id="weight"
+                type="number"
+                value={weight}
+                onChange={(e) => setWeight(e.target.value)}
+                required
+                className={inputClassName}
+              />
               <span>{units === 'imperial' ? 'lbs' : 'kg'}</span>
             </div>
             <div className="space-y-2">
               <Label htmlFor="waist">Waist Circumference:</Label>
-              <Input id="waist" type="number" value={waist} onChange={(e) => setWaist(e.target.value)} required />
+              <Input
+                id="waist"
+                type="number"
+                value={waist}
+                onChange={(e) => setWaist(e.target.value)}
+                required
+                className={inputClassName}
+              />
               <span>{units === 'imperial' ? 'in' : 'cm'}</span>
             </div>
             <div className="space-y-2">
               <Label htmlFor="gender">Gender (optional):</Label>
               <Select onValueChange={(value) => setGender(value)}>
-                <SelectTrigger id="gender">
+                <SelectTrigger id="gender" className={inputClassName}>
                   <SelectValue placeholder="Select" />
                 </SelectTrigger>
                 <SelectContent>
@@ -93,7 +116,15 @@ export default function BRICalculator({ locale }: { locale: string }) {
             </div>
             <div className="space-y-2">
               <Label htmlFor="age">Age (optional):</Label>
-              <Input id="age" type="number" value={age} onChange={(e) => setAge(e.target.value)} min="18" max="120" />
+              <Input
+                id="age"
+                type="number"
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
+                min="18"
+                max="120"
+                className={inputClassName}
+              />
             </div>
           </div>
           <Button type="submit" className="w-full">Calculate BRI</Button>
