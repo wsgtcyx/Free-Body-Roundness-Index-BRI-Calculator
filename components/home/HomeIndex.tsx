@@ -1,6 +1,7 @@
 import BRICalculator from "@/components/home/BRICalculator";
 import Hero from "@/components/home/Hero";
 import HowToUse from "@/components/home/HowToUse";
+import Interpret from "@/components/home/Interpret";
 import WhatIsBRI from "@/components/home/WhatIsBRI";
 import { defaultLocale, getDictionary } from "@/lib/i18n";
 
@@ -14,6 +15,7 @@ export default async function HomeIndex({ lang }: { lang: string }) {
       <WhatIsBRI locale={langName} />
       <HowToUse locale={langName} />
       <BRICalculator locale={langName} />
+      <Interpret locale={langName} />
 
       {/* 
 
@@ -27,7 +29,7 @@ export default async function HomeIndex({ lang }: { lang: string }) {
         
 
         <WhyBRI />
-        <Interpret />
+
         <AverageBRI />
         <Feedback />
         <References />
