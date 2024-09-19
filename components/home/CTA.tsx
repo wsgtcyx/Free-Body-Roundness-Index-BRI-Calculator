@@ -2,27 +2,29 @@
 import CTAButton from "@/components/home/CTAButton";
 import { RoughNotation } from "react-rough-notation";
 
-const CTA = ({ locale, CTALocale }: { locale: any; CTALocale: any }) => {
+
+const CTA = () => {
   return (
-    <section className="flex flex-col justify-center max-w-[88%] items-center py-16 gap-12">
+    <section className="mt-10 max-w-full flex flex-col justify-center items-center py-16 gap-12 border-2 border-[#009b7d] dark:border-[#33af97] rounded-lg">
       <div className="flex flex-col text-center gap-4">
-        <h2 className="text-center">{locale.title}</h2>
+        <h2 className="text-center">Unlock Your Body's True Potential with BRI</h2>
         <p className="text-large text-default-500">
+          Discover the power of the Body Roundness Index.{" "}
           <RoughNotation type="box" color="#b71c1c" show={true}>
-            {locale.description1}
+            More accurate
           </RoughNotation>{" "}
-          {locale.description2}{" "}
+          than BMI,{" "}
           <RoughNotation type="box" color="#b71c1c" show={true}>
-            {locale.description3}
+            more insightful
           </RoughNotation>{" "}
-          {locale.description4}{" "}
+          for your health journey. BRI offers a{" "}
           <RoughNotation type="box" color="#b71c1c" show={true}>
-            {locale.description5}
-          </RoughNotation>
-          {locale.description6}
+            comprehensive view
+          </RoughNotation>{" "}
+          of your body composition, empowering you to make informed decisions about your wellness.
         </p>
       </div>
-      <CTAButton locale={CTALocale} />
+      <CTAButton locale="Calculate Your BRI Now" />
     </section>
   );
 };
