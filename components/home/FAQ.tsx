@@ -104,7 +104,7 @@ export default function FAQ({ locale }: { locale: string }) {
       <CardContent className="space-y-6">
         {content.items.map((item, index) => (
           <div key={index}>
-            {index > 0 && <Separator className="my-6 border-t-2 border-[#009b7d] dark:border-[#33af97]" />}
+            {index > 0 && <Separator className="my-6 border-t border-[#009b7d]/50 dark:border-[#33af97]/50" />}
             <div>
               <h3 className="text-lg font-semibold mb-2">{item.question}</h3>
               <p>
