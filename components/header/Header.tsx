@@ -3,7 +3,8 @@ import { LangSwitcher } from "@/components/header/LangSwitcher";
 import { defaultLocale } from "@/lib/i18n";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { ThemedButton } from "../ThemedButton";
 
 // const links = [
@@ -21,9 +22,20 @@ const titleConfig: { [key: string]: string } = {
 };
 
 const Header = () => {
-  const params = useParams();
-  const lang = params.lang as string;
-  const locale = (lang in titleConfig) ? lang : defaultLocale;
+  const pathname = usePathname();
+  const [langName, setLangName] = useState(defaultLocale);
+
+  useEffect(() => {
+    const fetchLinksList = async () => {
+      if (pathname === '/') {
+        setLangName(defaultLocale);
+      } else {
+        setLangName(pathname.split('/')[1]);
+      }
+
+    };
+    fetchLinksList();
+  }, [pathname, langName]);
 
   // const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
@@ -32,7 +44,7 @@ const Header = () => {
         {/* Left section */}
         <div className="flex items-center md:gap-x-12 flex-1">
           <Link
-            href="/"
+            href={`/${langName}`}
             aria-label="BRI Calculator"
             title="BRI Calculator"
             className="flex items-center space-x-1 font-bold"
@@ -45,7 +57,7 @@ const Header = () => {
               height={32}
             />
             <span className="text-gray-950 dark:text-gray-300 hidden md:block">
-              {titleConfig[locale as keyof typeof titleConfig]}
+              {titleConfig[langName as keyof typeof titleConfig]}
             </span>
           </Link>
         </div>
