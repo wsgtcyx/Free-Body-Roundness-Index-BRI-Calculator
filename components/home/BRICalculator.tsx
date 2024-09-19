@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Calendar, Ruler, RulerIcon, Scale, Users, Weight } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const translations = {
   "en": {
@@ -67,9 +67,31 @@ export default function BRICalculator({ locale }: { locale: string }) {
   const [bri, setBri] = useState<number | null>(null)
   const [bmi, setBmi] = useState<number | null>(null)
 
+  const [placeholders, setPlaceholders] = useState({
+    height: '70',
+    weight: '160',
+    waist: '32',
+  })
+
   const t = translations[locale as keyof typeof translations];
 
   const inputClassName = "border-2 border-[#009b7d] dark:border-[#33af97] focus:ring-2 focus:ring-[#009b7d] dark:focus:ring-[#33af97]"
+
+  useEffect(() => {
+    if (units === 'imperial') {
+      setPlaceholders({
+        height: '70',
+        weight: '160',
+        waist: '32',
+      })
+    } else {
+      setPlaceholders({
+        height: '175',
+        weight: '70',
+        waist: '80',
+      })
+    }
+  }, [units])
 
   const calculateBRI = (e: React.FormEvent) => {
     e.preventDefault()
@@ -132,6 +154,7 @@ export default function BRICalculator({ locale }: { locale: string }) {
                 onChange={(e) => setHeight(e.target.value)}
                 required
                 className={inputClassName}
+                placeholder={placeholders.height}
               />
               <span>{units === 'imperial' ? 'in' : 'cm'}</span>
             </div>
@@ -147,6 +170,7 @@ export default function BRICalculator({ locale }: { locale: string }) {
                 onChange={(e) => setWeight(e.target.value)}
                 required
                 className={inputClassName}
+                placeholder={placeholders.weight}
               />
               <span>{units === 'imperial' ? 'lbs' : 'kg'}</span>
             </div>
@@ -162,6 +186,7 @@ export default function BRICalculator({ locale }: { locale: string }) {
                 onChange={(e) => setWaist(e.target.value)}
                 required
                 className={inputClassName}
+                placeholder={placeholders.waist}
               />
               <span>{units === 'imperial' ? 'in' : 'cm'}</span>
             </div>
@@ -193,6 +218,7 @@ export default function BRICalculator({ locale }: { locale: string }) {
                 min="18"
                 max="120"
                 className={inputClassName}
+                placeholder="30"
               />
             </div>
           </div>
