@@ -97,13 +97,13 @@ export default function BRICalculator({ locale }: { locale: string }) {
   }
 
   return (
-    <Card className="mx-auto max-w-5xl mb-8 border-2 border-[#009b7d] dark:border-[#33af97]" id="calculator">
+    <Card className="w-full max-w-full mx-auto mb-8 border-2 border-[#009b7d] dark:border-[#33af97]" id="calculator">
       <CardHeader>
         <CardTitle className="text-[#009b7d] dark:text-[#33af97] text-center">{t.title}</CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={calculateBRI} className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="space-y-2">
               <Label htmlFor="units">{t.units}</Label>
               <Select onValueChange={(value) => setUnits(value)}>
