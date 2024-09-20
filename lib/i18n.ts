@@ -17,21 +17,21 @@ export function getLocale(headers: any): string {
   return match(languages, locales, defaultLocale);
 }
 
-const dictionaries: any = {
-  en: () => import("@/locales/en.json").then((module) => module.default),
-  nl: () => import("@/locales/nl.json").then((module) => module.default),
-  de: () => import("@/locales/de.json").then((module) => module.default),
-};
+// const dictionaries: any = {
+//   en: () => import("@/locales/en.json").then((module) => module.default),
+//   nl: () => import("@/locales/nl.json").then((module) => module.default),
+//   de: () => import("@/locales/de.json").then((module) => module.default),
+// };
 
-export const getDictionary = async (locale: string) => {
-  // if (["zh-CN", "zh-TW", "zh-HK"].includes(locale)) {
-  //   locale = "zh";
-  // }
+// export const getDictionary = async (locale: string) => {
+//   // if (["zh-CN", "zh-TW", "zh-HK"].includes(locale)) {
+//   //   locale = "zh";
+//   // }
 
-  if (!Object.keys(dictionaries).includes(locale)) {
-    locale = "en";
-  }
+//   if (!Object.keys(dictionaries).includes(locale)) {
+//     locale = "en";
+//   }
 
-  return dictionaries[locale]();
-};
+//   return dictionaries[locale]();
+// };
 

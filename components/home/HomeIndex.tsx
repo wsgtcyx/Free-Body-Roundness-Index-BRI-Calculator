@@ -9,11 +9,11 @@ import Interpret from "@/components/home/Interpret";
 import References from "@/components/home/References";
 import WhatIsBRI from "@/components/home/WhatIsBRI";
 import WhyBRI from "@/components/home/WhyBRI";
-import { defaultLocale, getDictionary } from "@/lib/i18n";
+import { defaultLocale } from "@/lib/i18n";
 
 export default async function HomeIndex({ lang }: { lang: string }) {
   const langName = lang || defaultLocale;
-  const dict = await getDictionary(langName);
+  // const dict = await getDictionary(langName);
 
   return (
     <>
