@@ -345,9 +345,14 @@
                     interpretation = 'Your BRI indicates that you have a very lean body shape with a relatively small waist circumference. This may pose certain health risks.';
                     risks = [
                         'Increased risk of nutrient deficiencies, particularly vitamins and minerals',
-                        'Potential for compromised immune function',
-                        'Possible hormonal imbalances affecting reproductive health'
+                        'Potential for compromised immune function'
                     ];
+                    
+                    // 只有在年龄小于50岁时才添加生殖健康相关的风险
+                    if (age && age < 40) {
+                        risks.push('Possible hormonal imbalances affecting reproductive health');
+                    }
+                    
                     advice = [
                         'Consult with a registered dietitian to ensure adequate nutrient intake',
                         'Gradually increase calorie intake with nutrient-dense foods',
@@ -413,7 +418,15 @@
                 briInterpretation.textContent = interpretation;
 
                 if (age && gender) {
-                    briInterpretation.textContent += ` As a ${age}-year-old ${gender}, ${age > 65 ? "it's crucial to focus on maintaining muscle mass and bone density while managing weight." : "maintaining a healthy lifestyle is key to preventing future health issues."}`;
+                    let ageSpecificAdvice = '';
+                    if (age > 65) {
+                        ageSpecificAdvice = "it's crucial to focus on maintaining muscle mass and bone density while managing weight.";
+                    } else if (age > 50) {
+                        ageSpecificAdvice = "it's important to focus on maintaining a healthy weight and staying physically active to prevent age-related health issues.";
+                    } else {
+                        ageSpecificAdvice = "maintaining a healthy lifestyle is key to preventing future health issues.";
+                    }
+                    briInterpretation.textContent += ` As a ${age}-year-old ${gender}, ${ageSpecificAdvice}`;
                 }
 
                 healthRisks.innerHTML = risks.map(risk => `<li>${risk}</li>`).join('');
