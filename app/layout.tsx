@@ -42,7 +42,9 @@ export default async function RootLayout({
 }) {
   return (
     <html lang={lang || defaultLocale} suppressHydrationWarning>
-      <head />
+      <head>
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="fa05dabe-795b-467a-8f02-aa4b3bac9987"></script>
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
