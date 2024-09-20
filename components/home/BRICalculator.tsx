@@ -191,12 +191,12 @@ export default function BRICalculator({ locale }: { locale: string }) {
 
             {/* Waist input */}
             <div className="space-y-2">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center">
                 <Label htmlFor="waist" className="flex items-center gap-2">
                   <Ruler className="w-5 h-5" />
                   {t.waist}
-                  <MeasureButton locale={locale} />
                 </Label>
+                <MeasureButton locale={locale} />
               </div>
               <div className="relative">
                 <Input
