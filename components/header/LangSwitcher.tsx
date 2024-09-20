@@ -40,14 +40,18 @@ export const LangSwitcher = () => {
 
   return (
     <Select value={langName as string} onValueChange={handleSwitchLanguage}>
-      <SelectTrigger className="w-fit">
+      <SelectTrigger className="w-fit bg-[#009b7d] text-white hover:bg-[#007a63] dark:bg-[#33af97] dark:hover:bg-[#2a8f7c] px-4 py-2 rounded-md font-semibold transition-colors duration-200">
         <SelectValue placeholder="Language" />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg">
         {Object.keys(localeNames).map((key: string) => {
           const name = localeNames[key];
           return (
-            <SelectItem className="cursor-pointer" key={key} value={key}>
+            <SelectItem
+              className="cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 px-4 py-2 transition-colors duration-200"
+              key={key}
+              value={key}
+            >
               {name}
             </SelectItem>
           );
