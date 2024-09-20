@@ -355,11 +355,11 @@ export const BRIResult: FC<BRIResultProps> = ({ locale, bri, bmi, gender, age })
 };
 
 function getHealthStatusColor(bri: number): string {
-  if (bri < 3.41) return "text-teal-500";
-  if (bri < 4.45) return "text-blue-500";
-  if (bri < 5.46) return "text-yellow-500";
-  if (bri < 6.91) return "text-red-500";
-  return "text-red-700";
+  if (bri < 3.41) return "text-[#8BC34A]";
+  if (bri < 4.45) return "text-[#4CAF50]";
+  if (bri < 5.46) return "text-[#009688]";
+  if (bri < 6.91) return "text-[#00796B]";
+  return "text-[#004D40]";
 }
 
 function getHealthStatus(bri: number, t: any): string {
