@@ -38,7 +38,7 @@ const HowToUse = ({ locale }: { locale: string }) => {
 
   return (
     <div className='w-full'>
-      <Card className="w-full py-3 mb-10 bg-gray-50 border-2 border-[#009b7d] rounded-lg">
+      <Card className="w-full py-3 mb-10 bg-gray-50 dark:bg-gray-800 border-2 border-[#009b7d] dark:border-[#19a58a] rounded-lg">
         <CardHeader>
           <CardTitle className="text-[#009b7d] dark:text-[#19a58a] text-center">{title}</CardTitle>
         </CardHeader>
@@ -46,7 +46,7 @@ const HowToUse = ({ locale }: { locale: string }) => {
           <ol className="list-decimal pl-5 space-y-2">
             {steps.map((step, index) => (
               <li key={index} className="flex items-center mb-6 bg-gradient-to-r from-[#e6f7f5] to-white dark:from-[#1a2e2b] dark:to-[#1f2937] p-2 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg">
-                <span className="flex-shrink-0 w-6 h-6 bg-[#009b7d] text-white rounded-full flex items-center justify-center mr-4 text-lg font-bold">
+                <span className="flex-shrink-0 w-6 h-6 bg-[#009b7d] dark:bg-[#19a58a] text-white rounded-full flex items-center justify-center mr-4 text-lg font-bold">
                   {index + 1}
                 </span>
                 <span className="text-gray-800 dark:text-gray-200">{step}</span>

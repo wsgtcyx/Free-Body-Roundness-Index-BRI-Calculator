@@ -1,4 +1,3 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const translations = {
   "en": {
@@ -71,31 +70,37 @@ const Interpret: React.FC<InterpretProps> = ({ locale }) => {
   const t = translations[locale as keyof typeof translations];
 
   return (
-    <div>
-      <Card className="mb-8 border-t-4 border-[#009b7d]">
-        <CardHeader>
-          <CardTitle className="text-[#009b7d] text-center">{t.title}</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="mb-4">{t.intro}</p>
-          <ul className="list-disc pl-5 space-y-2">
+    <section className="w-full py-3 pt-10 mb-10 bg-gray-50 dark:bg-gray-900 border-2 border-[#009b7d] rounded-lg">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold mb-6 text-center text-[#009b7d] dark:text-[#33af97]">{t.title}</h2>
+        <div className="max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+          <p className="mb-6 text-lg text-gray-700 dark:text-gray-300">{t.intro}</p>
+          <ul className="space-y-4 mb-6">
             {t.categories.map((category, index) => (
-              <li key={index}>{category}</li>
+              <li key={index} className="flex items-start">
+                <span className="flex-shrink-0 w-2 h-2 mt-2 bg-[#009b7d] rounded-full mr-3"></span>
+                <span className="text-gray-700 dark:text-gray-300">{category}</span>
+              </li>
             ))}
           </ul>
-          <p className="mt-4">{t.understanding}</p>
-          <ul className="list-disc pl-5 space-y-2 mt-2">
+          <p className="mb-4 text-lg font-semibold text-[#009b7d] dark:text-[#33af97]">{t.understanding}</p>
+          <ul className="space-y-4 mb-6">
             {t.interpretations.map((interpretation, index) => (
-              <li key={index}>{interpretation}</li>
+              <li key={index} className="flex items-start">
+                <span className="flex-shrink-0 w-2 h-2 mt-2 bg-[#009b7d] rounded-full mr-3"></span>
+                <p className="text-gray-700 dark:text-gray-300">{interpretation}</p>
+              </li>
             ))}
           </ul>
-          <p className="mt-4">
-            {t.reminder}
-          </p>
-        </CardContent>
-      </Card>
-    </div>
-  )
+          <div className="mt-8 bg-[#e6f7f5] dark:bg-[#1a2e2b] rounded-lg p-4">
+            <p className="text-sm text-gray-700 dark:text-gray-300 italic">
+              {t.reminder}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
 
-export default Interpret
+export default Interpret;

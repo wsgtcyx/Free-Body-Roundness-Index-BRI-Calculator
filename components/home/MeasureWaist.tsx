@@ -37,7 +37,7 @@ export default function MeasureWaist({ locale }: { locale: string }) {
   const content = measureWaistContent[locale as keyof typeof measureWaistContent] || measureWaistContent.en;
 
   return (
-    <section className="w-full py-3 pt-10 mb-10 bg-gray-50 border-2 border-[#009b7d] rounded-lg" id="measure-waist">
+    <section className="w-full py-3 pt-10 mb-10 bg-gray-50 dark:bg-gray-900 border-2 border-[#009b7d] rounded-lg" id="measure-waist">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-6 text-center text-[#009b7d] dark:text-[#33af97]">{content.title}</h2>
         <div className="max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
@@ -63,11 +63,11 @@ export default function MeasureWaist({ locale }: { locale: string }) {
               </li>
             ))}
           </ol>
-          <div className="mt-4 bg-[#e6f7f5] dark:bg-[#1a2e2b] rounded-lg">
+          <div className="mt-8 bg-[#e6f7f5] dark:bg-[#1a2e2b] rounded-lg p-4">
             <p className="text-sm text-gray-700 dark:text-gray-300 italic">{content.tip}</p>
           </div>
         </div>
-        <div className="mb-2 flex justify-center">
+        <div className="mt-8 flex justify-center">
           <CTAButton locale={locale} />
         </div>
       </div>
