@@ -1,0 +1,471 @@
+
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бесплатный калькулятор индекса округлости тела (BRI)</title>
+    <meta name="description" content="Бесплатный калькулятор BRI для оценки формы тела и рисков здоровья. Прост в использовании.">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="fa05dabe-795b-467a-8f02-aa4b3bac9987"></script>
+    <link rel="canonical" href="https://bri-calculator.com/ru/" />
+    <style>
+        /* Сохраните стили из оригинального файла */
+    </style>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6LM13XCDB2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6LM13XCDB2');
+</script>
+
+<body>
+    <h1>Бесплатный калькулятор индекса округлости тела (BRI)</h1>
+    <div class="free-badge-container">
+        <p class="free-badge">100% Бесплатно - Регистрация не требуется</p>
+    </div>
+
+    <div class="language-switcher">
+        <a href="/">English</a> | <a href="/nl">Nederlands</a> | <a href="/de">Deutsch</a> | <span>Русский</span>
+    </div>
+    
+    <div class="section">
+        <h2>Что такое индекс округлости тела (BRI)?</h2>
+        <p>Индекс округлости тела (BRI) - это показатель, используемый для оценки формы тела и рисков для здоровья. Наш бесплатный калькулятор BRI сочетает измерения роста и окружности талии для оценки "округлости" человеческого тела. BRI может помочь оценить риски для здоровья, связанные с ожирением, без каких-либо затрат для вас.</p>
+    </div>
+
+    <div class="section">
+        <h2>Как использовать этот калькулятор</h2>
+        <ol>
+            <li>Выберите единицы измерения и введите ваш рост, вес и окружность талии.</li>
+            <li>По желанию, укажите ваш пол и возраст для получения более персонализированных результатов.</li>
+            <li>Нажмите "Рассчитать BRI", чтобы увидеть значение вашего BRI и оценку состояния здоровья.</li>
+        </ol>
+        <p>Помните, для наиболее точного измерения талии, измеряйте в средней точке между нижним краем последнего прощупываемого ребра и верхней частью подвздошного гребня, обычно на уровне пупка.</p>
+    </div>
+
+    <div class="section calculator">
+        <h2>Рассчитайте ваш BRI</h2>
+        <form id="briForm">
+            <div class="input-group">
+                <label for="units">Единицы измерения:</label>
+                <select id="units">
+                    <option value="imperial" selected>Имперские (дюймы, фунты)</option>
+                    <option value="metric">Метрические (см, кг)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="height">Рост:</label>
+                <input type="number" id="height" required min="0" step="0.1" aria-label="Рост">
+                <span id="heightUnit">дюймы</span>
+            </div>
+            <div class="input-group">
+                <label for="weight">Вес:</label>
+                <input type="number" id="weight" required min="0" step="0.1" aria-label="Вес">
+                <span id="weightUnit">фунты</span>
+            </div>
+            <div class="input-group">
+                <label for="waist">Окружность талии:</label>
+                <input type="number" id="waist" required min="0" step="0.1" aria-label="Окружность талии">
+                <span id="waistUnit">дюймы</span>
+            </div>
+            <div class="input-group">
+                <label for="gender">Пол (необязательно):</label>
+                <select id="gender" aria-label="Пол">
+                    <option value="">Выберите</option>
+                    <option value="male">Мужской</option>
+                    <option value="female">Женский</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="age">Возраст (необязательно):</label>
+                <input type="number" id="age" min="18" max="120" aria-label="Возраст">
+            </div>
+            <button type="submit" id="calculateBtn">Рассчитать BRI</button>
+        </form>
+    </div>
+
+    <div id="result" class="section" style="display:none;">
+        <h2>Ваши результаты BRI</h2>
+        <div class="result-summary">
+            <p>Ваш индекс округлости тела (BRI): <strong id="briValue"></strong></p>
+            <p>Состояние здоровья: <span id="healthStatus"></span></p>
+        </div>
+        <div class="result-chart">
+            <p>На графике ниже показан ваш BRI в отношении различных категорий здоровья. Красная линия указывает ваше текущее значение BRI.</p>
+            <div id="briChart"></div>
+        </div>
+        <div class="result-details">
+            <h3>Что это означает?</h3>
+            <p id="briInterpretation"></p>
+            <h3>Потенциальные риски для здоровья</h3>
+            <ul id="healthRisks"></ul>
+            <h3>Рекомендации</h3>
+            <ul id="recommendations"></ul>
+        </div>
+        <div class="bmi-comparison">
+            <h3>Сравнение BRI и ИМТ</h3>
+            <p>Ваш индекс массы тела (ИМТ): <strong id="bmiValue"></strong></p>
+            <p id="bmiComparison"></p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Как интерпретировать результаты</h2>
+        <p>Наш бесплатный калькулятор предоставляет значение вашего BRI и интерпретацию на основе последних исследований:</p>
+        <ul>
+            <li>BRI < 3.41: Очень стройная форма тела (нижние 20% населения)</li>
+            <li>3.41 ≤ BRI < 4.45: От стройной до средней формы тела (нижние 20-40% населения)</li>
+            <li>4.45 ≤ BRI < 5.46: Средняя форма тела (средние 40-60% населения)</li>
+            <li>5.46 ≤ BRI < 6.91: Выше средней округлость тела (верхние 60-80% населения)</li>
+            <li>BRI ≥ 6.91: Высокая округлость тела (верхние 20% населения)</li>
+        </ul>
+        <p>Чтобы помочь вам понять ваши результаты:</p>
+        <ul>
+            <li>Если ваш BRI ниже 3.41, у вас очень стройная форма тела с относительно небольшой окружностью талии.</li>
+            <li>BRI между 3.41 и 4.45 предполагает стройную или среднюю форму тела, с размером талии меньше, чем у большинства людей.</li>
+            <li>Если ваш BRI находится между 4.45 и 5.46, у вас средняя форма тела, не особенно стройная и не округлая.</li>
+            <li>BRI между 5.46 и 6.91 указывает на выше средней округлость тела, с окружностью талии больше, чем у большинства людей.</li>
+            <li>Если ваш BRI 6.91 или выше, у вас высокая округлость тела, что может быть связано с повышенными рисками для здоровья.</li>
+        </ul>
+        <p>Помните, BRI - это лишь один из показателей здоровья. Для комплексного понимания вашего состояния здоровья рекомендуется проконсультироваться с медицинским специалистом. Они могут учесть другие факторы, такие как диета, физическая активность, генетика и общее состояние здоровья при интерпретации вашего BRI.</p>
+    </div>
+
+    <div class="section">
+        <h2>Средние значения BRI по возрасту и полу</h2>
+        <p>Следующие данные из исследования "Индекс округлости тела и смертность от всех причин среди взрослых США" (Zhang et al.) показывают средние значения BRI для разных возрастных групп и полов:</p>
+        <div class="bri-averages">
+            <div class="bri-averages-male">
+                <h3>Мужчины</h3>
+                <ul>
+                    <li>18-29 лет: 2.91 ± 0.98</li>
+                    <li>30-39 лет: 3.54 ± 1.12</li>
+                    <li>40-49 лет: 3.92 ± 1.18</li>
+                    <li>50-59 лет: 4.21 ± 1.23</li>
+                    <li>60-69 лет: 4.35 ± 1.25</li>
+                    <li>≥70 лет: 4.31 ± 1.27</li>
+                </ul>
+            </div>
+            <div class="bri-averages-female">
+                <h3>Женщины</h3>
+                <ul>
+                    <li>18-29 лет: 2.61 ± 0.89</li>
+                    <li>30-39 лет: 3.13 ± 1.12</li>
+                    <li>40-49 лет: 3.67 ± 1.30</li>
+                    <li>50-59 лет: 4.25 ± 1.40</li>
+                    <li>60-69 лет: 4.61 ± 1.46</li>
+                    <li>≥70 лет: 4.71 ± 1.51</li>
+                </ul>
+            </div>
+        </div>
+        <p>Эти средние значения могут помочь вам сравнить ваш BRI с другими людьми вашего возраста и пола. Однако помните, что индивидуальные факторы здоровья сложны, и эти средние значения следует использовать только как общий ориентир.</p>
+    </div>
+
+    <div class="section">
+        <h2>Почему BRI может быть точнее, чем ИМТ:</h2>
+        <ul>
+            <li>BRI учитывает окружность талии, ключевой показатель абдоминального жира</li>
+            <li>Более чувствителен к изменениям формы тела и распределению жира</li>
+            <li>Потенциально лучше предсказывает риски для сердечно-сосудистого здоровья</li>
+            <li>Обеспечивает более точную оценку для людей с высокой мышечной массой</li>
+        </ul>
+    </div>
+
+    <div class="faq-section">
+        <h2>Часто задаваемые вопросы (FAQ)</h2>
+        <div class="faq-item">
+            <div class="faq-question">1. Как рассчитывается BRI?</div>
+            <div class="faq-answer">BRI рассчитывается по формуле: BRI = 364.2 - 365.5 * √(1 - ((WC / (2π))² / (0.5 * H)²), где WC - окружность талии, а H - рост, оба в метрах.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">2. BRI лучше, чем ИМТ?</div>
+            <div class="faq-answer">BRI может быть точнее ИМТ при оценке формы тела и распределения жира. Он учитывает окружность талии, чего не делает ИМТ.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">3. В чем разница между ИМТ и BRI?</div>
+            <div class="faq-answer">ИМТ использует только рост и вес, в то время как BRI включает окружность талии. Это позволяет BRI лучше учитывать форму тела и распределение жира.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">4. Полезен ли BRI?</div>
+            <div class="faq-answer">Да, BRI может быть полезен, так как он предоставляет более комплексную оценку формы тела и потенциальных рисков для здоровья по сравнению с одним только ИМТ.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">5. Как измерять талию для BRI?</div>
+            <div class="faq-answer">Измеряйте окружность талии в средней точке между нижним краем последнего прощупываемого ребра и верхней частью подвздошного гребня, обычно на уровне пупка.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">6. Каковы недостатки BRI?</div>
+            <div class="faq-answer">BRI может быть не так широко признан, как ИМТ, и, как и все измерения тела, он не учитывает такие факторы, как мышечная масса или плотность костей.</div>
+        </div>
+    </div>
+
+    <div class="section feedback-section">
+        <h2>Ваше мнение важно для нас</h2>
+        <p>Мы надеемся, что вы найдете наш бесплатный калькулятор BRI полезным. Ваш отзыв помогает нам улучшаться:</p>
+        <div class="feedback-buttons">
+            <a href="https://yxstore.lemonsqueezy.com/buy/18c1219f-4182-40dd-bea6-7147c7a30de6" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                Поддержите нас кофе
+            </a>
+            <a href="mailto:support@bri-calculator.com" class="btn btn-secondary">
+                Отправить отзыв
+            </a>
+        </div>
+        <p>Спасибо за вашу поддержку!</p>
+    </div>
+
+    <div class="section references">
+        <h2>Ссылки</h2>
+        <ol>
+            <li>Thomas, D. M., et al. (2013). Relationships between body roundness with body fat and visceral adipose tissue emerging from a new geometrical model. <em>Obesity</em>, 21(11), 2264-2271.</li>
+            <li>Chang, Y., et al. (2018). Body roundness index and its association with metabolic syndrome in type 2 diabetes mellitus. <em>Diabetes, Metabolic Syndrome and Obesity: Targets and Therapy</em>, 11, 827-833.</li>
+            <li>Rico-Martín, S., et al. (2020). Effectiveness of body roundness index in predicting metabolic syndrome: A systematic review and meta-analysis. <em>Obesity Reviews</em>, 21(9), e13023.</li>
+            <li>Perona, J. S., et al. (2019). Waist circumference and abdominal volume index are the strongest anthropometric discriminators of metabolic syndrome in Spanish adolescents. <em>European Journal of Clinical Investigation</em>, 49(3), e13060.</li>
+        </ol>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2024 BRI Calculator. Все права защищены.</p>
+            <p><a href="https://www.lasso.net/go/link/PL3Kdz" class="subtle-link">Откройте для себя больше интересных ссылок</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('briForm');
+            const result = document.getElementById('result');
+            const unitsSelect = document.getElementById('units');
+            const heightInput = document.getElementById('height');
+            const weightInput = document.getElementById('weight');
+            const waistInput = document.getElementById('waist');
+            const heightUnit = document.getElementById('heightUnit');
+            const weightUnit = document.getElementById('weightUnit');
+            const waistUnit = document.getElementById('waistUnit');
+    
+            function updateUnits() {
+                const isImperial = unitsSelect.value === 'imperial';
+                heightUnit.textContent = isImperial ? 'дюймы' : 'см';
+                weightUnit.textContent = isImperial ? 'фунты' : 'кг';
+                waistUnit.textContent = isImperial ? 'дюймы' : 'см';
+            }
+    
+            unitsSelect.addEventListener('change', updateUnits);
+    
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                calculateBRI();
+            });
+    
+            function calculateBRI() {
+                const height = parseFloat(heightInput.value);
+                const weight = parseFloat(weightInput.value);
+                const waist = parseFloat(waistInput.value);
+                const gender = document.getElementById('gender').value;
+                const age = parseInt(document.getElementById('age').value);
+                const isImperial = unitsSelect.value === 'imperial';
+    
+                if (height && weight && waist) {
+                    let heightM, waistM, weightKg;
+                    if (isImperial) {
+                        heightM = height * 0.0254;
+                        waistM = waist * 0.0254;
+                        weightKg = weight * 0.453592;
+                    } else {
+                        heightM = height / 100;
+                        waistM = waist / 100;
+                        weightKg = weight;
+                    }
+    
+                    const bri = 364.2 - 365.5 * Math.sqrt(1 - ((waistM / (2 * Math.PI)) ** 2) / ((0.5 * heightM) ** 2));
+                    const bmi = weightKg / (heightM * heightM);
+                    displayResults(bri, bmi, gender, age);
+                } else {
+                    alert('Пожалуйста, заполните все обязательные поля.');
+                }
+            }
+    
+            function displayResults(bri, bmi, gender, age) {
+                result.style.display = 'block';
+    
+                const briValue = document.getElementById('briValue');
+                const healthStatus = document.getElementById('healthStatus');
+                const briInterpretation = document.getElementById('briInterpretation');
+                const healthRisks = document.getElementById('healthRisks');
+                const recommendations = document.getElementById('recommendations');
+                const bmiValue = document.getElementById('bmiValue');
+                const bmiComparison = document.getElementById('bmiComparison');
+    
+                briValue.textContent = bri.toFixed(2);
+                bmiValue.textContent = bmi.toFixed(2);
+    
+                let status, interpretation, risks, advice;
+    
+                if (bri < 3.41) {
+                    status = 'Очень стройное';
+                    interpretation = 'Ваш BRI указывает на очень стройную форму тела с относительно небольшой окружностью талии. Это может представлять определенные риски для здоровья.';
+                    risks = [
+                        'Повышенный риск дефицита питательных веществ, особенно витаминов и минералов',
+                        'Возможное ослабление иммунной функции'
+                    ];
+                    
+                    if (age && age < 50) {
+                        risks.push('Возможные гормональные нарушения, влияющие на репродуктивное здоровье');
+                    }
+                    
+                    advice = [
+                        'Проконсультируйтесь с диетологом для обеспечения адекватного потребления питательных веществ',
+                        'Постепенно увеличивайте потребление калорий за счет питательных продуктов',
+                        'Рассмотрите возможность силовых тренировок для наращивания мышечной массы'
+                    ];
+                } else if (bri < 4.45) {
+                    status = 'От стройного до среднего';
+                    interpretation = 'Ваш BRI указывает на стройную или среднюю форму тела, с размером талии меньше, чем у большинства людей.';
+                    risks = [
+                        'В целом низкий риск проблем со здоровьем, связанных с ожирением',
+                        'Обратите внимание на семейную историю потенциальных генетических рисков для здоровья'
+                    ];
+                    advice = [
+                        'Поддерживайте сбалансированную диету, богатую фруктами, овощами, нежирными белками и цельнозерновыми продуктами',
+                        'Регулярно занимайтесь физической активностью, стремясь к не менее 150 минутам умеренных упражнений в неделю',
+                        'Регулярно проходите медицинские осмотры для контроля общего состояния здоровья'
+                    ];
+                } else if (bri < 5.46) {
+                    status = 'Среднее';
+                    interpretation = 'Ваш BRI попадает в диапазон средней формы тела, не особенно стройной и не округлой.';
+                    risks = [
+                        'Повышенный риск развития диабета 2 типа и инсулинорезистентности',
+                        'Повышенная вероятность развития высокого кровяного давления',
+                        'Более высокий риск апноэ сна и проблем с дыханием'
+                    ];
+                    advice = [
+                        'Стремитесь уменьшить ежедневное потребление калорий на 500 калорий за счет более здорового выбора продуктов',
+                        'Увеличьте физическую активность, стремясь к 30 минутам умеренных упражнений большинство дней недели',
+                        'Рассмотрите возможность консультации с диетологом для составления персонализированного плана питания'
+                    ];
+                } else if (bri < 6.91) {
+                    status = 'Выше среднего';
+                    interpretation = 'Ваш BRI указывает на округлость тела выше среднего, с окружностью талии больше, чем у большинства людей.';
+                    risks = [
+                        'Значительно повышенный риск сердечно-сосудистых заболеваний, включая инфаркт и инсульт',
+                        'Более высокая вероятность развития некоторых видов рака, таких как рак толстой кишки и молочной железы',
+                        'Повышенный риск остеоартрита и проблем с суставами из-за избыточного веса'
+                    ];
+                    advice = [
+                        'Проконсультируйтесь с медицинским специалистом для разработки комплексного плана снижения веса',
+                        'Начните с небольших, достижимых целей, таких как уменьшение размера порций и исключение сладких напитков',
+                        'Включите как кардио, так и силовые тренировки, начиная с упражнений с низкой нагрузкой',
+                        'Рассмотрите возможность присоединения к группе поддержки или работы с тренером по здоровью для мотивации и ответственности'
+                    ];
+                } else {
+                    status = 'Высокое';
+                    interpretation = 'Ваш BRI указывает на высокую округлость тела, что связано с различными рисками для здоровья.';
+                    risks = [
+                        'Значительно повышенный риск сердечно-сосудистых заболеваний, включая инфаркт и инсульт',
+                        'Более высокая вероятность развития некоторых видов рака, таких как рак толстой кишки и молочной железы',
+                        'Повышенный риск остеоартрита и проблем с суставами из-за избыточного веса'
+                    ];
+                    advice = [
+                        'Проконсультируйтесь с медицинским специалистом для разработки комплексного плана снижения веса',
+                        'Начните с небольших, достижимых целей, таких как уменьшение размера порций и исключение сладких напитков',
+                        'Включите как кардио, так и силовые тренировки, начиная с упражнений с низкой нагрузкой',
+                        'Рассмотрите возможность присоединения к группе поддержки или работы с тренером по здоровью для мотивации и ответственности'
+                    ];
+                }
+    
+                healthStatus.textContent = status;
+                healthStatus.className = `status-${status.toLowerCase().replace(' ', '-')}`;
+                briInterpretation.textContent = interpretation;
+    
+                if (age && gender) {
+                    let ageSpecificAdvice = '';
+                    if (age > 65) {
+                        ageSpecificAdvice = "важно сосредоточиться на поддержании мышечной массы и плотности костей при управлении весом.";
+                    } else if (age > 50) {
+                        ageSpecificAdvice = "важно сосредоточиться на поддержании здорового веса и физической активности для предотвращения возрастных проблем со здоровьем.";
+                    } else {
+                        ageSpecificAdvice = "поддержание здорового образа жизни является ключом к предотвращению будущих проблем со здоровьем.";
+                    }
+                    briInterpretation.textContent += ` Для ${age}-летнего ${gender === 'male' ? 'мужчины' : 'женщины'} ${ageSpecificAdvice}`;
+                }
+    
+                healthRisks.innerHTML = risks.map(risk => `<li>${risk}</li>`).join('');
+                recommendations.innerHTML = advice.map(item => `<li>${item}</li>`).join('');
+    
+                bmiComparison.innerHTML = `
+                    <p>Ваш ИМТ составляет ${bmi.toFixed(2)}, что попадает в категорию ${getBMICategory(bmi)}.</p>
+                    <p>Хотя ИМТ широко используется, BRI предоставляет более комплексную оценку, учитывая форму вашего тела.</p>
+                    <p>Ваш BRI ${bri.toFixed(2)} учитывает окружность талии, предлагая более нюансированный взгляд на состав вашего тела и потенциальные риски для здоровья.</p>
+                `;
+    
+                updateBRIChart(bri);
+            }
+    
+            function getBMICategory(bmi) {
+                if (bmi < 18.5) return 'недостаточный вес';
+                if (bmi < 25) return 'нормальный вес';
+                if (bmi < 30) return 'избыточный вес';
+                return 'ожирение';
+            }
+    
+            function updateBRIChart(bri) {
+                const chartContainer = document.getElementById('briChart');
+                const briPosition = Math.min(bri / 16 * 100, 100);
+                chartContainer.innerHTML = `
+                    <div class="bri-chart-container" style="position: relative; height: 130px; margin-bottom: 20px;">
+                        <div style="position: absolute; top: 5%; left: ${briPosition}%; transform: translateX(-50%); text-align: center; font-weight: bold; white-space: nowrap;">
+                            Ваш BRI: ${bri.toFixed(2)}
+                        </div>
+                        <div class="bri-bar" style="width: 100%; height: 30px; background-color: #f0f0f0; position: absolute; top: 25%;">
+                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(75, 192, 192, 0.5); left: 0; width: 21.3125%;" title="Очень стройное: BRI < 3.41"></div>
+                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(54, 162, 235, 0.5); left: 21.3125%; width: 6.5%;" title="От стройного до среднего: 3.41 ≤ BRI < 4.45"></div>
+                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(255, 206, 86, 0.5); left: 27.8125%; width: 6.3125%;" title="Среднее: 4.45 ≤ BRI < 5.46"></div>
+                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(255, 99, 132, 0.5); left: 34.125%; width: 9.0625%;" title="Выше среднего: 5.46 ≤ BRI < 6.91"></div>
+                            <div class="bri-range" style="position: absolute; top: 0; height: 100%; background-color: rgba(255, 0, 0, 0.5); left: 43.1875%; width: 56.8125%;" title="Высокое: BRI ≥ 6.91"></div>
+                            <div class="bri-marker" style="position: absolute; top: -10px; height: 50px; width: 2px; background-color: red; left: ${briPosition}%;"></div>
+                        </div>
+                        <div style="position: absolute; top: 70%; left: 0; right: 0; font-size: 12px;">
+                            <span style="position: absolute; left: 0; transform: translateX(-50%);">0</span>
+                            <span style="position: absolute; left: 25%; transform: translateX(-50%);">4</span>
+                            <span style="position: absolute; left: 50%; transform: translateX(-50%);">8</span>
+                            <span style="position: absolute; left: 75%; transform: translateX(-50%);">12</span>
+                            <span style="position: absolute; left: 100%; transform: translateX(-50%);">16</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 5px; font-size: 12px;">
+                        <div style="display: flex; align-items: center; margin-right: 5px; margin-bottom: 5px;">
+                            <span style="width: 15px; height: 15px; background-color: rgba(75, 192, 192, 0.5); display: inline-block; margin-right: 3px;"></span>
+                            <span>Очень стройное (BRI &lt; 3.41)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; margin-right: 5px; margin-bottom: 5px;">
+                            <span style="width: 15px; height: 15px; background-color: rgba(54, 162, 235, 0.5); display: inline-block; margin-right: 3px;"></span>
+                            <span>От стройного до среднего (3.41 ≤ BRI &lt; 4.45)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; margin-right: 5px; margin-bottom: 5px;">
+                            <span style="width: 15px; height: 15px; background-color: rgba(255, 206, 86, 0.5); display: inline-block; margin-right: 3px;"></span>
+                            <span>Среднее (4.45 ≤ BRI &lt; 5.46)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; margin-right: 5px; margin-bottom: 5px;">
+                            <span style="width: 15px; height: 15px; background-color: rgba(255, 99, 132, 0.5); display: inline-block; margin-right: 3px;"></span>
+                            <span>Выше среднего (5.46 ≤ BRI &lt; 6.91)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; margin-bottom: 5px;">
+                            <span style="width: 15px; height: 15px; background-color: rgba(255, 0, 0, 0.5); display: inline-block; margin-right: 3px;"></span>
+                            <span>Высокое (BRI ≥ 6.91)</span>
+                        </div>
+                    </div>
+                `;
+            }
+    
+            updateUnits();
+        });
+    </script>
+</body>
+</html>
