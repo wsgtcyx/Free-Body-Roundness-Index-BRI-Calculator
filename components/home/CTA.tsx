@@ -23,7 +23,8 @@ const locales = {
     highlight3: "uitgebreid beeld",
     content1: "dan BMI, voor uw gezondheidsreis.",
     content2: "BRI biedt een",
-    content3: "van uw lichaamssamenstelling, waardoor u geïnformeerde beslissingen kunt nemen over uw welzijn.",
+    content3: "van uw lichaamssamenstelling,",
+    content4: "waardoor u geïnformeerde beslissingen kunt nemen over uw welzijn.",
     cta: "Bereken nu uw BRI"
   },
   de: {
@@ -34,7 +35,8 @@ const locales = {
     highlight3: "umfassenden Überblick",
     content1: "als BMI für Ihre Gesundheitsreise.",
     content2: "BRI bietet einen",
-    content3: "über Ihre Körperzusammensetzung und ermöglicht es Ihnen, fundierte Entscheidungen über Ihr Wohlbefinden zu treffen.",
+    content3: "über Ihre Körperzusammensetzung,",
+    content4: "und ermöglicht es Ihnen, fundierte Entscheidungen über Ihr Wohlbefinden zu treffen.",
     cta: "Berechnen Sie jetzt Ihren BRI"
   }
 };
