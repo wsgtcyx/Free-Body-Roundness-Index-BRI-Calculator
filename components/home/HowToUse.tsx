@@ -37,7 +37,7 @@ const HowToUse = ({ locale }: { locale: string }) => {
   const { title, steps, } = translations[locale as keyof typeof translations] || translations.en;
 
   return (
-    <div>
+    <div className='w-full'>
       <Card className="w-full py-3 mb-10 bg-gray-50 border-2 border-[#009b7d] rounded-lg">
         <CardHeader>
           <CardTitle className="text-[#009b7d] dark:text-[#19a58a] text-center">{title}</CardTitle>
