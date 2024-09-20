@@ -6,6 +6,7 @@ import Feedback from "@/components/home/Feedback";
 import Hero from "@/components/home/Hero";
 import HowToUse from "@/components/home/HowToUse";
 import Interpret from "@/components/home/Interpret";
+import References from "@/components/home/References";
 import WhatIsBRI from "@/components/home/WhatIsBRI";
 import WhyBRI from "@/components/home/WhyBRI";
 import { defaultLocale, getDictionary } from "@/lib/i18n";
@@ -26,24 +27,7 @@ export default async function HomeIndex({ lang }: { lang: string }) {
       <FAQ locale={langName} />
       <CTA locale={langName} />
       <Feedback locale={langName} />
-
-      {/* 
-
-      
-
-      
-
-
-
-        
-        
-
-        
-
-        
-
-        <References />
-      </div> */}
+      <References />
     </>
   );
 }
