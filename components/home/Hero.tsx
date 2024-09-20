@@ -49,11 +49,15 @@ const Hero = ({ locale }: { locale: string }) => {
                 <Image
                   src={`/images/screenshot/${locale}_light.png`}
                   alt="BRI Calculator Screenshot in light mode"
+                  width={600}
+                  height={800}
                   className="w-full rounded-lg shadow-lg dark:hidden"
                 />
                 <Image
                   src={`/images/screenshot/${locale}_dark.png`}
                   alt="BRI Calculator Screenshot in dark mode"
+                  width={600}
+                  height={800}
                   className="w-full rounded-lg shadow-lg hidden dark:block"
                 />
               </div>

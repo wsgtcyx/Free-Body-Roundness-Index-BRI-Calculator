@@ -1,6 +1,7 @@
 'use client'
 
 import { BRIResult } from "@/components/home/BRIResult"
+import MeasureButton from "@/components/home/MeasureButton"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -127,6 +128,7 @@ export default function BRICalculator({ locale }: { locale: string }) {
       <CardContent>
         <form onSubmit={calculateBRI} className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Units selection */}
             <div className="space-y-2">
               <Label htmlFor="units" className="flex items-center gap-2">
                 <Scale className="w-5 h-5" />
@@ -142,54 +144,77 @@ export default function BRICalculator({ locale }: { locale: string }) {
                 </SelectContent>
               </Select>
             </div>
+
+            {/* Height input */}
             <div className="space-y-2">
               <Label htmlFor="height" className="flex items-center gap-2">
                 <RulerIcon className="w-5 h-5" />
                 {t.height}
               </Label>
-              <Input
-                id="height"
-                type="number"
-                value={height}
-                onChange={(e) => setHeight(e.target.value)}
-                required
-                className={inputClassName}
-                placeholder={placeholders.height}
-              />
-              <span>{units === 'imperial' ? 'in' : 'cm'}</span>
+              <div className="relative">
+                <Input
+                  id="height"
+                  type="number"
+                  value={height}
+                  onChange={(e) => setHeight(e.target.value)}
+                  required
+                  className={`${inputClassName} pr-12`}
+                  placeholder={placeholders.height}
+                />
+                <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+                  {units === 'imperial' ? 'in' : 'cm'}
+                </span>
+              </div>
             </div>
+
+            {/* Weight input */}
             <div className="space-y-2">
               <Label htmlFor="weight" className="flex items-center gap-2">
                 <Weight className="w-5 h-5" />
                 {t.weight}
               </Label>
-              <Input
-                id="weight"
-                type="number"
-                value={weight}
-                onChange={(e) => setWeight(e.target.value)}
-                required
-                className={inputClassName}
-                placeholder={placeholders.weight}
-              />
-              <span>{units === 'imperial' ? 'lbs' : 'kg'}</span>
+              <div className="relative">
+                <Input
+                  id="weight"
+                  type="number"
+                  value={weight}
+                  onChange={(e) => setWeight(e.target.value)}
+                  required
+                  className={`${inputClassName} pr-12`}
+                  placeholder={placeholders.weight}
+                />
+                <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+                  {units === 'imperial' ? 'lbs' : 'kg'}
+                </span>
+              </div>
             </div>
+
+            {/* Waist input */}
             <div className="space-y-2">
-              <Label htmlFor="waist" className="flex items-center gap-2">
-                <Ruler className="w-5 h-5" />
-                {t.waist}
-              </Label>
-              <Input
-                id="waist"
-                type="number"
-                value={waist}
-                onChange={(e) => setWaist(e.target.value)}
-                required
-                className={inputClassName}
-                placeholder={placeholders.waist}
-              />
-              <span>{units === 'imperial' ? 'in' : 'cm'}</span>
+              <div className="flex items-center justify-between">
+                <Label htmlFor="waist" className="flex items-center gap-2">
+                  <Ruler className="w-5 h-5" />
+                  {t.waist}
+                  <MeasureButton locale={locale} />
+                </Label>
+              </div>
+              <div className="relative">
+                <Input
+                  id="waist"
+                  type="number"
+                  value={waist}
+                  onChange={(e) => setWaist(e.target.value)}
+                  required
+                  className={`${inputClassName} pr-12 focus:ring-2 focus:ring-[#19a58a] transition-all duration-300`}
+                  placeholder={placeholders.waist}
+                />
+                <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+                  {units === 'imperial' ? 'in' : 'cm'}
+                </span>
+              </div>
             </div>
+
+            {/* Gender selection */}
             <div className="space-y-2">
               <Label htmlFor="gender" className="flex items-center gap-2">
                 <Users className="w-5 h-5" />
@@ -205,6 +230,8 @@ export default function BRICalculator({ locale }: { locale: string }) {
                 </SelectContent>
               </Select>
             </div>
+
+            {/* Age input */}
             <div className="space-y-2">
               <Label htmlFor="age" className="flex items-center gap-2">
                 <Calendar className="w-5 h-5" />
@@ -222,8 +249,10 @@ export default function BRICalculator({ locale }: { locale: string }) {
               />
             </div>
           </div>
+
           <Button type="submit" className="w-full bg-[#19a58a] hover:bg-[#148f77] text-white">{t.calculate}</Button>
         </form>
+
         {bri !== null && bmi !== null && (
           <BRIResult locale={locale} bri={bri} bmi={bmi} gender={gender} age={age} />
         )}
