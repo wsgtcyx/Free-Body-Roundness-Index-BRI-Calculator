@@ -1,6 +1,7 @@
 "use client";
 import { LineText } from "@/components/LineText";
 import CTAButton from "@/components/home/CTAButton";
+import Image from "next/image";
 
 const Hero = ({ locale }: { locale: string }) => {
   const translations = {
@@ -45,12 +46,12 @@ const Hero = ({ locale }: { locale: string }) => {
                 </div>
               </div>
               <div className="pt-8">
-                <img
+                <Image
                   src={`/images/screenshot/${locale}_light.png`}
                   alt="BRI Calculator Screenshot in light mode"
                   className="w-full rounded-lg shadow-lg dark:hidden"
                 />
-                <img
+                <Image
                   src={`/images/screenshot/${locale}_dark.png`}
                   alt="BRI Calculator Screenshot in dark mode"
                   className="w-full rounded-lg shadow-lg hidden dark:block"

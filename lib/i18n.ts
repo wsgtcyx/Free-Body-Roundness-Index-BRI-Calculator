@@ -1,7 +1,7 @@
 import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 
-export const locales = ["", "en", "nl", "de"];
+export const locales = ["en", "nl", "de"];
 export const localeNames: any = {
   en: "English",
   nl: "Nederlands",

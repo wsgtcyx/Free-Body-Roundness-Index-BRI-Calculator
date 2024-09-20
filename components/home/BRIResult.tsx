@@ -257,7 +257,7 @@ interface BRIResultProps {
 export const BRIResult: FC<BRIResultProps> = ({ locale, bri, bmi, gender, age }) => {
   const t = translations[locale as keyof typeof translations];
   const healthStatus = getHealthStatus(bri, t);
-  const interpretation = getBRIInterpretation(bri, gender, age, t);
+  const interpretation = getBRIInterpretation(bri, t, gender, age);
   const risks = getHealthRisks(bri, t);
   const recommendations = getRecommendations(bri, t);
   const bmiCategory = getBMICategory(bmi, t);
@@ -370,7 +370,7 @@ function getHealthStatus(bri: number, t: any): string {
   return t.healthStatuses.high;
 }
 
-function getBRIInterpretation(bri: number, gender?: string, age?: string, t: any): string {
+function getBRIInterpretation(bri: number, t: any, gender?: string, age?: string): string {
   let interpretation = "";
   if (bri < 3.41) {
     interpretation = t.interpretations.veryLean;

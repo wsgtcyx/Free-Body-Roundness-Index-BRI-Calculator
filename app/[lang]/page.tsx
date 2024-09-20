@@ -1,6 +1,11 @@
 import HomeIndex from "@/components/home/HomeIndex";
 import { siteConfig } from "@/config/site";
+import { locales } from "@/lib/i18n";
 import { Metadata } from "next";
+
+export async function generateStaticParams() {
+  return locales.filter(locale => locale !== '').map((locale) => ({ lang: locale }));
+}
 
 export async function generateMetadata({
   params: { lang },
