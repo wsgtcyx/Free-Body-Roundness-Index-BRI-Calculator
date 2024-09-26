@@ -49,6 +49,12 @@ The calculator and its interpretations are based on peer-reviewed scientific stu
 
 - [В Китае предложили реальный маркер здоровья: индекс округлости про ИМТ можно забыть](https://doctorpiter.ru/obraz-zhizni/v-kitae-vyveli-realnyi-marker-zdorovya-indeks-okruglosti-pro-imt-mozhno-zabyt-id5863220/)
 
+- [What's your BRI?](https://www.mumsnet.com/talk/_chat/5168939-whats-your-bri)
+
+- [BRI Calculator](https://bai.tools/tools/bri-calculator)
+
+- [Ist der Body Mass Index veraltet? Experte ordnet ein Bodybuilder als schlank ein](https://www.blick.ch/life/gesundheit/fitness/ist-der-body-mass-index-veraltet-experte-ordnet-ein-bodybuilder-gilt-mit-neuem-bri-richtwert-als-schlank-id20168108.html)
+
 ## License
 
 © 2024 BRI Calculator. All rights reserved.
