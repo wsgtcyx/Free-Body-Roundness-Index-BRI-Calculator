@@ -43,6 +43,12 @@ Users can support the project by:
 
 The calculator and its interpretations are based on peer-reviewed scientific studies, which are listed in the References section of the website.
 
+## Related Articles
+
+- [BMI in der Kritik: Die bessere Alternative ist die Body Roundness Index](https://www.watson.ch/leben/international/237992519-bmi-in-der-kritik-der-body-roundness-index-ist-die-besser-alternative)
+
+- [В Китае предложили реальный маркер здоровья: индекс округлости про ИМТ можно забыть](https://doctorpiter.ru/obraz-zhizni/v-kitae-vyveli-realnyi-marker-zdorovya-indeks-okruglosti-pro-imt-mozhno-zabyt-id5863220/)
+
 ## License
 
 © 2024 BRI Calculator. All rights reserved.
