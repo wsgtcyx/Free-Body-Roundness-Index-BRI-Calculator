@@ -2,7 +2,7 @@
 
 ## 關於
 
-[BRI 計算器](https://bri-calculator.com/)是一個免費的線上工具，用於計算身體圓度指數（Body Roundness Index，BRI），這是一種用於評估身體形狀和健康風險的指標。本網站為個人提供了一個友好的界面，可以計算他們的 BRI 並獲得個性化的健康見解。
+[BRI 計算器](https://bri-calculator.com/zh-TW)是一個免費的線上工具，用於計算身體圓度指數（Body Roundness Index，BRI），這是一種用於評估身體形狀和健康風險的指標。本網站為個人提供了一個友好的界面，可以計算他們的 BRI 並獲得個性化的健康見解。
 
 ## 功能
 
@@ -63,4 +63,4 @@ BRI 計算器使用 HTML、CSS 和 JavaScript 構建，確保在各種設備上�
 
 ---
 
-更多信息，請訪問 [https://bri-calculator.com/](https://bri-calculator.com/)
+更多信息，請訪問 [https://bri-calculator.com/zh-TW](https://bri-calculator.com/zh-TW)
