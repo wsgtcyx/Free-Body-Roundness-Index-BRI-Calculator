@@ -1,5 +1,7 @@
 # BRI Calculator
 
+[繁體中文版](README.zh-TW.md)
+
 ## About
 
 [BRI Calculator](https://bri-calculator.com/) is a free online tool that calculates the Body Roundness Index (BRI), a measure used to assess body shape and health risks. This website provides a user-friendly interface for individuals to calculate their BRI and receive personalized health insights.
