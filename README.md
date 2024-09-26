@@ -1,6 +1,6 @@
 # BRI Calculator
 
-[繁體中文版](README.zh-TW.md) | [Deutsche Version](README.de.md)
+[繁體中文版](README.zh-TW.md) | [Deutsche Version](README.de.md) | [Nederlandse versie](README.nl.md)
 
 ## About
 
