@@ -1,6 +1,6 @@
 # BRI Calculator
 
-[繁體中文版](README.zh-TW.md) | [简体中文版](README.zh-CN.md) | [Deutsche Version](README.de.md) | [Nederlandse versie](README.nl.md) | [Русская версия](README.ru.md) | [Polska wersja](README.pl.md) | [हिंदी संस्करण](README.hi.md) | [Português](README.pt.md) | [粵語版](README.yue.md)
+[繁體中文版](README.zh-TW.md) | [简体中文版](README.zh-CN.md) | [Deutsche Version](README.de.md) | [Nederlandse versie](README.nl.md) | [Русская версия](README.ru.md) | [Polska wersja](README.pl.md) | [हिंदी संस्करण](README.hi.md) | [Português](README.pt.md) | [粵語版](README.yue.md) | [Version française](README.fr.md)
 
 ## About
 
@@ -57,7 +57,7 @@ The calculator and its interpretations are based on peer-reviewed scientific stu
 
 - [Ist der Body Mass Index veraltet? Experte ordnet ein Bodybuilder als schlank ein](https://www.blick.ch/life/gesundheit/fitness/ist-der-body-mass-index-veraltet-experte-ordnet-ein-bodybuilder-gilt-mit-neuem-bri-richtwert-als-schlank-id20168108.html)
 
-- [مؤشر التحميل الجسمي وعلاقته بالوفياتة العامة](https://www.sehatok.com/%D8%B7%D8%A8/%D9%85%D8%A4%D8%B4%D8%B1-%D8%A7%D8%B3%D8%AA%D8%AF%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D8%AC%D8%B3%D9%85-%D9%88%D8%B9%D9%84%D8%A7%D9%82%D8%AA%D9%87-%D8%A7%D9%84%D9%88%D9%81%D9%8A%D8%A7%D8%AA-%D8%A7%D9%84%D8%B9%D8%A7%D9%85%D8%A9)
+- [مؤشر التحميل الجسمي وعلاقته بالوفياتة العامة](https://www.sehatok.com/%D8%B7%D8%A8/%D9%85%D8%A4%D8%B4%D8%B1-%D8%A7%D8%B3%D8%AA%D8%AF%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D8%AC%D8%B3%D9%85-%D9%88%D8%B9%D9%84%D8%A7%D9%82%D8%AA%D9%87-%D8%A8%D9%85%D8%B9%D8%AF%D9%84-%D8%A7%D9%84%D9%88%D9%81%D9%8A%D8%A7%D8%AA-%D8%A7%D9%84%D8%B9%D8%A7%D9%85%D8%A9)
 
 ## License
 
