@@ -59,6 +59,8 @@ The calculator and its interpretations are based on peer-reviewed scientific stu
 
 - [مؤشر التحميل الجسمي وعلاقته بالوفياتة العامة](https://www.sehatok.com/%D8%B7%D8%A8/%D9%85%D8%A4%D8%B4%D8%B1-%D8%A7%D8%B3%D8%AA%D8%AF%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D8%AC%D8%B3%D9%85-%D9%88%D8%B9%D9%84%D8%A7%D9%82%D8%AA%D9%87-%D8%A8%D9%85%D8%B9%D8%AF%D9%84-%D8%A7%D9%84%D9%88%D9%81%D9%8A%D8%A7%D8%AA-%D8%A7%D9%84%D8%B9%D8%A7%D9%85%D8%A9)
 
+- [Methoden um das Gewicht zu beurteilen: BMI, BRI oder was?](https://www.symptome.ch/threads/methoden-um-das-gewicht-zu-beurteilen-bmi-bri-oder-was.138918/#post-1369423)
+
 ## License
 
 © 2024 BRI Calculator. All rights reserved.
