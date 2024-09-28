@@ -1,12 +1,12 @@
-# BRI Calculator
+# Free BRI Calculator - Body Roundness Index Calculator
 
 [繁體中文版](README.zh-TW.md) | [简体中文版](README.zh-CN.md) | [Deutsche Version](README.de.md) | [Nederlandse versie](README.nl.md) | [Русская версия](README.ru.md) | [Polska wersja](README.pl.md) | [हिंदी संस्करण](README.hi.md) | [Português](README.pt.md) | [粵語版](README.yue.md) | [Version française](README.fr.md)
 
-## About
+## About Our Free BRI Calculator
 
 [BRI Calculator](https://bri-calculator.com/) is a free online tool that calculates the Body Roundness Index (BRI), a measure used to assess body shape and health risks. This website provides a user-friendly interface for individuals to calculate their BRI and receive personalized health insights.
 
-## Features
+## Features of Our Free Body Roundness Index Calculator
 
 - **Free BRI Calculation**: No registration required, 100% free to use.
 - **Metric and Imperial Units**: Supports both measurement systems for global accessibility.
@@ -16,7 +16,7 @@
 - **Age and Gender Specific Advice**: Tailors recommendations based on the user's age and gender (optional inputs).
 - **Multilingual Support**: Available in English, Dutch (Nederlands), German (Deutsch), and Russian (Русский).
 
-## How It Works
+## How Our Free BRI Calculator Works
 
 1. Users input their height, weight, and waist circumference.
 2. Optional inputs include gender and age for more personalized results.
