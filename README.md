@@ -62,6 +62,8 @@ The calculator and its interpretations are based on peer-reviewed scientific stu
 
 - [Methoden um das Gewicht zu beurteilen: BMI, BRI oder was?](https://www.symptome.ch/threads/methoden-um-das-gewicht-zu-beurteilen-bmi-bri-oder-was.138918/#post-1369423)
 
+- [Ученые предложили реальный маркер здоровья: индекс округлости про ИМТ можно забыть](https://bb.lv/statja/ljublju/2024/09/29/ucenye-vyveli-realnyi-marker-zdorovia-indeks-okruglosti)
+
 ## License
 
 © 2024 BRI Calculator. All rights reserved.
