@@ -66,6 +66,8 @@ The calculator and its interpretations are based on peer-reviewed scientific stu
 
 - [What is your BRI? The Body Roundness Index Discussion by edsupportforum](https://www.edsupportforum.com/threads/whats-your-bri-body-roundness-index.4562078/page-2?post_id=81069667&nested_view=1&sortby=oldest#post-81069667)
 
+- [Free Body Roundness Index (BRI) Calculator: Assess Your Body Shape and Health Risks Instantly](https://news.bensbites.com/posts/28249-free-body-roundness-index-bri-calculator-assess-your-body-shape-and-health-risks-instantly/out)
+
 ## License
 
 © 2024 BRI Calculator. All rights reserved.
