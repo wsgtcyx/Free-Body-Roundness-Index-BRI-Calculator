@@ -64,6 +64,8 @@ The calculator and its interpretations are based on peer-reviewed scientific stu
 
 - [Ученые предложили реальный маркер здоровья: индекс округлости про ИМТ можно забыть](https://bb.lv/statja/ljublju/2024/09/29/ucenye-vyveli-realnyi-marker-zdorovia-indeks-okruglosti)
 
+- [What is your BRI? The Body Roundness Index Discussion by edsupportforum](https://www.edsupportforum.com/threads/whats-your-bri-body-roundness-index.4562078/page-2?post_id=81069667&nested_view=1&sortby=oldest#post-81069667)
+
 ## License
 
 © 2024 BRI Calculator. All rights reserved.
