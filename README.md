@@ -72,6 +72,8 @@ The calculator and its interpretations are based on peer-reviewed scientific stu
 
 - [Body Roundness Index and Body Mass Index AI Calculator](https://dang.ai/tool/body-roundness-index-and-body-mass-index-ai-calculator-bri-calculator-com)
 
+- [BRI Calculator](https://toolsfine.com/best-ai-tools/bri-calculator)
+
 
 ## License
 
