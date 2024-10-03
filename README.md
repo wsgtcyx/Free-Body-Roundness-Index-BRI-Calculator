@@ -76,6 +76,7 @@ The calculator and its interpretations are based on peer-reviewed scientific stu
 
 - [BRI Calculator Alternatives](https://www.saashub.com/bri-calculator-alternatives)
 
+- [BRI Calculator Recommended by AI With Me](https://aiwith.me/tools/bri-calculator-com/)
 
 ## License
 
