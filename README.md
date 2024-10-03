@@ -78,6 +78,8 @@ The calculator and its interpretations are based on peer-reviewed scientific stu
 
 - [BRI Calculator Recommended by AI With Me](https://aiwith.me/tools/bri-calculator-com/)
 
+- [BRI Calculator in the toolbattles](https://toolbattles.com/product/bri-calculator/)
+
 ## License
 
 © 2024 BRI Calculator. All rights reserved.
