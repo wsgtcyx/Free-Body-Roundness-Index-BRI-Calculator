@@ -88,6 +88,8 @@ The calculator and its interpretations are based on peer-reviewed scientific stu
 
 - [BRI Calculator in the aicenter.ai](https://aicenter.ai/products/bricalculator)
 
+- [BRI Calculator in the alternativeto.net](https://alternativeto.net/software/bri-calculator/about/)
+
 ## License
 
 © 2024 BRI Calculator. All rights reserved.
