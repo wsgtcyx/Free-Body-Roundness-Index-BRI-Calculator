@@ -82,6 +82,8 @@ The calculator and its interpretations are based on peer-reviewed scientific stu
 
 - [BRI Calculator in the Hacker News](https://news.ycombinator.com/item?id=41731063)
 
+- [BRI Calculator in the Devpost](https://devpost.com/software/bri-calculator)
+
 ## License
 
 © 2024 BRI Calculator. All rights reserved.
