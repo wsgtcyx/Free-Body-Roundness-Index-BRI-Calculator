@@ -86,6 +86,8 @@ The calculator and its interpretations are based on peer-reviewed scientific stu
 
 - [Body Roundness Index in the Wikipedia](https://en.wikipedia.org/wiki/Body_roundness_index)
 
+- [BRI Calculator in the aicenter.ai](https://aicenter.ai/products/bricalculator)
+
 ## License
 
 © 2024 BRI Calculator. All rights reserved.
