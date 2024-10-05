@@ -84,7 +84,7 @@ The calculator and its interpretations are based on peer-reviewed scientific stu
 
 - [BRI Calculator in the Devpost](https://devpost.com/software/bri-calculator)
 
-- [Body Roundness Index in the Wikipedia](https://en.wikipedia.org/wiki/Body_roundness_index)
+- [Body Roundness Index in the Wikipedia](https://en.wikipedia.org/wiki/Wikipedia:Village_pump_(technical))
 
 - [BRI Calculator in the aicenter.ai](https://aicenter.ai/products/bricalculator)
 
