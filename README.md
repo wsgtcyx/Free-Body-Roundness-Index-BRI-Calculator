@@ -90,6 +90,8 @@ The calculator and its interpretations are based on peer-reviewed scientific stu
 
 - [BRI Calculator in the alternativeto.net](https://alternativeto.net/software/bri-calculator/about/)
 
+ - [BRI Calculator in the chip.de](https://www.chip.de/downloads/webapp-BRI-Rechner-Body-Roundness-Index_185519924.html)
+
 ## License
 
 © 2024 BRI Calculator. All rights reserved.
