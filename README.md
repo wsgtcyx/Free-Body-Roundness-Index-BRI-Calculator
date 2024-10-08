@@ -94,6 +94,8 @@ The calculator and its interpretations are based on peer-reviewed scientific stu
 
  - [BRI Calculator in the sourceforge.net](https://sourceforge.net/projects/free-bri-calculator/)
 
+ - [BRI Calculator in the dev.to](https://dev.to/_ab56e9bbfaff3a478352a/introducing-the-free-bri-calculator-a-better-way-to-assess-body-shape-and-health-risks-1643-temp-slug-7989106?preview=0512ef5ffbed31605da81840f0d14324ad6ab845b878cc6c5ba79a2b3b551d49f6511213350dd0c7b75ed3cd551590d4d9a1348d4696946bd5722dc2)
+
 ## License
 
 © 2024 BRI Calculator. All rights reserved.
