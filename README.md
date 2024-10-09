@@ -100,6 +100,8 @@ The calculator and its interpretations are based on peer-reviewed scientific stu
 
  - [BRI Calculator in the webcatalog.io](https://webcatalog.io/en/apps/bri-calculator/)
 
+ - [BRI Calculator in the sideprojectors.com](https://www.sideprojectors.com/project/48249/free-body-roundness-index-bri-calculator)
+
 ## License
 
 © 2024 BRI Calculator. All rights reserved.
