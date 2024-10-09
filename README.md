@@ -98,6 +98,8 @@ The calculator and its interpretations are based on peer-reviewed scientific stu
 
  - [BRI Calculator in the toolio.ai](https://www.toolio.ai/tool/body-roundness-index-bri-calculator)
 
+ - [BRI Calculator in the webcatalog.io](https://webcatalog.io/en/apps/bri-calculator/)
+
 ## License
 
 © 2024 BRI Calculator. All rights reserved.
