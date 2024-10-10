@@ -128,6 +128,8 @@ The calculator and its interpretations are based on peer-reviewed scientific stu
 
  - [BRI Calculator introduction in the integrativehealthandrehab.com](https://integrativehealthandrehab.com/weight-loss/body-roundness-index/)
 
+- [BRI Calculator in the toolpilot.ai](https://www.toolpilot.ai/products/bri-calculator?)
+
 ## License
 
 © 2024 BRI Calculator. All rights reserved.
