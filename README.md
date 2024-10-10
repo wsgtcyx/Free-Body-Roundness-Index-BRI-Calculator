@@ -124,6 +124,8 @@ The calculator and its interpretations are based on peer-reviewed scientific stu
 
  - [BRI Calculator in the libhunt](https://www.libhunt.com/r/Free-Body-Roundness-Index-BRI-Calculator)
 
+ - [BRI Calculator in the aiwith.me](https://aiwith.me/tools/bri-calculator-com/)
+
 ## License
 
 © 2024 BRI Calculator. All rights reserved.
