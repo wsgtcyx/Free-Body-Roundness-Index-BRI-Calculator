@@ -130,6 +130,8 @@ The calculator and its interpretations are based on peer-reviewed scientific stu
 
 - [BRI Calculator in the toolpilot.ai](https://www.toolpilot.ai/products/bri-calculator?)
 
+- [BRI Calculator in the zivim.jutarnji.hr](https://zivim.jutarnji.hr/zivim/ucim/izracunajte-indeks-tjelesne-zaobljenosti-i-saznajte-jeste-li-u-opasnosti-od-bolesti-srca-i-dijabetesa-15511165)
+
 ## License
 
 © 2024 BRI Calculator. All rights reserved.
