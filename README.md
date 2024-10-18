@@ -134,6 +134,8 @@ The calculator and its interpretations are based on peer-reviewed scientific stu
 
 - [glp1forum.com discussing about BRI](https://glp1forum.com/threads/how-did-you-choose-your-goal-weight.1304/page-4#post-18711)
 
+- [BRI Calculator in the getbyte.tech](https://www.getbyte.tech/product/bri-calculator)
+
 ## License
 
 © 2024 BRI Calculator. All rights reserved.
